@@ -1,0 +1,21 @@
+{
+  "name": "fisheye",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --no-source-map --watch ./scss:./public/css",
+    "prefix": "postcss --watch ./public/css --use autoprefixer -d ./public/prefixed-css/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaleineSousCailloux/GuillaumeLyotard_6_23092021.git"
+  },
+  "author": "BaleineSousCailloux",
+  "license": "ISC",
+  "browserslist": "last 2 versions",
+  "bugs": {
+    "url": "https://github.com/BaleineSousCailloux/GuillaumeLyotard_6_23092021/issues"
+  },
+  "homepage": "https://github.com/BaleineSousCailloux/GuillaumeLyotard_6_23092021#readme"
+}

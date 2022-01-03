@@ -1,0 +1,76 @@
+body {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #fff;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  position: relative;
+}
+header .container {
+  width: 25%;
+  text-align: center;
+}
+header .tags {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: 0;
+}
+header .tags__help {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 3px 10px;
+  background-color: #d3573c;
+  border-radius: 7px;
+  align-self: center;
+  top: -40px;
+  display: block;
+}
+header .tags__liste {
+  display: flex;
+  flex-direction: row;
+  margin-top: 14px;
+}
+header .tags__liste .tag {
+  font-size: 12px;
+  font-weight: 500;
+  color: #901c1c;
+  border: 0.5px solid #c4c4c4;
+  border-radius: 11px;
+  padding: 3px 5px;
+  margin: 3px;
+}
+header h1 {
+  width: 25%;
+  font-size: 34px;
+  white-space: nowrap;
+  margin: -5px 0 0 0;
+  color: #901c1c;
+}
+
+.logo {
+  box-sizing: border-box;
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+}

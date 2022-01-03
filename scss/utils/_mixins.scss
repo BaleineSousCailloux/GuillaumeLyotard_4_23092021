@@ -1,0 +1,70 @@
+@use './variables' as v;
+
+@mixin box--shadow ($color: v.$shadow_1) {
+    box-shadow: 3px 3px 8px $color;
+}
+
+@mixin txt--shadow ($color: v.$shadow_4) {
+    text-shadow: 1px 1px 2px $color;
+}
+
+@mixin btn--gradient ($lighten: 0%) {
+    background: linear-gradient(to left top, lighten(v.$primaire, $lighten), lighten(v.$secondaire, $lighten));
+}
+
+@mixin heart--gradient {
+    background: linear-gradient(to top,v.$secondaire 40%,v.$primaire);
+}
+
+@mixin police--texte {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+}
+
+@mixin police--titres {
+    font-family: 'shrikhand', sans-serif;
+    font-weight: 100;
+}
+
+@mixin btn--nav {
+    width: 240px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    border: none;
+    @include police--texte;
+    user-select: none;
+    color: v.$txt_2;
+    font-size: medium;
+    font-weight: 500;
+    cursor: pointer;
+    @include box--shadow;
+    @include btn--gradient;
+    position: relative;
+    z-index: 1;
+    &:hover, &:focus, &:active {
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
+@mixin btn--nav--active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0;
+    @include btn--gradient(8%);
+    @include box--shadow(v.$shadow_2);
+    @include txt--shadow;
+    border-radius: 25px;
+    transition: all 400ms;
+}
