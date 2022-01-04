@@ -144,6 +144,7 @@ header h1 {
   font-weight: 700;
   color: #fff;
   margin-right: 25%;
+  box-shadow: 2px 3px 10px #c4c4c4;
 }
 #main .photographer__legend {
   display: flex;
@@ -160,7 +161,7 @@ header h1 {
 #main .photographer__legend__slogan {
   margin: 20px 0 15px 0;
   font-size: 18px;
-  color: #000;
+  color: #525252;
 }
 #main .photographer__legend__tags {
   box-sizing: border-box;
@@ -221,6 +222,7 @@ header h1 {
   padding: 0 20px;
   align-items: center;
   box-sizing: border-box;
+  box-shadow: 2px 3px 10px #c4c4c4;
   width: 170px;
   height: 69px;
   border-radius: 10px;
@@ -239,6 +241,7 @@ header h1 {
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
+  box-shadow: 2px 3px 10px #c4c4c4;
   width: 170px;
   height: 170px;
   padding: 0;
@@ -249,6 +252,7 @@ header h1 {
   color: #fff;
   font-size: 18px;
   font-weight: 700;
+  z-index: 1;
 }
 #main .portfolio__menu__btn--2__hover {
   display: flex;
@@ -324,4 +328,23 @@ header h1 {
 #main .portfolio__content__card__legend__like .fa-heart {
   font-size: 18px;
   margin-left: 5px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 370px;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 25px;
+  background-color: #d3573c;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 10px 10px 0 0;
 }

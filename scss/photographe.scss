@@ -60,6 +60,7 @@ header {
                     font-weight: 700;
                     color: v.$txt_2;
                     margin-right: 25%;
+                    box-shadow: 2px 3px 10px v.$shadow;
                 }
             }
         }
@@ -78,7 +79,7 @@ header {
             &__slogan {
                 margin: 20px 0 15px 0;
                 font-size: 18px;
-                color: v.$txt_1;
+                color: v.$tertiaire;
             }
             &__tags {
                 box-sizing: border-box;
@@ -138,6 +139,7 @@ header {
                     padding: 0 20px;
                     align-items: center;
                     box-sizing: border-box;
+                    box-shadow: 2px 3px 10px v.$shadow;
                     width: 170px;
                     height: 69px;
                     border-radius: 10px;
@@ -155,6 +157,7 @@ header {
                     flex-direction: column;
                     justify-content: flex-start;
                     box-sizing: border-box;
+                    box-shadow: 2px 3px 10px v.$shadow;
                     width: 170px;
                     height: 170px;
                     padding: 0;
@@ -164,6 +167,7 @@ header {
                     color: v.$txt_2;
                     font-size: 18px;
                     font-weight: 700;
+                    z-index: 1;
                     &__hover {
                         display: flex;
                         flex-direction: row;
@@ -247,4 +251,21 @@ header {
         }
     }
 }
-       
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 370px;
+    height: 60px;
+    line-height: 60px;
+    padding:  0 25px;
+    background-color: v.$secondaire;
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 10px 10px 0 0;
+}    
