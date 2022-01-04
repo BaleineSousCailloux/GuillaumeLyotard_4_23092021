@@ -119,7 +119,7 @@ header h1 {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  width: 50%;
+  width: 75%;
 }
 #main .photographer__card__contact {
   display: flex;
@@ -138,12 +138,12 @@ header h1 {
   width: 170px;
   height: 69px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #901c1c;
   font-size: 20px;
   font-weight: 700;
-  text-decoration: none;
   color: #fff;
+  margin-right: 25%;
 }
 #main .photographer__legend {
   display: flex;
@@ -201,7 +201,6 @@ header h1 {
   box-sizing: border-box;
   width: 270px;
   line-height: 69px;
-  margin-bottom: 20px;
 }
 #main .portfolio__menu__title {
   margin-right: 15px;
@@ -209,10 +208,22 @@ header h1 {
   font-weight: 700;
 }
 #main .portfolio__menu__btn {
+  position: relative;
+}
+#main .portfolio__menu__btn:hover .portfolio__menu__btn--2 {
+  display: flex;
+}
+#main .portfolio__menu__btn--1 {
   border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+  box-sizing: border-box;
   width: 170px;
   height: 69px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
   background-color: #901c1c;
@@ -220,12 +231,58 @@ header h1 {
   font-size: 18px;
   font-weight: 700;
 }
+#main .portfolio__menu__btn--2 {
+  position: absolute;
+  top: 0;
+  border: none;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  width: 170px;
+  height: 170px;
+  padding: 0;
+  border-radius: 10px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  background-color: #901c1c;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+#main .portfolio__menu__btn--2__hover {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 20px;
+  width: 100%;
+  height: 69px;
+  border-radius: 10px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  background-color: #901c1c;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+#main .portfolio__menu__btn--2__date, #main .portfolio__menu__btn--2__title {
+  box-sizing: border-box;
+  height: 49px;
+  line-height: 49px;
+  text-align: left;
+  margin: 0 10px;
+  padding: 0 10px;
+  border-top: 1.5px solid #fff;
+}
 #main .portfolio__content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+  margin-top: 20px;
 }
 #main .portfolio__content__card {
   display: flex;
@@ -239,7 +296,7 @@ header h1 {
 #main .portfolio__content__card__img {
   width: 350px;
   height: 300px;
-  border-radius: 5px;
+  border-radius: 10px;
   object-fit: cover;
 }
 #main .portfolio__content__card__legend {

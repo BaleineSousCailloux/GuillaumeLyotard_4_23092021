@@ -7,9 +7,9 @@
     <title>Fisheye</title>
     <link rel="icon" type="image/png" href="../public/images/minilogo.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
+        integrity="sha512-fzff82+8pzHnwA1mQ0dzz9/E0B+ZRizq08yZfya66INZBz86qKTCt9MLU0NCNIgaMJCgeyhujhasnFUsYMsi0Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="../public/prefixed-css/photographe.css" />
     <link rel="stylesheet" type="text/css" media="all and (max-width: 992px)"
         href="../public/prefixed-css/tab_photographe.css" />
@@ -47,11 +47,20 @@
         <section class="portfolio">
             <div class="portfolio__menu">
                 <p class="portfolio__menu__title">Trier par</p>
-                <button class="portfolio__menu__btn">
-                    <span class="portfolio__menu__btn__pop">Popularité</span>
-                    <span class="portfolio__menu__btn__date">Date</span>
-                    <span class="portfolio__menu__btn__title">Titre</span>
-                </button>
+                <div class="portfolio__menu__btn">
+                    <button class="portfolio__menu__btn--1">
+                        <span class="portfolio__menu__btn--1__pop">Popularité</span>
+                        <span class="portfolio__menu__btn--1__icon fa-solid fa-angle-down"></span>
+                    </button>
+                    <button class="portfolio__menu__btn--2">
+                        <div class="portfolio__menu__btn--2__hover">
+                            <span class="portfolio__menu__btn--2__hover__pop">Popularité</span>
+                            <span class="portfolio__menu__btn--2__hover__icon fa-solid fa-angle-up"></span>
+                        </div>
+                        <span class="portfolio__menu__btn--2__date">Date</span>
+                        <span class="portfolio__menu__btn--2__title">Titre</span>
+                    </button>
+                </div>
             </div>
             <div class="portfolio__content">
                 <article class="portfolio__content__card">
