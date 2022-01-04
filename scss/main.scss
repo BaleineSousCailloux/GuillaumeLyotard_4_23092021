@@ -3,77 +3,14 @@
 @use "./base/body";
 @use "./base/link";
 @use "./layouts/logo";
+@use "./layouts/header";
 
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: stretch;
-    align-items: center;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    overflow: hidden;
-    width: 100%;
-    min-height: 90px;
-    background-color: v.$fond_1;
-    padding-top: 30px;
-    margin-bottom: 20px;
-    position: fixed;
-    z-index: 1;
-    .container {
-        width: 25%;
-        position: relative;
-        left: 7%;
-    }
-    .tags {
-        box-sizing: border-box;
-        align-self: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 50%;
-        margin: 0;
-        &__help {
-            position: absolute;
-            font-size: 18px;
-            font-weight: 700;
-            padding: 3px 10px;
-            background-color: v.$secondaire;
-            border-radius: 7px;
-            align-self: center;
-            top: -50px;
-            // cible finale -> top: -10px;
-            display: block;
-        }
-        &__liste {
-            display: flex;
-            flex-direction: row;
-            margin-top: 14px;
-            .tag {
-                font-size: 12px;
-                font-weight: 500;
-                color: v.$primaire;
-                border: 0.5px solid v.$shadow;
-                border-radius: 11px;
-                padding: 3px 5px;
-                margin: 3px;
-            }
-        }
-    }
-    h1 {
-        box-sizing: border-box;
-        width: 25%;
-        font-size: 2em;
-        white-space: nowrap;
-        margin: -5px 0 0 0;
-        padding: 0 5px;
-        color: v.$primaire;
-    }
-}
+
 #main {
     width: 100%;
     position: relative;
     top: 110px;
+    padding-bottom: 70px;
     .photographers {
         display: flex;
         flex-direction: row;

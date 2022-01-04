@@ -23,18 +23,70 @@ header {
   flex-direction: row;
   justify-content: stretch;
   align-items: center;
+  flex-wrap: wrap;
   box-sizing: border-box;
+  overflow: hidden;
   width: 100%;
   min-height: 90px;
   background-color: #fff;
   padding-top: 30px;
   margin-bottom: 20px;
-  position: relative;
+  position: fixed;
+  z-index: 1;
 }
 header .container {
   width: 25%;
   position: relative;
   left: 7%;
+}
+header .tags {
+  box-sizing: border-box;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: 0;
+}
+header .tags__help {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 3px 10px;
+  background-color: #d3573c;
+  border-radius: 7px;
+  align-self: center;
+  top: -50px;
+  display: block;
+}
+header .tags__liste {
+  display: flex;
+  flex-direction: row;
+  margin-top: 14px;
+}
+header .tags__liste .tag {
+  font-size: 12px;
+  font-weight: 500;
+  color: #901c1c;
+  border: 0.5px solid #c4c4c4;
+  border-radius: 11px;
+  padding: 3px 5px;
+  margin: 3px;
+}
+header h1 {
+  box-sizing: border-box;
+  width: 25%;
+  font-size: 2em;
+  white-space: nowrap;
+  margin: -5px 0 0 0;
+  padding: 0 5px;
+  color: #901c1c;
+}
+
+header {
+  z-index: 0;
+  position: relative;
 }
 header .tags {
   display: none;
@@ -45,85 +97,174 @@ header h1 {
 
 #main {
   width: 100%;
-  position: relative;
-  top: 110px;
+  top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 70px;
 }
-#main .photographers {
+#main .photographer {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-content: center;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  width: 100%;
-}
-#main .photographers .photographer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30%;
-  height: fit-content;
-}
-#main .photographers .photographer__card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  box-sizing: border-box;
-  width: 100%;
-  height: 270px;
-  margin: 0;
+  width: 85%;
+  height: 313px;
+  padding: 0 50px;
   background-color: #fafafa;
 }
-#main .photographers .photographer__card__img {
+#main .photographer__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 50%;
+}
+#main .photographer__card__contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+#main .photographer__card__contact__name {
+  color: #d3573c;
+  font-size: 64px;
+  margin: 0;
+}
+#main .photographer__card__contact__btn {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  width: 170px;
+  height: 69px;
+  border: none;
+  border-radius: 5px;
+  background-color: #901c1c;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+}
+#main .photographer__legend {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+  box-sizing: border-box;
+}
+#main .photographer__legend__city {
+  font-size: 24px;
+  color: #901c1c;
+  margin: 20px 0 0 0;
+}
+#main .photographer__legend__slogan {
+  margin: 20px 0 15px 0;
+  font-size: 18px;
+  color: #000;
+}
+#main .photographer__legend__tags {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: left;
+}
+#main .photographer__legend__tags__tag {
+  font-size: 18px;
+  font-weight: 500;
+  color: #901c1c;
+  border: 0.5px solid #c4c4c4;
+  border-radius: 15px;
+  padding: 3px 5px;
+  margin-right: 5px;
+}
+#main .photographer__img {
   border-radius: 50%;
   width: 200px;
   height: 200px;
   box-shadow: 4px 4px 8px #c4c4c4;
   object-fit: cover;
 }
-#main .photographers .photographer__card__name {
-  color: #d3573c;
-  font-size: 36px;
-  margin: 10px 0 0 0;
-}
-#main .photographers .photographer__legend {
-  width: 100%;
+#main .portfolio {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  box-sizing: border-box;
-  margin: 0 0 20px 0;
+  align-items: left;
+  width: 85%;
 }
-#main .photographers .photographer__legend__city {
-  font-size: 13px;
-  color: #901c1c;
-  margin: 2px;
-}
-#main .photographers .photographer__legend__slogan {
-  font-size: 10px;
-  color: #000;
-  margin: 2px;
-}
-#main .photographers .photographer__legend__price {
-  font-size: 9px;
-  color: #525252;
-  margin: 2px;
-}
-#main .photographers .photographer__legend__tags {
-  box-sizing: border-box;
+#main .portfolio__menu {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 270px;
+  line-height: 69px;
+  margin-bottom: 20px;
+}
+#main .portfolio__menu__title {
+  margin-right: 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+#main .portfolio__menu__btn {
+  border: none;
+  width: 170px;
+  height: 69px;
+  border-radius: 5px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  background-color: #901c1c;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+#main .portfolio__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#main .portfolio__content__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 350px;
+  height: 350px;
+  background-color: #fafafa;
+  margin-bottom: 15px;
+}
+#main .portfolio__content__card__img {
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+#main .portfolio__content__card__legend {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  height: 50px;
+  color: #901c1c;
+  padding: 0 3px;
+  font-size: 24px;
+  box-sizing: border-box;
+}
+#main .portfolio__content__card__legend__title {
+  font-weight: 400;
+}
+#main .portfolio__content__card__legend__like {
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
 }
-#main .photographers .photographer__legend__tags__tag {
-  font-size: 12px;
-  font-weight: 500;
-  color: #901c1c;
-  border: 0.5px solid #c4c4c4;
-  border-radius: 11px;
-  padding: 3px 5px;
-  margin: 3px;
+#main .portfolio__content__card__legend__like .fa-heart {
+  font-size: 18px;
+  margin-left: 5px;
 }
