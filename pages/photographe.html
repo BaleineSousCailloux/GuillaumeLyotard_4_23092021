@@ -11,10 +11,10 @@
         integrity="sha512-fzff82+8pzHnwA1mQ0dzz9/E0B+ZRizq08yZfya66INZBz86qKTCt9MLU0NCNIgaMJCgeyhujhasnFUsYMsi0Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="../public/prefixed-css/photographe.css" />
-    <link rel="stylesheet" type="text/css" media="all and (max-width: 992px)"
+    <!-- <link rel="stylesheet" type="text/css" media="all and (max-width: 992px)"
         href="../public/prefixed-css/tab_photographe.css" />
     <link rel="stylesheet" type="text/css" media="all and (max-width: 768px)"
-        href="../public/prefixed-css/mobile_photographe.css" />
+        href="../public/prefixed-css/mobile_photographe.css" /> -->
 </head>
 
 
@@ -151,14 +151,18 @@
             <p class="lightbox__content__container__title">Arc-en-ciel</p>
         </div>
         <span class="lightbox__content__icon--right fa-solid fa-angle-right"></span>
-        <span class="lightbox__content__icon__close fas fa-times" id="closeBox"></span>
+        <div class="lightbox__content__icon__close" id="closeBox">
+            <span class="lightbox__content__icon__close__icon fas fa-times"></span>
+        </div>
     </div>
 </div>
 <script src="../public/scripts/lightbox.js"></script>
 <div class="contact" id="contact">
     <div class="contact__content" id="content">
         <p class="contact__content__title">Contactez Mimi Keel</p>
-        <span class="contact__content__close fas fa-times" id="closeForm"></span>
+        <div class="contact__content__close" id="closeForm">
+            <span class="contact__content__close__icon fas fa-times"></span>
+        </div>
         <div class="contact__content__body">
             <form class="contact__content__body__form" name="user" action="photographe.html" method="get" id="form">
                 <div class="contact__content__body__form__data">

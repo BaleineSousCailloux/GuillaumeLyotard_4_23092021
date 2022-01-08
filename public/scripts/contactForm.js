@@ -1,7 +1,7 @@
 // DOM Elements
-const openBtn = document.querySelector("#openForm");
-const contactForm = document.querySelector("#contact");
-const closeBtn = document.querySelector("#closeForm");
+const openBtn = document.getElementById("openForm");
+const contactForm = document.getElementById("contact");
+const closeBtn = document.getElementById("closeForm");
 
 
 
@@ -14,15 +14,6 @@ function launchContactForm() {
     contactForm.style.display = "flex";
 };
 
-
-/* options : delay to close
-let delayToClose;
-function manualCloseDelay() {
-  delayToClose = setTimeout(closeContactForm, 500);
-}
-function autoCloseDelay() {
-  delayToClose = setTimeout(closeContactForm, 3500);
-}*/
 
 // close contact form function
 function closeContactForm() {
