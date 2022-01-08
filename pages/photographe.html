@@ -143,7 +143,7 @@
     <script src="scripts/pages/index.js"></script>
     <script src="scripts/pages/photographer.js"></script>
 </body>
-<div class="lightbox">
+<div class="lightbox" id="lightbox">
     <div class="lightbox__content">
         <span class="lightbox__content__icon--left fa-solid fa-angle-left"></span>
         <div class="lightbox__content__container">
@@ -151,9 +151,10 @@
             <p class="lightbox__content__container__title">Arc-en-ciel</p>
         </div>
         <span class="lightbox__content__icon--right fa-solid fa-angle-right"></span>
-        <span class="lightbox__content__icon__close fas fa-times"></span>
+        <span class="lightbox__content__icon__close fas fa-times" id="closeLightbox"></span>
     </div>
 </div>
+<script src="../public/scripts/lightbox.js"></script>
 <div class="contact">
     <div class="contact__content" id="content">
         <p class="contact__content__title">Contactez Mimi Keel</p>
@@ -183,5 +184,6 @@
         </div>
     </div>
 </div>
+<script src="../public/scripts/contactForm.js"></script>
 
 </html>
