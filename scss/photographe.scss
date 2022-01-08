@@ -100,7 +100,7 @@ header {
         }
         &__img {
             border-radius: 50%;
-            width: 200px;
+            min-width: 200px;
             height: 200px;
             box-shadow: 4px 4px 8px v.$shadow;
             object-fit: cover;

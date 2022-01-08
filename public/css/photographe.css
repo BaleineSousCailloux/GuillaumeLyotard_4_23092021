@@ -182,7 +182,7 @@ header h1 {
 }
 #main .photographer__img {
   border-radius: 50%;
-  width: 200px;
+  min-width: 200px;
   height: 200px;
   box-shadow: 4px 4px 8px #c4c4c4;
   object-fit: cover;
