@@ -346,7 +346,6 @@ header {
             box-sizing: border-box;
             width: 75%;
             margin: 0;
-            
             font-size: 58px;
         }
         &__close {
@@ -381,6 +380,12 @@ header {
                     }
                 }
                 &__submit {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 20px;
+                    line-height: 69px;
+                    &__btn {
                     border: none;
                     height: 69px;
                     width: 170px;
@@ -391,7 +396,13 @@ header {
                     font-size: 18px;
                     font-weight: 700;
                     box-shadow: 2px 3px 10px v.$shadow;
-                    margin-top: 20px;
+                    }
+                    &__confirm {
+                        display: none;
+                        color: v.$primaire;
+                        font-weight: 700;
+                        padding-right: 10px;
+                    }
                 }
             }
             

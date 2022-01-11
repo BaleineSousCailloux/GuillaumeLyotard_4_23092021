@@ -465,6 +465,13 @@ header h1 {
   font-weight: 400;
 }
 .contact__content__body__form__submit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  line-height: 69px;
+}
+.contact__content__body__form__submit__btn {
   border: none;
   height: 69px;
   width: 170px;
@@ -476,7 +483,12 @@ header h1 {
   font-size: 18px;
   font-weight: 700;
   box-shadow: 2px 3px 10px #c4c4c4;
-  margin-top: 20px;
+}
+.contact__content__body__form__submit__confirm {
+  display: none;
+  color: #901c1c;
+  font-weight: 700;
+  padding-right: 10px;
 }
 
 #message {
