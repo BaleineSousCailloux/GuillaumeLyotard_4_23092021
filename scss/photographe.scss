@@ -411,6 +411,8 @@ header {
 }
 #message {
     height: 110px;
+    resize: none;
+    padding: 10px;
 }
 .footer {
     position: fixed;

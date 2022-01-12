@@ -493,6 +493,8 @@ header h1 {
 
 #message {
   height: 110px;
+  resize: none;
+  padding: 10px;
 }
 
 .footer {

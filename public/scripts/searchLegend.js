@@ -1,5 +1,3 @@
-// tags research legend
-
 // DOM elements
 const legendTags = document.getElementById("help");
 
