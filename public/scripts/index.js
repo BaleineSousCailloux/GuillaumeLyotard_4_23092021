@@ -1,5 +1,6 @@
 let photographers = [];
 let medias = [];
+let tags = [];
 
 const fetchData = async () => {
     const res = await fetch("./public/data/FishEyeData.json");
@@ -16,45 +17,39 @@ const getMediasData = async () => {
 }
 
 const indexCardFactory = (indexCard) => {
-    this.indexCard = indexCard;
-
     getCard = () => {
         const newPhotographer = document.createElement("article");
         newPhotographer.classList.add("photographer");
-        newPhotographer.innerHTML =
-            `
-        <a href="./pages/photographe.html" class="photographer__card">
-            <img class="photographer__card__img" src="../public/images/Photos/Photographers ID Photos/${this.indexCard.portrait}" />
-            <h2 class="photographer__card__name">${this.indexCard.name}</h2>
+        newPhotographer.innerHTML = `
+        <a href="./pages/photographe.html?id=${indexCard.id}" class="photographer__card">
+            <img class="photographer__card__img" src="../public/images/Photos/Photographers ID Photos/${indexCard.portrait}" />
+            <h2 class="photographer__card__name">${indexCard.name}</h2>
         </a>
         <div class="photographer__legend">
-            <h3 class="photographer__legend__city">${this.indexCard.city}, ${this.indexCard.country}</h3>
-            <p class="photographer__legend__slogan">${this.indexCard.tagline}</p>
-            <p class="photographer__legend__price">${this.indexCard.price}€/jour</p>
-            <div class="photographer__legend__tags">
-                <span class="photographer__legend__tags__tag portrait">#portrait</span>
-                <span class="photographer__legend__tags__tag events">#events</span>
-                <span class="photographer__legend__tags__tag travel">#travel</span>
-                <span class="photographer__legend__tags__tag animals">#animals</span>
-            </div>
+            <h3 class="photographer__legend__city">${indexCard.city}, ${indexCard.country}</h3>
+            <p class="photographer__legend__slogan">${indexCard.tagline}</p>
+            <p class="photographer__legend__price">${indexCard.price}€/jour</p>
+            <div class="photographer__legend__tags"></div>
         </div>
-    `;
-        document.getElementById("photographers").appendChild(newPhotographer);
-
+        `;
+        indexCard.tags.forEach(tag => {
+            newTag = document.createElement("span");
+            newTag.classList.add("photographer__legend__tags__tag");
+            newTag.innerText = tag;
+            newPhotographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
+        })
+        return newPhotographer;
     }
     return this;
 }
 
 const getPhotographerCards = async () => {
     photographers = await getPhotographersData();
-    console.log(photographers) // verif
+    //console.log(photographers) // verif
     photographers.forEach(photographer => {
         const instance = indexCardFactory(photographer);
         const newCard = instance.getCard();
-        console.log(photographer.name); //verif
-        return newCard;
-
+        document.getElementById("photographers").appendChild(newCard);
     })
-
 };
 getPhotographerCards();
