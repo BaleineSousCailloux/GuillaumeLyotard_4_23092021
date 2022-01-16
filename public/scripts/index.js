@@ -40,7 +40,6 @@ const headerTagFactory = (headerTag) => {
 
 const getHeaderTagsList = async () => {
     listTags = await getTagsListData();
-    console.log(listTags) // verif
     listTags.forEach(tag => {
         const instance = headerTagFactory(tag);
         const newHeaderTag = instance.getHeaderTag();
@@ -55,7 +54,7 @@ const indexCardFactory = (indexCard) => {
         newPhotographer.classList.add("photographer");
         newPhotographer.innerHTML = `
         <a href="./pages/photographe.html?id=${indexCard.id}" class="photographer__card">
-            <img class="photographer__card__img" src="../public/images/Photos/Photographers ID Photos/${indexCard.portrait}" />
+            <img class="photographer__card__img" src="./public/images/Photos/Photographers ID Photos/${indexCard.portrait}" />
             <h2 class="photographer__card__name">${indexCard.name}</h2>
         </a>
         <div class="photographer__legend">
@@ -78,7 +77,6 @@ const indexCardFactory = (indexCard) => {
 
 const getPhotographerCards = async () => {
     photographers = await getPhotographersData();
-    //console.log(photographers) // verif
     photographers.forEach(photographer => {
         const instance = indexCardFactory(photographer);
         const newCard = instance.getCard();
