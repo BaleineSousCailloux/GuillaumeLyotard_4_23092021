@@ -1,6 +1,7 @@
 let photographers = [];
 let medias = [];
 let listTags = [];
+let tagSelected = 0;
 
 const fetchData = async () => {
     const res = await fetch("./public/data/FishEyeData.json");
@@ -37,16 +38,76 @@ const headerTagFactory = (headerTag) => {
     }
     return this;
 }
+/*const selectTagFactory = (selectTag) => {
+    pointerTag = document.getElementsByClassName("tag");
+    pointerTag.addEventListener("click", () => {
+        pointerTag.style.backgroundColor = "red";
+        tagSelected = selectTag;
+    })
+    return tagSelected;
+}
+const tagsListSelect = async () => {
+    tags = await getHeaderTagsList();
+    tags.forEach(tag => {
+        selectTagFactory(tag);
+        console.log(tag);
+    });
+}*/
 
 const getHeaderTagsList = async () => {
     listTags = await getTagsListData();
+    getPhotographerCards();
+    console.log(photographers);
     listTags.forEach(tag => {
         const instance = headerTagFactory(tag);
         const newHeaderTag = instance.getHeaderTag();
         document.getElementById("tagsList").appendChild(newHeaderTag);
-    })
+        let tagSelected;
+
+        // selection d'un tag de tri des photographes
+
+        newHeaderTag.addEventListener("click", () => {
+            tagSelected = newHeaderTag.innerText.slice(1);
+            console.log(tagSelected);
+            const section = document.getElementById("photographers");
+            console.log(photographers);
+            document.getElementById("main").removeChild(section);
+            document.getElementById("main").innerHTML =
+                `<section class="photographers" id="photographers">
+            </section>`;
+            photographers.forEach(photographer => {
+                console.log(photographer)
+                for (i = 0; i < photographer.tags.length; i++) {
+                    if (tagSelected === photographer.tags[i]) {
+                        const instance = indexCardFactory(photographer);
+                        const newCard = instance.getCard();
+                        document.getElementById("photographers").appendChild(newCard);
+                    }
+
+                }
+
+            });
+
+        });
+        /*if (tagSelected == null) {
+            newHeaderTag.style.color = "green";
+            tagSelected = newHeaderTag.innerText;
+
+        } else if (tagSelected !== null) {
+            newHeaderTag.style.color = "#901c1c";
+            tagSelected = null;
+        }*/
+        console.log(tagSelected);
+        return tagSelected;
+    });
+    /////////////////////////////////////////////////////////
+
+    //return newHeaderTag;
+
+
 };
-getHeaderTagsList();
+
+
 
 const indexCardFactory = (indexCard) => {
     getCard = () => {
@@ -67,6 +128,7 @@ const indexCardFactory = (indexCard) => {
         indexCard.tags.forEach(tag => {
             const newTag = document.createElement("span");
             newTag.classList.add("photographer__legend__tags__tag");
+            newTag.classList.add(`${tag}`)
             newTag.innerHTML = `#${tag}`;
             newPhotographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
         })
@@ -81,6 +143,31 @@ const getPhotographerCards = async () => {
         const instance = indexCardFactory(photographer);
         const newCard = instance.getCard();
         document.getElementById("photographers").appendChild(newCard);
-    })
+        return photographer;
+    });
+    /*listTags.addEventListener("click", () => {
+        console.log(tagSelected);
+        for (i = 0; i < photographer.tags.length; i++) {
+            if (tagSelected == photographer.tags[i]) {
+                document.getElementById("photographers").appendChild(newCard);
+            } else {
+                document.getElementById("photographers").appendChild(newCard);
+            }
+        }
+    });*/
+
+    // tri par tag indiqué manuellement ci-dessous
+    //const tagSelected = "portrait";
+    /*for (i = 0; i < photographer.tags.length; i++) {
+        if (tagSelected !== 0 && tagSelected === photographer.tags[i]) {
+            document.getElementById("photographers").appendChild(newCard);
+        } else {
+            document.getElementById("photographers").appendChild(newCard);
+        }
+    }*/
+    //////////////////////////////////////////////////////////////
+
+
 };
-getPhotographerCards();
+//getPhotographerCards();
+getHeaderTagsList();
