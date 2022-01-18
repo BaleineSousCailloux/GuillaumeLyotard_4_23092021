@@ -208,6 +208,7 @@ header {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            align-content: left;
             flex-wrap: wrap;
             width: 100%;
             margin-top: 20px;
@@ -218,7 +219,7 @@ header {
                 width: 350px;
                 height: 350px;
                 background-color: v.$fond_2;
-                margin-bottom: 15px;
+                margin-bottom: 20px;
                 &__img {
                     width: 350px;
                     height: 300px;

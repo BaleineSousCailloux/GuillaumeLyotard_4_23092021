@@ -1,5 +1,5 @@
 // DOM Elements
-const openLightbox = document.querySelectorAll(".portfolio__content__card__img");
+/*const openLightbox = document.querySelectorAll(".portfolio__content__card__img");
 const lightbox = document.querySelector("#lightbox");
 const closeLightbox = document.querySelector("#closeBox");
 
@@ -23,4 +23,4 @@ function quitLightbox() {
   lightbox.style.display = "none";
 };
 
-
+*/
