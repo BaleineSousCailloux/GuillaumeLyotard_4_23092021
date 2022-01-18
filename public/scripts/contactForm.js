@@ -1,12 +1,22 @@
 // open & close contact form
+let openBtn;
+let contactForm;
+let closeBtn;
 
+dom = async () => {
+    await getPhotographerCard()
+        .then(openBtn = document.getElementById("openForm"))
+        .then(contactForm = document.getElementById("contact"))
+        .then(closeBtn = document.getElementById("closeForm"))
+}
 // DOM Elements
-const openBtn = document.getElementById("openForm");
+/*const openBtn = document.getElementById("openForm");
 const contactForm = document.getElementById("contact");
-const closeBtn = document.getElementById("closeForm");
+const closeBtn = document.getElementById("closeForm");*/
 
 // open contact form event (img click)
-openBtn.addEventListener("click", launchContactForm);
+
+//openBtn.addEventListener("click", launchContactForm);
 
 // open contact form fonction
 function launchContactForm() {
@@ -29,7 +39,14 @@ function closeContactForm() {
 };
 
 // close contact form event
-closeBtn.addEventListener("click", manualCloseDelay);
+//closeBtn.addEventListener("click", manualCloseDelay);
+
+openCloseForm = async () => {
+    await dom()
+        .then(openBtn.addEventListener("click", launchContactForm))
+        .then(closeBtn.addEventListener("click", manualCloseDelay))
+};
+openCloseForm();
 
 
 

@@ -27,7 +27,7 @@ header {
     .photographer {
         box-sizing: border-box;
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
         justify-content: space-between;
         align-items: center;
         width: 85%;
@@ -98,12 +98,19 @@ header {
                 }
             }
         }
-        &__img {
-            border-radius: 50%;
-            min-width: 200px;
-            height: 200px;
-            box-shadow: 4px 4px 8px v.$shadow;
-            object-fit: cover;
+        &__container {
+            margin: 0;
+            padding: 0;
+            width: 25%;
+            display: flex;
+            justify-content: right;
+            &__img {
+                border-radius: 50%;
+                max-width: 200px;
+                min-height: 200px;
+                box-shadow: 4px 4px 8px v.$shadow;
+                object-fit: cover;
+            }
         }
     }
     .portfolio {

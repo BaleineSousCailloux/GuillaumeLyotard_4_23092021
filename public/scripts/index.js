@@ -54,58 +54,7 @@ const tagsListSelect = async () => {
     });
 }*/
 
-const getHeaderTagsList = async () => {
-    listTags = await getTagsListData();
-    getPhotographerCards();
-    console.log(photographers);
-    listTags.forEach(tag => {
-        const instance = headerTagFactory(tag);
-        const newHeaderTag = instance.getHeaderTag();
-        document.getElementById("tagsList").appendChild(newHeaderTag);
-        let tagSelected;
 
-        // selection d'un tag de tri des photographes
-
-        newHeaderTag.addEventListener("click", () => {
-            tagSelected = newHeaderTag.innerText.slice(1);
-            console.log(tagSelected);
-            const section = document.getElementById("photographers");
-            console.log(photographers);
-            document.getElementById("main").removeChild(section);
-            document.getElementById("main").innerHTML =
-                `<section class="photographers" id="photographers">
-            </section>`;
-            photographers.forEach(photographer => {
-                console.log(photographer)
-                for (i = 0; i < photographer.tags.length; i++) {
-                    if (tagSelected === photographer.tags[i]) {
-                        const instance = indexCardFactory(photographer);
-                        const newCard = instance.getCard();
-                        document.getElementById("photographers").appendChild(newCard);
-                    }
-
-                }
-
-            });
-
-        });
-        /*if (tagSelected == null) {
-            newHeaderTag.style.color = "green";
-            tagSelected = newHeaderTag.innerText;
-
-        } else if (tagSelected !== null) {
-            newHeaderTag.style.color = "#901c1c";
-            tagSelected = null;
-        }*/
-        console.log(tagSelected);
-        return tagSelected;
-    });
-    /////////////////////////////////////////////////////////
-
-    //return newHeaderTag;
-
-
-};
 
 
 
@@ -170,4 +119,57 @@ const getPhotographerCards = async () => {
 
 };
 //getPhotographerCards();
+
+const getHeaderTagsList = async () => {
+    listTags = await getTagsListData();
+    getPhotographerCards();
+    console.log(photographers);
+    listTags.forEach(tag => {
+        const instance = headerTagFactory(tag);
+        const newHeaderTag = instance.getHeaderTag();
+        document.getElementById("tagsList").appendChild(newHeaderTag);
+        let tagSelected;
+
+        // selection d'un tag de tri des photographes
+
+        newHeaderTag.addEventListener("click", () => {
+            tagSelected = newHeaderTag.innerText.slice(1);
+            console.log(tagSelected);
+            const section = document.getElementById("photographers");
+            console.log(photographers);
+            document.getElementById("main").removeChild(section);
+            document.getElementById("main").innerHTML =
+                `<section class="photographers" id="photographers">
+            </section>`;
+            photographers.forEach(photographer => {
+                console.log(photographer)
+                for (i = 0; i < photographer.tags.length; i++) {
+                    if (tagSelected === photographer.tags[i]) {
+                        const instance = indexCardFactory(photographer);
+                        const newCard = instance.getCard();
+                        document.getElementById("photographers").appendChild(newCard);
+                    }
+
+                }
+
+            });
+
+        });
+        /*if (tagSelected == null) {
+            newHeaderTag.style.color = "green";
+            tagSelected = newHeaderTag.innerText;
+
+        } else if (tagSelected !== null) {
+            newHeaderTag.style.color = "#901c1c";
+            tagSelected = null;
+        }*/
+        console.log(tagSelected);
+        return tagSelected;
+    });
+    /////////////////////////////////////////////////////////
+
+    //return newHeaderTag;
+
+
+};
 getHeaderTagsList();
