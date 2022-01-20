@@ -12,13 +12,8 @@ const getPhotographersData = async () => {
     const data = await fetchData();
     return data.photographers;
 }
-const getMediasData = async () => {
-    const data = await fetchData();
-    return data.media;
-}
 
-const getTagsListData = async () => {
-    photographers = await getPhotographersData();
+const getTagsListData = (photographers) => {
     photographers.forEach(photographer => {
         photographer.tags.forEach(tag => {
             if (!listTags.includes(tag)) {
@@ -33,26 +28,12 @@ const headerTagFactory = (headerTag) => {
     getHeaderTag = () => {
         const newHeaderTag = document.createElement("span");
         newHeaderTag.classList.add("tag");
+        newHeaderTag.setAttribute("data-tag", headerTag);
         newHeaderTag.innerHTML = `#${headerTag}`;
         return newHeaderTag;
     }
     return this;
 }
-/*const selectTagFactory = (selectTag) => {
-    pointerTag = document.getElementsByClassName("tag");
-    pointerTag.addEventListener("click", () => {
-        pointerTag.style.backgroundColor = "red";
-        tagSelected = selectTag;
-    })
-    return tagSelected;
-}
-const tagsListSelect = async () => {
-    tags = await getHeaderTagsList();
-    tags.forEach(tag => {
-        selectTagFactory(tag);
-        console.log(tag);
-    });
-}*/
 
 
 
@@ -77,7 +58,7 @@ const indexCardFactory = (indexCard) => {
         indexCard.tags.forEach(tag => {
             const newTag = document.createElement("span");
             newTag.classList.add("photographer__legend__tags__tag");
-            newTag.classList.add(`${tag}`)
+
             newTag.innerHTML = `#${tag}`;
             newPhotographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
         })
@@ -86,90 +67,52 @@ const indexCardFactory = (indexCard) => {
     return this;
 }
 
-const getPhotographerCards = async () => {
-    photographers = await getPhotographersData();
-    photographers.forEach(photographer => {
+const getPhotographerCards = (photographers, tagSelected) => {
+    const filteredPhotographers = photographers.filter(photographer => {
+        return !tagSelected || photographer.tags.includes(tagSelected);
+    })
+    const container = document.getElementById("photographers");
+    container.innerHTML = "";
+    filteredPhotographers.forEach(photographer => {
         const instance = indexCardFactory(photographer);
         const newCard = instance.getCard();
-        document.getElementById("photographers").appendChild(newCard);
+        container.appendChild(newCard);
         return photographer;
     });
-    /*listTags.addEventListener("click", () => {
-        console.log(tagSelected);
-        for (i = 0; i < photographer.tags.length; i++) {
-            if (tagSelected == photographer.tags[i]) {
-                document.getElementById("photographers").appendChild(newCard);
-            } else {
-                document.getElementById("photographers").appendChild(newCard);
-            }
-        }
-    });*/
-
-    // tri par tag indiqué manuellement ci-dessous
-    //const tagSelected = "portrait";
-    /*for (i = 0; i < photographer.tags.length; i++) {
-        if (tagSelected !== 0 && tagSelected === photographer.tags[i]) {
-            document.getElementById("photographers").appendChild(newCard);
-        } else {
-            document.getElementById("photographers").appendChild(newCard);
-        }
-    }*/
-    //////////////////////////////////////////////////////////////
-
 
 };
-//getPhotographerCards();
 
-const getHeaderTagsList = async () => {
-    listTags = await getTagsListData();
-    getPhotographerCards();
-    console.log(photographers);
+
+const getHeaderTagsList = (listTags, tagClick) => {
     listTags.forEach(tag => {
         const instance = headerTagFactory(tag);
         const newHeaderTag = instance.getHeaderTag();
         document.getElementById("tagsList").appendChild(newHeaderTag);
-        let tagSelected;
 
-        // selection d'un tag de tri des photographes
 
-        newHeaderTag.addEventListener("click", () => {
-            tagSelected = newHeaderTag.innerText.slice(1);
-            console.log(tagSelected);
-            const section = document.getElementById("photographers");
-            console.log(photographers);
-            document.getElementById("main").removeChild(section);
-            document.getElementById("main").innerHTML =
-                `<section class="photographers" id="photographers">
-            </section>`;
-            photographers.forEach(photographer => {
-                console.log(photographer)
-                for (i = 0; i < photographer.tags.length; i++) {
-                    if (tagSelected === photographer.tags[i]) {
-                        const instance = indexCardFactory(photographer);
-                        const newCard = instance.getCard();
-                        document.getElementById("photographers").appendChild(newCard);
-                    }
+        newHeaderTag.addEventListener("click", tagClick)
 
-                }
-
-            });
-
-        });
-        /*if (tagSelected == null) {
-            newHeaderTag.style.color = "green";
-            tagSelected = newHeaderTag.innerText;
-
-        } else if (tagSelected !== null) {
-            newHeaderTag.style.color = "#901c1c";
-            tagSelected = null;
-        }*/
-        console.log(tagSelected);
-        return tagSelected;
     });
-    /////////////////////////////////////////////////////////
-
-    //return newHeaderTag;
 
 
 };
-getHeaderTagsList();
+const init = async () => {
+    photographers = await getPhotographersData();
+    const tagsList = getTagsListData(photographers);
+    let tagSelected = null;
+    getHeaderTagsList(tagsList, event => {
+        console.log(event.target.getAttribute("data-tag"));
+        const clickedTag = event.target.getAttribute("data-tag");
+        if (clickedTag == tagSelected) {
+            tagSelected = null;
+            event.target.classList.remove("tag-selected")
+        } else {
+            tagSelected = clickedTag;
+            event.target.classList.add("tag-selected")
+        }
+        getPhotographerCards(photographers, tagSelected);
+    });
+    getPhotographerCards(photographers, tagSelected)
+}
+
+init();

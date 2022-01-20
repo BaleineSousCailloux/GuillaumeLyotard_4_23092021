@@ -86,7 +86,7 @@ const mediaPortfolioFactory = (portfolio) => {
             `;
         } else {
             console.log(imageName);
-            imageNameFix = imageName.replace("-", '').replace(" ", '');
+            imageNameFix = imageName.replace("-", '');
             console.log(imageNameFix);
             imageCard.innerHTML = `
         <img class="portfolio__content__card__img" src="../public/images/Photos/${surname}/${imageNameFix}" />
@@ -115,7 +115,6 @@ const getPhotographerCard = async () => {
             const newCard = instance.getPersonnalCard();
             document.getElementById("photographer").appendChild(newCard);
             surname = photographer.name.replace(/\w+[.!?]?$/, '').trim().replace("-", ' ');
-            return surname;
         }
     });
     //await getMediasData().then(getMediaCard());
@@ -127,7 +126,6 @@ const getPhotographerCard = async () => {
             const temp = mediaPortfolioFactory(media);
             const newImgCard = temp.getImgCard();
             document.getElementById("portfolioContent").appendChild(newImgCard);
-            return media;
         }
     });
 };
