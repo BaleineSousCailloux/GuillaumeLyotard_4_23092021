@@ -54,6 +54,7 @@ header {
                 padding: 3px 5px;
                 margin: 3px;
                 cursor: pointer;
+                
             }
         }
     }
@@ -65,5 +66,9 @@ header {
         margin: -5px 0 0 0;
         padding: 0 5px;
         color: v.$primaire;
+    }
+    #tag-selected {
+        color: v.$txt_2;
+        background-color: v.$secondaire;
     }
 }

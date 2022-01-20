@@ -85,6 +85,10 @@ header h1 {
   padding: 0 5px;
   color: #901c1c;
 }
+header #tag-selected {
+  color: #fff;
+  background-color: #d3573c;
+}
 
 header {
   z-index: 0;

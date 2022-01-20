@@ -13,6 +13,7 @@ const getPhotographersData = async () => {
     return data.photographers;
 }
 
+// récupère les tags au sein du JSON et des tags des différents photographes
 const getTagsListData = (photographers) => {
     photographers.forEach(photographer => {
         photographer.tags.forEach(tag => {
@@ -28,6 +29,7 @@ const headerTagFactory = (headerTag) => {
     getHeaderTag = () => {
         const newHeaderTag = document.createElement("span");
         newHeaderTag.classList.add("tag");
+        newHeaderTag.classList.add(headerTag)
         newHeaderTag.setAttribute("data-tag", headerTag);
         newHeaderTag.innerHTML = `#${headerTag}`;
         return newHeaderTag;
@@ -88,27 +90,33 @@ const getHeaderTagsList = (listTags, tagClick) => {
         const instance = headerTagFactory(tag);
         const newHeaderTag = instance.getHeaderTag();
         document.getElementById("tagsList").appendChild(newHeaderTag);
-
-
         newHeaderTag.addEventListener("click", tagClick)
 
     });
 
 
 };
+
 const init = async () => {
     photographers = await getPhotographersData();
     const tagsList = getTagsListData(photographers);
     let tagSelected = null;
     getHeaderTagsList(tagsList, event => {
-        console.log(event.target.getAttribute("data-tag"));
         const clickedTag = event.target.getAttribute("data-tag");
+        let tagsSelected = document.getElementsByClassName("tag");
         if (clickedTag == tagSelected) {
+            // permet de revenir à la liste complète des photographes en cliquant à nouveau sur le tag actif
             tagSelected = null;
-            event.target.classList.remove("tag-selected")
+            event.target.removeAttribute("id");
         } else {
             tagSelected = clickedTag;
-            event.target.classList.add("tag-selected")
+            //la sélection d'un tag annule un éventuel tag déjà sélectionné
+            tagsList.forEach(tag => {
+                const unselect = document.getElementsByClassName(tag);
+                unselect[0].removeAttribute("id");
+            });
+            event.target.setAttribute("id", "tag-selected");
+
         }
         getPhotographerCards(photographers, tagSelected);
     });
