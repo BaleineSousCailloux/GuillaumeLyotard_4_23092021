@@ -306,12 +306,21 @@ header h1 {
   height: 350px;
   background-color: #fafafa;
   margin-bottom: 20px;
+  position: relative;
 }
-#main .portfolio__content__card__img {
+#main .portfolio__content__card__img, #main .portfolio__content__card__video {
   width: 350px;
   height: 300px;
   border-radius: 10px;
   object-fit: cover;
+}
+#main .portfolio__content__card__img__icon, #main .portfolio__content__card__video__icon {
+  position: absolute;
+  color: #d3573c;
+  font-size: 44px;
+  opacity: 0.8;
+  top: 245px;
+  left: 20px;
 }
 #main .portfolio__content__card__legend {
   display: flex;

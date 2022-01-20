@@ -220,11 +220,21 @@ header {
                 height: 350px;
                 background-color: v.$fond_2;
                 margin-bottom: 20px;
-                &__img {
+                position: relative;
+                &__img, &__video {
                     width: 350px;
                     height: 300px;
                     border-radius: 10px;
                     object-fit: cover;
+                    &__icon {
+                        position: absolute;
+                        color: v.$secondaire;
+                        font-size: 44px;
+                        opacity: 0.8;
+                        top: 245px;
+                        left: 20px;
+                        
+                    }
 
                 }
                 &__legend {

@@ -20,6 +20,7 @@ console.log(urlId);
 let surname = "toto";
 let imageName = "pho-to";
 let imageNameFix = "photo";
+let videoCard;
 
 
 const photographerCardFactory = (photographerCard) => {
@@ -65,12 +66,29 @@ const photographerCardFactory = (photographerCard) => {
 
 const mediaPortfolioFactory = (portfolio) => {
     getImgCard = () => {
-        console.log(imageName);
-        imageNameFix = imageName.replace("-", '');
-        console.log(imageNameFix);
         const imageCard = document.createElement("article");
         imageCard.classList.add("portfolio__content__card");
-        imageCard.innerHTML = `
+        if (videoCard) {
+            console.log(videoCard);
+            imageCard.innerHTML = `
+            <video class="portfolio__content__card__video" poster>
+                <source src="../public/images/Photos/${surname}/${portfolio.video}" type="video/mp4">
+            </video>
+            <span class="portfolio__content__card__video__icon fa-solid fa-video"></span>
+            <div class="portfolio__content__card__legend">
+                <p class="portfolio__content__card__legend__title">${portfolio.title}</p>
+                <div class="portfolio__content__card__legend__like">
+                    <span class="portfolio__content__card__legend___like__cunt">${portfolio.likes}</span>
+                    <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
+                    <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
+                </div>
+            </div>
+            `;
+        } else {
+            console.log(imageName);
+            imageNameFix = imageName.replace("-", '').replace(" ", '');
+            console.log(imageNameFix);
+            imageCard.innerHTML = `
         <img class="portfolio__content__card__img" src="../public/images/Photos/${surname}/${imageNameFix}" />
         <div class="portfolio__content__card__legend">
             <p class="portfolio__content__card__legend__title">${portfolio.title}</p>
@@ -81,6 +99,7 @@ const mediaPortfolioFactory = (portfolio) => {
             </div>
         </div>
         `;
+        }
         return imageCard
     }
     return this;
@@ -103,11 +122,12 @@ const getPhotographerCard = async () => {
     medias.forEach(media => {
         if (media.photographerId == urlId) {
             imageName = media.image;
+            videoCard = media.video;
             //const imageFix = media.image.replace("-", '');
             const temp = mediaPortfolioFactory(media);
             const newImgCard = temp.getImgCard();
             document.getElementById("portfolioContent").appendChild(newImgCard);
-            return media
+            return media;
         }
     });
 };
