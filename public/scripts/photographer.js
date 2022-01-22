@@ -1,3 +1,6 @@
+let surname = "";
+let videoCard;
+
 const fetchData = async () => {
     const res = await fetch("../public/data/FishEyeData.json");
     const data = await res.json();
@@ -11,16 +14,25 @@ const getMediasData = async () => {
     const data = await fetchData();
     return data.media;
 }
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const urlId = urlParams.get("id");
+console.log("id = " + urlId);
 
-
-let position = window.location.href.indexOf("?");
+/*let position = window.location.href.indexOf("?");
 console.log(position);
 let urlId = window.location.href.substring(position + 4);
-console.log(urlId);
-let surname = "toto";
-let imageName = "pho-to";
-let imageNameFix = "photo";
-let videoCard;
+console.log(urlId);*/
+
+/*const addTagsToPhotographer = (card) => {
+    card.tags.forEach(tag => {
+        const newTag = document.createElement("span");
+        newTag.classList.add("photographer__legend__tags__tag");
+        newTag.classList.add(`${tag}`);
+        newTag.innerHTML = `#${tag}`;
+        photographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
+    })
+};*/
 
 
 const photographerCardFactory = (photographerCard) => {
@@ -39,13 +51,14 @@ const photographerCardFactory = (photographerCard) => {
             </div>
         </div>
         `;
+        //addTagsToPhotographer(photographerCard);
         photographerCard.tags.forEach(tag => {
             const newTag = document.createElement("span");
             newTag.classList.add("photographer__legend__tags__tag");
             newTag.classList.add(`${tag}`)
             newTag.innerHTML = `#${tag}`;
             photographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
-        })
+        });
 
         const photographerImg = document.createElement("div");
         photographerImg.classList.add("photographer__container");
@@ -65,12 +78,12 @@ const photographerCardFactory = (photographerCard) => {
 
 
 const mediaPortfolioFactory = (portfolio) => {
-    getImgCard = () => {
-        const imageCard = document.createElement("article");
-        imageCard.classList.add("portfolio__content__card");
-        if (videoCard) {
-            console.log(videoCard);
-            imageCard.innerHTML = `
+    getMediaCard = () => {
+        console.log(surname);
+        const mediaCard = document.createElement("article");
+        mediaCard.classList.add("portfolio__content__card");
+        if (videoName) {
+            mediaCard.innerHTML = `
             <video class="portfolio__content__card__video" poster>
                 <source src="../public/images/Photos/${surname}/${portfolio.video}" type="video/mp4">
             </video>
@@ -85,11 +98,8 @@ const mediaPortfolioFactory = (portfolio) => {
             </div>
             `;
         } else {
-            console.log(imageName);
-            imageNameFix = imageName.replace("-", '');
-            console.log(imageNameFix);
-            imageCard.innerHTML = `
-        <img class="portfolio__content__card__img" src="../public/images/Photos/${surname}/${imageNameFix}" />
+            mediaCard.innerHTML = `
+        <img class="portfolio__content__card__img" src="../public/images/Photos/${surname}/${portfolio.image}" />
         <div class="portfolio__content__card__legend">
             <p class="portfolio__content__card__legend__title">${portfolio.title}</p>
             <div class="portfolio__content__card__legend__like">
@@ -100,7 +110,7 @@ const mediaPortfolioFactory = (portfolio) => {
         </div>
         `;
         }
-        return imageCard
+        return mediaCard
     }
     return this;
 }
@@ -114,18 +124,16 @@ const getPhotographerCard = async () => {
             const instance = photographerCardFactory(photographer);
             const newCard = instance.getPersonnalCard();
             document.getElementById("photographer").appendChild(newCard);
-            surname = photographer.name.replace(/\w+[.!?]?$/, '').trim().replace("-", ' ');
+            surname = photographer.name;
         }
+
     });
-    //await getMediasData().then(getMediaCard());
     medias.forEach(media => {
         if (media.photographerId == urlId) {
-            imageName = media.image;
-            videoCard = media.video;
-            //const imageFix = media.image.replace("-", '');
+            videoName = media.video;
             const temp = mediaPortfolioFactory(media);
-            const newImgCard = temp.getImgCard();
-            document.getElementById("portfolioContent").appendChild(newImgCard);
+            const newMediaCard = temp.getMediaCard();
+            document.getElementById("portfolioContent").appendChild(newMediaCard);
         }
     });
 };
