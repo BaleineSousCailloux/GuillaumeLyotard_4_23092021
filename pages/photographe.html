@@ -57,11 +57,11 @@
                     </button>
                     <button class="portfolio__menu__btn--2">
                         <div class="portfolio__menu__btn--2__hover">
-                            <span class="portfolio__menu__btn--2__hover__pop">Popularité</span>
+                            <span class="portfolio__menu__btn--2__hover__pop" id="pop">Popularité</span>
                             <span class="portfolio__menu__btn--2__hover__icon fa-solid fa-angle-up"></span>
                         </div>
-                        <span class="portfolio__menu__btn--2__date">Date</span>
-                        <span class="portfolio__menu__btn--2__title">Titre</span>
+                        <span class="portfolio__menu__btn--2__date" id="date">Date</span>
+                        <span class="portfolio__menu__btn--2__title" id="title">Titre</span>
                     </button>
                 </div>
             </div>
@@ -147,7 +147,7 @@
     <script src="scripts/pages/photographer.js"></script> -->
 </body>
 <div class="lightbox" id="lightbox">
-    <div class="lightbox__content">
+    <!-- <div class="lightbox__content">
         <span class="lightbox__content__icon--left fa-solid fa-angle-left"></span>
         <div class="lightbox__content__container">
             <img class="lightbox__content__container__img" src="../public/images/Photos/Mimi/Travel_Lonesome.jpg" />
@@ -157,9 +157,9 @@
         <div class="lightbox__content__icon__close" id="closeBox">
             <span class="lightbox__content__icon__close__icon fas fa-times"></span>
         </div>
-    </div>
+    </div> -->
 </div>
-<script src="../public/scripts/lightbox.js"></script>
+
 
 <div class="contact" id="contact">
     <div class="contact__content" id="content">
@@ -197,8 +197,11 @@
         </div>
     </div>
 </div>
+<script src="../public/scripts/photographerCardFactory.js"></script>
+<script src="../public/scripts/photographerPortfolioFactory.js"></script>
 
 <script src="../public/scripts/photographer.js"></script>
+<script src="../public/scripts/lightbox.js"></script>
 <!--<script src="../public/scripts/contactForm.js"></script>-->
 
 </html>

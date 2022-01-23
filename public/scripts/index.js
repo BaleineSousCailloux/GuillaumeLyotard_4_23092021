@@ -1,5 +1,3 @@
-let photographers = [];
-let medias = [];
 let listTags = [];
 let tagSelected = 0;
 
@@ -25,49 +23,18 @@ const getTagsListData = (photographers) => {
     return listTags;
 }
 
-const headerTagFactory = (headerTag) => {
-    getHeaderTag = () => {
-        const newHeaderTag = document.createElement("span");
-        newHeaderTag.classList.add("tag");
-        newHeaderTag.classList.add(headerTag)
-        newHeaderTag.setAttribute("data-tag", headerTag);
-        newHeaderTag.innerHTML = `#${headerTag}`;
-        return newHeaderTag;
-    }
-    return this;
-}
+
+const getHeaderTagsList = (listTags, tagClick) => {
+    listTags.forEach(tag => {
+        const instance = headerTagFactory(tag);
+        const newHeaderTag = instance.getHeaderTag();
+        document.getElementById("tagsList").appendChild(newHeaderTag);
+        newHeaderTag.addEventListener("click", tagClick)
+
+    });
 
 
-
-
-
-const indexCardFactory = (indexCard) => {
-    getCard = () => {
-        const newPhotographer = document.createElement("article");
-        newPhotographer.classList.add("photographer");
-        newPhotographer.innerHTML = `
-        <a href="./pages/photographe.html?id=${indexCard.id}" class="photographer__card">
-            <img class="photographer__card__img" src="./public/images/Photos/Photographers ID Photos/${indexCard.portrait}" />
-            <h2 class="photographer__card__name">${indexCard.name}</h2>
-        </a>
-        <div class="photographer__legend">
-            <h3 class="photographer__legend__city">${indexCard.city}, ${indexCard.country}</h3>
-            <p class="photographer__legend__slogan">${indexCard.tagline}</p>
-            <p class="photographer__legend__price">${indexCard.price}€/jour</p>
-            <div class="photographer__legend__tags"></div>
-        </div>
-        `;
-        indexCard.tags.forEach(tag => {
-            const newTag = document.createElement("span");
-            newTag.classList.add("photographer__legend__tags__tag");
-            newTag.classList.add(`${tag}`);
-            newTag.innerHTML = `#${tag}`;
-            newPhotographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
-        })
-        return newPhotographer;
-    }
-    return this;
-}
+};
 
 const getPhotographerCards = (photographers, tagSelected) => {
     const filteredPhotographers = photographers.filter(photographer => {
@@ -84,26 +51,12 @@ const getPhotographerCards = (photographers, tagSelected) => {
 
 };
 
-
-const getHeaderTagsList = (listTags, tagClick) => {
-    listTags.forEach(tag => {
-        const instance = headerTagFactory(tag);
-        const newHeaderTag = instance.getHeaderTag();
-        document.getElementById("tagsList").appendChild(newHeaderTag);
-        newHeaderTag.addEventListener("click", tagClick)
-
-    });
-
-
-};
-
 const init = async () => {
-    photographers = await getPhotographersData();
+    const photographers = await getPhotographersData();
     const tagsList = getTagsListData(photographers);
     let tagSelected = null;
     getHeaderTagsList(tagsList, event => {
         const clickedTag = event.target.getAttribute("data-tag");
-        let tagsSelected = document.getElementsByClassName("tag");
         if (clickedTag == tagSelected) {
             // permet de revenir à la liste complète des photographes en cliquant à nouveau sur le tag actif
             tagSelected = null;

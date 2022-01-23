@@ -1,5 +1,6 @@
 let surname = "";
 let videoCard;
+const photographerMedias = [];
 
 const fetchData = async () => {
     const res = await fetch("../public/data/FishEyeData.json");
@@ -19,12 +20,24 @@ const urlParams = new URLSearchParams(queryString);
 const urlId = urlParams.get("id");
 console.log("id = " + urlId);
 
+const popBtn = document.getElementById("pop");
+const dateBtn = document.getElementById("date");
+const titleBtn = document.getElementById("title");
+const btnSelected = [];
+btnSelected.push(popBtn, dateBtn, titleBtn);
+
+const btnSelection = (btnSelected, btnClick) => {
+    btnSelected.forEach(btn => {
+        btn.addEventListener("click", btnClick)
+    })
+}
+
 /*let position = window.location.href.indexOf("?");
 console.log(position);
 let urlId = window.location.href.substring(position + 4);
-console.log(urlId);*/
+console.log(urlId);
 
-/*const addTagsToPhotographer = (card) => {
+const addTagsToPhotographer = (card) => {
     card.tags.forEach(tag => {
         const newTag = document.createElement("span");
         newTag.classList.add("photographer__legend__tags__tag");
@@ -35,123 +48,124 @@ console.log(urlId);*/
 };*/
 
 
-const photographerCardFactory = (photographerCard) => {
-    getPersonnalCard = () => {
-        const photographer = document.createElement("article");
-        photographer.classList.add("photographer__card");
-        photographer.innerHTML = `
-        <div class="photographer__card__contact">
-            <h1 class="photographer__card__contact__name">${photographerCard.name}</h1>
-            <button class="photographer__card__contact__btn" id="openForm">Contactez-moi</button>
-        </div>
-        <div class="photographer__legend">
-            <h2 class="photographer__legend__city">${photographerCard.city}, ${photographerCard.country}</h2>
-            <p class="photographer__legend__slogan">${photographerCard.tagline}</p>
-            <div class="photographer__legend__tags">
-            </div>
-        </div>
-        `;
-        //addTagsToPhotographer(photographerCard);
-        photographerCard.tags.forEach(tag => {
-            const newTag = document.createElement("span");
-            newTag.classList.add("photographer__legend__tags__tag");
-            newTag.classList.add(`${tag}`)
-            newTag.innerHTML = `#${tag}`;
-            photographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
-        });
-
-        const photographerImg = document.createElement("div");
-        photographerImg.classList.add("photographer__container");
-        photographerImg.innerHTML = `<img class="photographer__container__img" src="../public/images/Photos/Photographers ID Photos/${photographerCard.portrait}"/>`;
-        document.getElementById("photographer").appendChild(photographerImg);
-
-        const footerPrice = document.createElement("p");
-        footerPrice.classList.add("footer__price");
-        footerPrice.innerHTML = `${photographerCard.price}€ / jour`;
-        document.getElementById("footer").appendChild(footerPrice);
-
-        return photographer;
-    }
-    return this;
-}
-
-
-
-const mediaPortfolioFactory = (portfolio) => {
-    getMediaCard = () => {
-        console.log(surname);
-        const mediaCard = document.createElement("article");
-        mediaCard.classList.add("portfolio__content__card");
-        if (videoName) {
-            mediaCard.innerHTML = `
-            <video class="portfolio__content__card__video" poster>
-                <source src="../public/images/Photos/${surname}/${portfolio.video}" type="video/mp4">
-            </video>
-            <span class="portfolio__content__card__video__icon fa-solid fa-video"></span>
-            <div class="portfolio__content__card__legend">
-                <p class="portfolio__content__card__legend__title">${portfolio.title}</p>
-                <div class="portfolio__content__card__legend__like">
-                    <span class="portfolio__content__card__legend___like__cunt">${portfolio.likes}</span>
-                    <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
-                    <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
-                </div>
-            </div>
-            `;
-        } else {
-            mediaCard.innerHTML = `
-        <img class="portfolio__content__card__img" src="../public/images/Photos/${surname}/${portfolio.image}" />
-        <div class="portfolio__content__card__legend">
-            <p class="portfolio__content__card__legend__title">${portfolio.title}</p>
-            <div class="portfolio__content__card__legend__like">
-                <span class="portfolio__content__card__legend___like__cunt">${portfolio.likes}</span>
-                <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
-                <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
-            </div>
-        </div>
-        `;
-        }
-        return mediaCard
-    }
-    return this;
-}
-
-
-const getPhotographerCard = async () => {
-    photographers = await getPhotographersData();
-    medias = await getMediasData();
+const getPhotographerCard = () => {
     photographers.forEach(photographer => {
         if (photographer.id == urlId) {
             const instance = photographerCardFactory(photographer);
-            const newCard = instance.getPersonnalCard();
-            document.getElementById("photographer").appendChild(newCard);
+            const card = instance.getPersonnalCard();
+            document.getElementById("photographer").appendChild(card);
             surname = photographer.name;
-        }
-
-    });
-    medias.forEach(media => {
-        if (media.photographerId == urlId) {
-            videoName = media.video;
-            const temp = mediaPortfolioFactory(media);
-            const newMediaCard = temp.getMediaCard();
-            document.getElementById("portfolioContent").appendChild(newMediaCard);
+            return photographer
         }
     });
 };
-getPhotographerCard();
 
-/*const getMediaCard = async () => {
+
+const getPhotographerPortfolio = () => {
+
+    document.getElementById("portfolioContent").innerHTML = "";
+    photographerMedias.forEach(media => {
+        videoName = media.video;
+        const temp = mediaPortfolioFactory(media);
+        const newMediaCard = temp.getMediaCard();
+        document.getElementById("portfolioContent").appendChild(newMediaCard);
+    });
+};
+
+
+const getPhotographerMedias = () => {
+    let btnActive = null;
+    medias.forEach(media => {
+        if (media.photographerId == urlId) {
+            photographerMedias.push(media);
+        };
+        // defaut and open order, par popularité
+        return photographerMedias.sort((a, b) => {
+            if (a.likes > b.likes) {
+                return -1;
+            } else if (a.likes < b.likes) {
+                return 1;
+            } else {
+                return 0
+            };
+        });
+    });
+    getPhotographerPortfolio();
+    photographerMedias.length = 0;
+    btnSelection(btnSelected, event => {
+        btnActive = event.target.getAttribute("id");
+        if (btnActive == "date") {
+            medias.forEach(media => {
+                if (media.photographerId == urlId) {
+                    photographerMedias.push(media);
+                };
+                // tri par date
+                return photographerMedias.sort((a, b) => {
+                    if (a.date > b.date) {
+                        return -1;
+                    } else if (a.date < b.date) {
+                        return 1;
+                    } else {
+                        return 0
+                    };
+                });
+            });
+            getPhotographerPortfolio();
+            photographerMedias.length = 0;
+        } else if (btnActive == "title") {
+            medias.forEach(media => {
+                if (media.photographerId == urlId) {
+                    photographerMedias.push(media);
+                };
+                // tri par titre
+                return photographerMedias.sort((a, b) => {
+                    if (a.title < b.title) {
+                        return -1;
+                    } else if (a.title > b.title) {
+                        return 1;
+                    } else {
+                        return 0
+                    };
+                });
+            });
+            getPhotographerPortfolio();
+            photographerMedias.length = 0;
+        } else if (btnActive == "pop") {
+            medias.forEach(media => {
+                if (media.photographerId == urlId) {
+                    photographerMedias.push(media);
+                };
+                // tri par popularité
+                return photographerMedias.sort((a, b) => {
+                    if (a.likes > b.likes) {
+                        return -1;
+                    } else if (a.likes < b.likes) {
+                        return 1;
+                    } else {
+                        return 0
+                    };
+                });
+            });
+            getPhotographerPortfolio();
+            photographerMedias.length = 0;
+        }
+    });
+};
+
+/*
+const temps = lightboxFactory(mediaId);
+const newMediaInLightbox = temps.getLightboxVue();
+document.getElementById("lightbox").appendChild(newMediaInLightbox);
+lightboxVue(mediaId);
+};*/
+//getPhotographerPage();
+
+const init = async () => {
+    photographers = await getPhotographersData();
     medias = await getMediasData();
-    medias.forEach(media => {
-        if (media.photographerId == urlId) {
-            console.log(media);
-            const temp = mediaPortfolioFactory(media);
-            const newImgCard = temp.getImgCard();
-            document.getElementById("portfolioContent").appendChild(newImgCard);
-        }
-    });
-};
+    getPhotographerCard();
+    getPhotographerMedias();
 
-const getPhotographerPage = async () => {
-    await getMediaCard().then(getPhotographerCard());
 }
-getPhotographerPage();*/
+
+init();
