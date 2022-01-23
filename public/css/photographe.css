@@ -312,13 +312,13 @@ header h1 {
   margin-bottom: 20px;
   position: relative;
 }
-#main .portfolio__content__card__img, #main .portfolio__content__card__video {
+#main .portfolio__content__card__media {
   width: 350px;
   height: 300px;
   border-radius: 10px;
   object-fit: cover;
 }
-#main .portfolio__content__card__img__icon, #main .portfolio__content__card__video__icon {
+#main .portfolio__content__card__media__icon {
   position: absolute;
   color: #d3573c;
   font-size: 44px;
@@ -367,7 +367,7 @@ header h1 {
   background-color: #fafafa;
 }
 .lightbox__content {
-  width: 80%;
+  width: 90%;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -383,20 +383,27 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: fit-content;
-  max-width: 100%;
-  max-height: 100%;
-  height: fit-content;
+  width: 90%;
+  height: 100%;
   margin: 0;
   padding: 40px 0 20px 0;
 }
-.lightbox__content__container__img {
+.lightbox__content__container__media {
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+.lightbox__content__container__media__insert {
   margin: 0;
-  width: 95%;
+  width: 100%;
   height: 97%;
   object-fit: scale-down;
 }
-.lightbox__content__container__title {
+.lightbox__content__container__media__title {
+  align-items: left;
   height: 3%;
   margin: 5px 0 0 0;
   color: #901c1c;

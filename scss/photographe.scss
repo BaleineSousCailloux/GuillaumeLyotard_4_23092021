@@ -221,7 +221,7 @@ header {
                 background-color: v.$fond_2;
                 margin-bottom: 20px;
                 position: relative;
-                &__img, &__video {
+                &__media {
                     width: 350px;
                     height: 300px;
                     border-radius: 10px;
@@ -281,7 +281,7 @@ header {
     left: 0;
     background-color: v.$fond_2;
     &__content {
-        width: 80%;
+        width: 90%;
         height: 100%;
         display: flex;
         flex-direction: row;
@@ -293,27 +293,34 @@ header {
         &__container {
             box-sizing: border-box;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: fit-content;
-            max-width: 100%;
-            max-height: 100%;
-            height: fit-content;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            width: 90%;
+            height: 100%;
             margin: 0;
             padding: 40px 0 20px 0;
-            &__img {
-                margin: 0;
-                width: 95%;
-                height: 97%;
-                object-fit:scale-down;
-            }
-            &__title {
-                height: 3%;
-                margin: 5px 0 0 0;
-                color: v.$primaire;
-                font-size: 24px;
-            }
+            &__media {
+                width: fit-content;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: left;
+                &__insert {
+                    margin: 0;
+                    width: 100%;
+                    height: 97%;
+                    object-fit:scale-down;
+                }
+                &__title {
+                    align-items: left;
+                    height: 3%;
+                    margin: 5px 0 0 0;
+                    color: v.$primaire;
+                    font-size: 24px;
+                }
+            } 
         }
         &__icon {
             &__close {

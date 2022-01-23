@@ -1,18 +1,58 @@
-const lightboxVue = () => {
+const lightboxVue = (medias) => {
 
   // DOM Elements
-  const openLightbox = document.querySelectorAll(".portfolio__content__card__img");
+  const openLightbox = document.querySelectorAll(".portfolio__content__card__media");
   const lightbox = document.querySelector("#lightbox");
   const closeLightbox = document.querySelector("#closeBox");
+  const mediaInLightbox = document.getElementById("lightbox-container");
+  const leftArrow = document.querySelector(".fa-angle-left");
+  const rightArrow = document.querySelector(".fa-angle-right");
+  let domInsertMediaId = 0;
+  let indexOfMediaVue;
+
+
 
 
   // open Lightbox event (img click)
-  openLightbox.forEach(img => img.addEventListener("click", launchLightbox));
+  openLightbox.forEach(mediaClicked => {
+    mediaClicked.addEventListener("click", event => {
+      mediaId = event.target.getAttribute("media-ID");
+      medias.forEach(media => {
+        if (media.id == mediaId) {
+          getLightbox(media, mediaInLightbox);
+        }
 
+
+      });
+      launchLightbox();
+    })
+  });
+  // navigation in lightbox
+  function navigate() {
+    indexOfMediaVue = medias.findIndex((element) => element.id == domInsertMediaId);
+    console.log(medias.length)
+    leftArrow.addEventListener("click", () => {
+      if (indexOfMediaVue !== -1) {
+        indexOfMediaVue--;
+        console.log(indexOfMediaVue);
+        mediaInLightbox.innerHTML = "";
+        getLightbox(medias[indexOfMediaVue], mediaInLightbox);
+      }
+    })
+    rightArrow.addEventListener("click", () => {
+      if (indexOfMediaVue !== -1) {
+        indexOfMediaVue++;
+        console.log(indexOfMediaVue);
+        mediaInLightbox.innerHTML = "";
+        getLightbox(medias[indexOfMediaVue], mediaInLightbox);
+      }
+    })
+  };
 
   // open lightbox fonction
   function launchLightbox() {
     lightbox.style.display = "flex";
+    navigate();
   };
 
 
@@ -23,42 +63,43 @@ const lightboxVue = () => {
   // close lightbox function
   function quitLightbox() {
     lightbox.style.display = "none";
+    document.getElementById("lightbox-container").innerHTML = ``;
+
   };
 
+  const lightboxFactory = (light) => {
+    getLightboxVue = () => {
+      const mediaContainerInLightbox = document.createElement("div");
+      mediaContainerInLightbox.classList.add("lightbox__content__container__media");
+      if (isVideo) {
+        mediaContainerInLightbox.innerHTML = `
+            <video class="lightbox__content__container__media__insert" media-ID="${light.id}" controls autoplay>
+                <source src="../public/images/Photos/${surname}/${light.video}" type="video/mp4">
+            </video>
+            <p class="lightbox__content__container__media__title">${light.title}</p>
+          `;
+      } else {
+        mediaContainerInLightbox.innerHTML = `
+            <img class="lightbox__content__container__media__insert" media-ID="${light.id}" src="../public/images/Photos/${surname}/${light.image}" />
+            <p class="lightbox__content__container__media__title">${light.title}</p>
+          `;
+      }
+      return mediaContainerInLightbox;
+    }
+    return this;
+  };
+
+
+  const getLightbox = (mediaSelected, domPlace) => {
+    isVideo = mediaSelected.video;
+    const temp = lightboxFactory(mediaSelected);
+    const newLightboxVue = temp.getLightboxVue();
+    domPlace.appendChild(newLightboxVue);
+    domInsertMediaId = newLightboxVue.querySelector(".lightbox__content__container__media__insert").getAttribute("media-ID");
+    return domInsertMediaId;
+  };
+
+
+
 };
 
-const lightboxFactory = (light) => {
-  getLightboxVue = () => {
-    const mediaInLightbox = document.createElement("div");
-    mediaInLightbox.classList.add("lightbox__content");
-    if (videoName) {
-      mediaInLightbox.innerHTML = `
-          <span class="lightbox__content__icon--left fa-solid fa-angle-left"></span>
-          <div class="lightbox__content__container">
-              <video class="portfolio__content__container__video" control>
-                  <source src="../public/images/Photos/${surname}/${light.video}" type="video/mp4">
-              </video>
-              <p class="lightbox__content__container__title">${light.title}</p>
-          </div>
-          <span class="lightbox__content__icon--right fa-solid fa-angle-right"></span>
-          <div class="lightbox__content__icon__close" id="closeBox">
-              <span class="lightbox__content__icon__close__icon fas fa-times"></span>
-          </div>
-          `;
-    } else {
-      mediaInLightbox.innerHTML = `
-          <span class="lightbox__content__icon--left fa-solid fa-angle-left"></span>
-          <div class="lightbox__content__container">
-              <img class="lightbox__content__container__img" src="../public/images/Photos/${surname}/${light.image}" />
-              <p class="lightbox__content__container__title">${light.title}</p>
-          </div>
-          <span class="lightbox__content__icon--right fa-solid fa-angle-right"></span>
-          <div class="lightbox__content__icon__close" id="closeBox">
-              <span class="lightbox__content__icon__close__icon fas fa-times"></span>
-          </div>
-          `;
-    }
-    return mediaInLightbox
-  }
-  return this;
-};
