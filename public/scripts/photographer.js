@@ -4,37 +4,27 @@ let isVideo;
 let sortMedias = [];
 
 
-
-
 const fetchData = async () => {
     const res = await fetch("../public/data/FishEyeData.json");
     const data = await res.json();
     return data;
 };
+
 const getPhotographersData = async () => {
     const data = await fetchData();
     return data.photographers;
 }
+
 const getMediasData = async () => {
     const data = await fetchData();
     return data.media;
 }
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const urlId = urlParams.get("id");
 console.log("id = " + urlId);
 
-const popBtn = document.getElementById("pop");
-const dateBtn = document.getElementById("date");
-const titleBtn = document.getElementById("title");
-const btnSelected = [];
-btnSelected.push(popBtn, dateBtn, titleBtn);
-
-const btnSelection = (btnSelected, btnClick) => {
-    btnSelected.forEach(btn => {
-        btn.addEventListener("click", btnClick)
-    })
-}
 
 /*let position = window.location.href.indexOf("?");
 console.log(position);
@@ -65,19 +55,30 @@ const getPhotographerCard = () => {
 };
 
 
-const getPhotographerPortfolio = (mediasArray, media) => {
+const popBtn = document.getElementById("pop");
+const dateBtn = document.getElementById("date");
+const titleBtn = document.getElementById("title");
+const btnSelected = [];
+btnSelected.push(popBtn, dateBtn, titleBtn);
+
+const btnSelection = (btnClicked, btnClickAction) => {
+    btnClicked.forEach(btn => {
+        btn.addEventListener("click", btnClickAction)
+    })
+};
+
+
+const getPhotographerPortfolio = (mediasArray) => {
     sortMedias = mediasArray;
     document.getElementById("portfolioContent").innerHTML = "";
-    mediasArray.forEach(media => {
+    sortMedias.forEach(media => {
         videoName = media.video;
         const temp = mediaPortfolioFactory(media);
         const newMediaCard = temp.getMediaCard();
         document.getElementById("portfolioContent").appendChild(newMediaCard);
     });
-    return sortMedias;
-
+    lightboxVue(sortMedias);
 };
-
 
 
 const getPhotographerMedias = () => {
@@ -156,20 +157,12 @@ const getPhotographerMedias = () => {
     });
 };
 
-/*
-const temps = lightboxFactory(mediaId);
-const newMediaInLightbox = temps.getLightboxVue();
-document.getElementById("lightbox").appendChild(newMediaInLightbox);
-lightboxVue(mediaId);
-};*/
-//getPhotographerPage();
-
 const init = async () => {
     photographers = await getPhotographersData();
     medias = await getMediasData();
     getPhotographerCard();
     getPhotographerMedias();
-    lightboxVue(sortMedias);
-}
+    //lightboxVue(sortMedias);
+};
 
 init();

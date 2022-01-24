@@ -8,51 +8,66 @@ const lightboxVue = (medias) => {
   const leftArrow = document.querySelector(".fa-angle-left");
   const rightArrow = document.querySelector(".fa-angle-right");
   let domInsertMediaId = 0;
-  let indexOfMediaVue;
-
-
+  let indexOfMediaVue = -1;
 
 
   // open Lightbox event (img click)
   openLightbox.forEach(mediaClicked => {
     mediaClicked.addEventListener("click", event => {
-      mediaId = event.target.getAttribute("media-ID");
+      let mediaId = event.target.getAttribute("media-ID");
+      console.log(medias);
       medias.forEach(media => {
         if (media.id == mediaId) {
           getLightbox(media, mediaInLightbox);
+          indexOfMediaVue = medias.findIndex((media) => media.id == domInsertMediaId);
         }
-
-
       });
       launchLightbox();
+      navigate();
     })
   });
+
+
   // navigation in lightbox
   function navigate() {
-    indexOfMediaVue = medias.findIndex((element) => element.id == domInsertMediaId);
-    console.log(medias.length)
-    leftArrow.addEventListener("click", () => {
-      if (indexOfMediaVue !== -1) {
-        indexOfMediaVue--;
-        console.log(indexOfMediaVue);
-        mediaInLightbox.innerHTML = "";
-        getLightbox(medias[indexOfMediaVue], mediaInLightbox);
-      }
-    })
-    rightArrow.addEventListener("click", () => {
-      if (indexOfMediaVue !== -1) {
-        indexOfMediaVue++;
-        console.log(indexOfMediaVue);
-        mediaInLightbox.innerHTML = "";
-        getLightbox(medias[indexOfMediaVue], mediaInLightbox);
-      }
-    })
+    console.log(medias.length);
+    leftArrow.addEventListener("click", leftAction);
+    rightArrow.addEventListener("click", rightAction);
   };
+
+
+  const rightAction = () => {
+    if (indexOfMediaVue > -1 && indexOfMediaVue < medias.length - 1) {
+      indexOfMediaVue++;
+      console.log(indexOfMediaVue);
+      mediaInLightbox.innerHTML = "";
+      getLightbox(medias[indexOfMediaVue], mediaInLightbox);
+    } else if (indexOfMediaVue == medias.length - 1) {
+      indexOfMediaVue = 0;
+      console.log(indexOfMediaVue);
+      mediaInLightbox.innerHTML = "";
+      getLightbox(medias[0], mediaInLightbox);
+    }
+  };
+
+  const leftAction = () => {
+    if (indexOfMediaVue > 0) {
+      indexOfMediaVue--;
+      console.log(indexOfMediaVue);
+      mediaInLightbox.innerHTML = "";
+      getLightbox(medias[indexOfMediaVue], mediaInLightbox);
+    } else if (indexOfMediaVue == 0) {
+      indexOfMediaVue = medias.length - 1;
+      console.log(indexOfMediaVue);
+      mediaInLightbox.innerHTML = "";
+      getLightbox(medias[medias.length - 1], mediaInLightbox);
+    }
+  };
+
 
   // open lightbox fonction
   function launchLightbox() {
     lightbox.style.display = "flex";
-    navigate();
   };
 
 
@@ -62,10 +77,12 @@ const lightboxVue = (medias) => {
 
   // close lightbox function
   function quitLightbox() {
+    leftArrow.removeEventListener("click", leftAction);
+    rightArrow.removeEventListener("click", rightAction);
     lightbox.style.display = "none";
     document.getElementById("lightbox-container").innerHTML = ``;
-
   };
+
 
   const lightboxFactory = (light) => {
     getLightboxVue = () => {
@@ -98,8 +115,5 @@ const lightboxVue = (medias) => {
     domInsertMediaId = newLightboxVue.querySelector(".lightbox__content__container__media__insert").getAttribute("media-ID");
     return domInsertMediaId;
   };
-
-
-
 };
 
