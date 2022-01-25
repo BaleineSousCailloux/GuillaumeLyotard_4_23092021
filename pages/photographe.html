@@ -163,7 +163,7 @@
 
 <div class="contact" id="contact">
     <div class="contact__content" id="content">
-        <p class="contact__content__title">Contactez Mimi Keel</p>
+        <p class="contact__content__title" id="contactForm-photographer-name">Contactez Mimi Keel</p>
         <div class="contact__content__close" id="closeForm">
             <span class="contact__content__close__icon fas fa-times"></span>
         </div>
@@ -171,21 +171,33 @@
             <form class="contact__content__body__form" name="user" action="photographe.html" method="get" id="form">
                 <div class="contact__content__body__form__data">
                     <label class="contact__content__body__form__data__label" for="first">Prénom</label>
-                    <input class="contact__content__body__form__data__control" type="text" id="first" name="first" />
+                    <input class="contact__content__body__form__data__control" type="text" id="first" name="first"
+                        placeholder="Ne peut être inférieur à 2 lettres." />
+                    <span class="contact__content__body__form__data__error__first" id="first-error">Saisie
+                        incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__data">
                     <label class="contact__content__body__form__data__label" for="last">Nom</label>
-                    <input class="contact__content__body__form__data__control" type="text" id="last" name="last" />
+                    <input class="contact__content__body__form__data__control" type="text" id="last" name="last"
+                        placeholder="Ne peut être inférieur à 1 lettre." />
+                    <span class="contact__content__body__form__data__error__last" id="last-error">Saisie
+                        incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__data">
                     <label class="contact__content__body__form__data__label" for="email">Email</label>
-                    <input class="contact__content__body__form__data__control" type="email" id="email" name="email" />
+                    <input class="contact__content__body__form__data__control" type="email" id="email" name="email"
+                        placeholder="Veuillez indiquer une adresse mail valide." />
+                    <span class="contact__content__body__form__data__error__email" id="email-error">Saisie
+                        incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__data">
                     <label class="contact__content__body__form__data__label" for="message">Votre
                         message</label>
-                    <textarea class="contact__content__body__form__data__control" id="message"
-                        name="message"></textarea>
+                    <textarea class="contact__content__body__form__data__control" id="message" name="message"
+                        maxlength="500" placeholder="Votre message est nécessaire."></textarea>
+                    <span id="message-counter"></span>
+                    <span class="contact__content__body__form__data__error__message" id="message-error">Saisie
+                        incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__submit">
                     <input id="submit" class="contact__content__body__form__submit__btn" type="submit"
@@ -198,6 +210,7 @@
     </div>
 </div>
 <script src="../public/scripts/lightbox.js"></script>
+<script src="../public/scripts/contactForm.js"></script>
 <script src="../public/scripts/photographerCardFactory.js"></script>
 <script src="../public/scripts/photographerPortfolioFactory.js"></script>
 <script src="../public/scripts/photographer.js"></script>

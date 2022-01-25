@@ -1,113 +1,136 @@
-// open & close contact form
-let openBtn;
-let contactForm;
-let closeBtn;
-
-dom = async () => {
-    await getPhotographerCard()
-        .then(openBtn = document.getElementById("openForm"))
-        .then(contactForm = document.getElementById("contact"))
-        .then(closeBtn = document.getElementById("closeForm"))
-}
-// DOM Elements
-/*const openBtn = document.getElementById("openForm");
-const contactForm = document.getElementById("contact");
-const closeBtn = document.getElementById("closeForm");*/
-
-// open contact form event (img click)
-
-//openBtn.addEventListener("click", launchContactForm);
-
-// open contact form fonction
-function launchContactForm() {
-    sendConfirm.style.display = "none";
-    contactForm.style.display = "flex";
-};
-
-// delay to close functions
-let delayToClose;
-function manualCloseDelay() {
-    delayToClose = setTimeout(closeContactForm, 200);
-}
-function autoCloseDelay() {
-    delayToClose = setTimeout(closeContactForm, 3000);
-}
-
-// close contact form function
-function closeContactForm() {
-    contactForm.style.display = "none";
-};
-
-// close contact form event
-//closeBtn.addEventListener("click", manualCloseDelay);
-
-openCloseForm = async () => {
-    await dom()
-        .then(openBtn.addEventListener("click", launchContactForm))
-        .then(closeBtn.addEventListener("click", manualCloseDelay))
-};
-openCloseForm();
+const getContactForm = (person) => {
+    // open & close contact form
 
 
+    const openBtn = document.getElementById("openForm");
+    const contactForm = document.getElementById("contact");
+    const closeBtn = document.getElementById("closeForm");
+    const photographerContactName = document.getElementById("contactForm-photographer-name");
+    photographerContactName.innerHTML = `Contactez ${person.name}`;
 
-// contact form validation
+    //photographerContactName.innerText = "contactez " + person.name;
 
-// DOM Elements
-const formulaire = document.getElementById("form")
-const sendBtn = document.getElementById("submit");
-const sendConfirm = document.getElementById("confirm")
+
+    // DOM Elements
+    /*const openBtn = document.getElementById("openForm");
+    const contactForm = document.getElementById("contact");
+    const closeBtn = document.getElementById("closeForm");*/
+
+    // open contact form event (img click)
+
+    //openBtn.addEventListener("click", launchContactForm);
+
+    // open contact form fonction
+    function launchContactForm() {
+        sendConfirm.style.display = "none";
+        contactForm.style.display = "flex";
+    };
+
+    // delay to close functions
+    let delayToClose;
+    function manualCloseDelay() {
+        delayToClose = setTimeout(closeContactForm, 200);
+    }
+    function autoCloseDelay() {
+        delayToClose = setTimeout(closeContactForm, 3000);
+    }
+
+    // close contact form function
+    function closeContactForm() {
+        contactForm.style.display = "none";
+    };
+
+    // close contact form event
+    //closeBtn.addEventListener("click", manualCloseDelay);
+
+
+    openBtn.addEventListener("click", launchContactForm);
+    closeBtn.addEventListener("click", manualCloseDelay);
 
 
 
-// contrôle et envoi
+    // contact form validation
 
-formulaire.addEventListener("submit", function (event) {
-
-    event.preventDefault();
+    // DOM Elements
+    const formulaire = document.getElementById("form")
+    const sendBtn = document.getElementById("submit");
+    const sendConfirm = document.getElementById("confirm")
 
     const firstName = document.getElementById("first");
     const lastName = document.getElementById("last");
     const email = document.getElementById("email");
     const message = document.getElementById("message");
+    const counter = document.getElementById("message-counter");
+    const maxLengthMessage = message.getAttribute("maxlength");
+    let charLength = 0;
+    counter.innerText = charLength;
 
-    let firstNameIsValid = false;
-    if (/^[A-Z|a-z|\-]{2,}$/g.test(firstName.value)) {
-        firstNameIsValid = true;
-        console.log("prénom OK");
-    } else {
-        firstName.setCustomValidity("Indiquez votre prénom (minimum 2 lettre).");
-        console.log("prénom incorrect")
-    };
-
-    let lastNameIsValid = false;
-    if (/^[A-Z|a-z|\-]{1,}$/g.test(lastName.value)) {
-        lastNameIsValid = true;
-        console.log("nom OK");
-    } else {
-        lastName.setCustomValidity("Indiquez votre nom (minimum 1 lettre).");
-        console.log("nom incorrect")
-    };
-
-    let emailIsValid = false; // regex trouvée sur internet, mais déjà géré automatiquement par le html
-    if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(email.value.trim().toLowerCase())) {
-        emailIsValid = true;
-        console.log("email OK");
-    } else {
-        function emailError() {
-            email.setCustomValidity("Indiquez une adresse mail valide.");
-            console.log("email incorrect")
+    message.addEventListener('input', event => {
+        charLength = event.target.value.length;
+        if (charLength > maxLengthMessage) {
+            return;
         };
-        emailError()
-    };
+        counter.innerText = charLength;
+    });
 
-    let formulaireIsValid = false; // validation globale
-    if (firstNameIsValid && lastNameIsValid && emailIsValid) {
-        formulaireIsValid = true;
-        autoCloseDelay(); // rappel de la fonction de clotûre de la modale automatique
-        sendConfirm.style.display = 'block';
-        console.log("prénom : " + firstName.value); // Affichage des données saisies dans la console
-        console.log("nom : " + lastName.value);
-        console.log("email : " + email.value);
-        formulaire.reset(); // vider le formulaire
-    }
-})
+
+    // contrôle et envoi
+
+    formulaire.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        let firstNameIsValid = false;
+        if (/^[A-Z|a-z|\-]{2,}$/g.test(firstName.value)) {
+            firstNameIsValid = true;
+            document.getElementById("first-error").style.display = 'none';
+            //console.log("prénom OK");
+        } else {
+            document.getElementById("first-error").style.display = 'block';
+            //console.log("prénom incorrect")
+        };
+
+        let lastNameIsValid = false;
+        if (/^[A-Z|a-z|\-]{1,}$/g.test(lastName.value)) {
+            lastNameIsValid = true;
+            document.getElementById("last-error").style.display = 'none';
+            //console.log("nom OK");
+        } else {
+            document.getElementById("last-error").style.display = 'block';
+            //console.log("nom incorrect")
+        };
+
+        let emailIsValid = false; // regex trouvée sur internet, mais déjà géré automatiquement par le html
+        if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(email.value.trim().toLowerCase())) {
+            emailIsValid = true;
+            document.getElementById("email-error").style.display = 'none';
+            //console.log("email OK");
+        } else {
+            document.getElementById("email-error").style.display = 'block';
+            //console.log("email incorrect")
+        };
+
+        let messageIsValid = false;
+        if (message.value !== "") {
+            messageIsValid = true;
+            document.getElementById("message-error").style.display = 'none';
+            //console.log("message présent");
+        } else {
+            document.getElementById("message-error").style.display = 'block';
+            //console.log("message absent")
+        };
+
+        let formulaireIsValid = false; // validation globale
+        if (firstNameIsValid && lastNameIsValid && emailIsValid && messageIsValid) {
+            formulaireIsValid = true;
+            autoCloseDelay(); // rappel de la fonction de clotûre de la modale automatique
+            sendConfirm.style.display = 'block';
+            console.log("prénom : " + firstName.value); // Affichage des données saisies dans la console
+            console.log("nom : " + lastName.value);
+            console.log("email : " + email.value);
+            console.log("message : " + message.value);
+            console.log("envoyer à : " + person.name.replace(" ", '') + "@gmail.com")
+            formulaire.reset(); // vider le formulaire
+        }
+    });
+};

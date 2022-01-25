@@ -49,6 +49,7 @@ const getPhotographerCard = () => {
             const card = instance.getPersonnalCard();
             document.getElementById("photographer").appendChild(card);
             surname = photographer.name;
+            getContactForm(photographer);
             return photographer
         }
     });
@@ -161,6 +162,7 @@ const init = async () => {
     photographers = await getPhotographersData();
     medias = await getMediasData();
     getPhotographerCard();
+    //getContactForm();
     getPhotographerMedias();
     //lightboxVue(sortMedias);
 };
