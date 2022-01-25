@@ -32,12 +32,16 @@ const getContactForm = (person) => {
         delayToClose = setTimeout(closeContactForm, 200);
     }
     function autoCloseDelay() {
-        delayToClose = setTimeout(closeContactForm, 3000);
+        delayToClose = setTimeout(closeContactForm, 4000);
     }
 
     // close contact form function
     function closeContactForm() {
         contactForm.style.display = "none";
+        document.getElementById("first-error").style.display = 'none';
+        document.getElementById("last-error").style.display = 'none';
+        document.getElementById("email-error").style.display = 'none';
+        document.getElementById("message-error").style.display = 'none';
     };
 
     // close contact form event
@@ -53,7 +57,7 @@ const getContactForm = (person) => {
 
     // DOM Elements
     const formulaire = document.getElementById("form")
-    const sendBtn = document.getElementById("submit");
+    //const sendBtn = document.getElementById("submit");
     const sendConfirm = document.getElementById("confirm")
 
     const firstName = document.getElementById("first");
