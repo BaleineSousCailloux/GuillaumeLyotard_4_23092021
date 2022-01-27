@@ -23,7 +23,7 @@ const getMediasData = async () => {
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const urlId = urlParams.get("id");
-console.log("id = " + urlId);
+//console.log("id = " + urlId);
 
 
 /*let position = window.location.href.indexOf("?");
@@ -60,28 +60,23 @@ const btnSelection = (btnClicked, btnClickAction) => {
 
 
 const getPhotographerPortfolio = (mediasArray) => {
-    sortMedias = mediasArray;
     document.getElementById("portfolioContent").innerHTML = "";
-
-
-
-    sortMedias.forEach(media => {
+    mediasArray.forEach(media => {
         videoName = media.video;
         const temp = mediaPortfolioFactory(media);
         const newMediaCard = temp.getMediaCard();
         document.getElementById("portfolioContent").appendChild(newMediaCard);
 
-        likesCount(newMediaCard, media);
+        //likesCount(newMediaCard, media);
 
     });
-    lightboxVue(sortMedias);
+    lightboxVue(mediasArray);
 };
 
-const likesCount = (domBlock, mediaToLike) => {
+/*const likesCount = (domBlock, mediaToLike) => {
     const mediaCounter = domBlock.getElementsByClassName("portfolio__content__card__legend___like__cunt")
     const likeZone = domBlock.querySelector(".portfolio__content__card__legend__like");
     let likesOnMedia = mediaToLike.likes;
-    console.log(likesOnMedia);
     likeZone.addEventListener("click", () => {
         let alreadyLiked = likeZone.getAttribute("liked");
         if (alreadyLiked === "no") {
@@ -94,38 +89,55 @@ const likesCount = (domBlock, mediaToLike) => {
             mediaCounter[0].innerHTML = likesOnMedia;
         }
     })
-}
+}*/
 
 const getPhotographerMedias = () => {
     let btnActive = "";
-    let photographerMedias = [];
-    medias.forEach(media => {
-        if (media.photographerId == urlId) {
-            photographerMedias.push(media);
+    let photographerMedias = medias.filter(media => media.photographerId == urlId)
+    personnalMedias = photographerMedias.map(media => ({ ...media, liked: "far" }));
+    personnalMedias.sort((a, b) => {
+        if (a.likes > b.likes) {
+            return -1;
+        } else if (a.likes < b.likes) {
+            return 1;
+        } else {
+            return 0
         };
-        // defaut and open order, par popularité
-        return photographerMedias.sort((a, b) => {
-            if (a.likes > b.likes) {
-                return -1;
-            } else if (a.likes < b.likes) {
-                return 1;
-            } else {
-                return 0
-            };
-        });
     });
-    getPhotographerPortfolio(photographerMedias);
+
+    getPhotographerPortfolio(personnalMedias);
+
+    const likeZones = document.getElementsByClassName("portfolio__content__card__legend__like");
+    Array.from(likeZones).forEach(likeZone => {
+        likeZone.addEventListener("click", (e) => {
+            const zoneToClick = e.target.classList.contains("portfolio__content__card__legend__like") ? e.target : e.target.closest(".portfolio__content__card__legend__like");
+            const heart = Array.from(zoneToClick.children).find(el => el.classList.contains("portfolio__content__card__legend__like__empty"));
+            const likesVue = zoneToClick.querySelector(".portfolio__content__card__legend__like__cunt");
+            const mediaId = zoneToClick.getAttribute("data-media-ID");
+            personnalMedias = personnalMedias.map(media => {
+                if (mediaId == media.id) {
+                    if (media.liked == "far") {
+                        media.likes++;
+                        media.liked = "fas";
+                        heart.setAttribute("data-prefix", "fas");
+                    } else {
+                        media.likes--;
+                        media.liked = "far";
+                        heart.setAttribute("data-prefix", "far");
+                    }
+                    likesVue.innerHTML = media.likes;
+                }
+                return media;
+            })
+        })
+    })
+
 
     btnSelection(btnSelected, event => {
-        photographerMedias.length = 0;
         btnActive = event.target.getAttribute("id");
-        if (btnActive == "date") {
-            medias.forEach(media => {
-                if (media.photographerId == urlId) {
-                    photographerMedias.push(media);
-                };
-                // tri par date
-                return photographerMedias.sort((a, b) => {
+        switch (btnActive) {
+            case "date":
+                personnalMedias.sort((a, b) => {
                     if (a.date > b.date) {
                         return -1;
                     } else if (a.date < b.date) {
@@ -134,14 +146,9 @@ const getPhotographerMedias = () => {
                         return 0
                     };
                 });
-            });
-        } else if (btnActive == "title") {
-            medias.forEach(media => {
-                if (media.photographerId == urlId) {
-                    photographerMedias.push(media);
-                };
-                // tri par titre
-                return photographerMedias.sort((a, b) => {
+                break
+            case "title":
+                personnalMedias.sort((a, b) => {
                     if (a.title < b.title) {
                         return -1;
                     } else if (a.title > b.title) {
@@ -150,14 +157,9 @@ const getPhotographerMedias = () => {
                         return 0
                     };
                 });
-            });
-        } else if (btnActive == "pop") {
-            medias.forEach(media => {
-                if (media.photographerId == urlId) {
-                    photographerMedias.push(media);
-                };
-                // tri par popularité
-                return photographerMedias.sort((a, b) => {
+                break
+            case "pop":
+                personnalMedias.sort((a, b) => {
                     if (a.likes > b.likes) {
                         return -1;
                     } else if (a.likes < b.likes) {
@@ -166,9 +168,48 @@ const getPhotographerMedias = () => {
                         return 0
                     };
                 });
-            });
+                break
+            default:
+                personnalMedias.sort((a, b) => {
+                    if (a.likes > b.likes) {
+                        return -1;
+                    } else if (a.likes < b.likes) {
+                        return 1;
+                    } else {
+                        return 0
+                    };
+                });
+                break
         }
-        getPhotographerPortfolio(photographerMedias);
+
+
+        getPhotographerPortfolio(personnalMedias);
+
+        const likeZones = document.getElementsByClassName("portfolio__content__card__legend__like");
+        Array.from(likeZones).forEach(likeZone => {
+            likeZone.addEventListener("click", (e) => {
+                const zoneToClick = e.target.classList.contains("portfolio__content__card__legend__like") ? e.target : e.target.closest(".portfolio__content__card__legend__like");
+                const heart = Array.from(zoneToClick.children).find(el => el.classList.contains("portfolio__content__card__legend__like__empty"));
+                const likesVue = zoneToClick.querySelector(".portfolio__content__card__legend__like__cunt");
+                const mediaId = zoneToClick.getAttribute("data-media-ID");
+                personnalMedias = personnalMedias.map(media => {
+                    if (mediaId == media.id) {
+                        if (media.liked == "far") {
+                            media.likes++;
+                            media.liked = "fas";
+                            heart.setAttribute("data-prefix", "fas");
+                        } else {
+                            media.likes--;
+                            media.liked = "far";
+                            heart.setAttribute("data-prefix", "far");
+                        }
+                        likesVue.innerHTML = media.likes;
+                    }
+                    return media;
+                })
+            })
+        })
+
     });
 };
 
@@ -176,9 +217,7 @@ const init = async () => {
     photographers = await getPhotographersData();
     medias = await getMediasData();
     getPhotographerCard();
-    //getContactForm();
     getPhotographerMedias();
-    //lightboxVue(sortMedias);
 };
 
 init();
