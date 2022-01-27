@@ -22,8 +22,8 @@ const mediaPortfolioFactory = (portfolio) => {
         <img class="portfolio__content__card__media" media-ID="${portfolio.id}" src="../public/images/Photos/${surname}/${portfolio.image}" />
         <div class="portfolio__content__card__legend">
             <p class="portfolio__content__card__legend__title">${portfolio.title}</p>
-            <div class="portfolio__content__card__legend__like">
-                <span class="portfolio__content__card__legend___like__cunt">${portfolio.likes}</span>
+            <div class="portfolio__content__card__legend__like" liked="no">
+                <span class="portfolio__content__card__legend___like__cunt" id="like-cunt">${portfolio.likes}</span>
                 <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
                 <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
             </div>

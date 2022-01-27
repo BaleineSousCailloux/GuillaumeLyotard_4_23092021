@@ -30,17 +30,7 @@ console.log("id = " + urlId);
 console.log(position);
 let urlId = window.location.href.substring(position + 4);
 console.log(urlId);
-
-const addTagsToPhotographer = (card) => {
-    card.tags.forEach(tag => {
-        const newTag = document.createElement("span");
-        newTag.classList.add("photographer__legend__tags__tag");
-        newTag.classList.add(`${tag}`);
-        newTag.innerHTML = `#${tag}`;
-        photographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
-    })
-};*/
-
+*/
 
 const getPhotographerCard = () => {
     photographers.forEach(photographer => {
@@ -72,15 +62,39 @@ const btnSelection = (btnClicked, btnClickAction) => {
 const getPhotographerPortfolio = (mediasArray) => {
     sortMedias = mediasArray;
     document.getElementById("portfolioContent").innerHTML = "";
+
+
+
     sortMedias.forEach(media => {
         videoName = media.video;
         const temp = mediaPortfolioFactory(media);
         const newMediaCard = temp.getMediaCard();
         document.getElementById("portfolioContent").appendChild(newMediaCard);
+
+        likesCount(newMediaCard, media);
+
     });
     lightboxVue(sortMedias);
 };
 
+const likesCount = (domBlock, mediaToLike) => {
+    const mediaCounter = domBlock.getElementsByClassName("portfolio__content__card__legend___like__cunt")
+    const likeZone = domBlock.querySelector(".portfolio__content__card__legend__like");
+    let likesOnMedia = mediaToLike.likes;
+    console.log(likesOnMedia);
+    likeZone.addEventListener("click", () => {
+        let alreadyLiked = likeZone.getAttribute("liked");
+        if (alreadyLiked === "no") {
+            likesOnMedia++;
+            likeZone.setAttribute("liked", "yes");
+            mediaCounter[0].innerHTML = likesOnMedia;
+        } else {
+            likesOnMedia--;
+            likeZone.setAttribute("liked", "no");
+            mediaCounter[0].innerHTML = likesOnMedia;
+        }
+    })
+}
 
 const getPhotographerMedias = () => {
     let btnActive = "";
