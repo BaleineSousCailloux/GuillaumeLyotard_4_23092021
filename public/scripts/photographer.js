@@ -26,12 +26,6 @@ const urlId = urlParams.get("id");
 //console.log("id = " + urlId);
 
 
-/*let position = window.location.href.indexOf("?");
-console.log(position);
-let urlId = window.location.href.substring(position + 4);
-console.log(urlId);
-*/
-
 const getPhotographerCard = () => {
     photographers.forEach(photographer => {
         if (photographer.id == urlId) {
@@ -67,34 +61,17 @@ const getPhotographerPortfolio = (mediasArray) => {
         const newMediaCard = temp.getMediaCard();
         document.getElementById("portfolioContent").appendChild(newMediaCard);
 
-        //likesCount(newMediaCard, media);
-
     });
     lightboxVue(mediasArray);
 };
 
-/*const likesCount = (domBlock, mediaToLike) => {
-    const mediaCounter = domBlock.getElementsByClassName("portfolio__content__card__legend___like__cunt")
-    const likeZone = domBlock.querySelector(".portfolio__content__card__legend__like");
-    let likesOnMedia = mediaToLike.likes;
-    likeZone.addEventListener("click", () => {
-        let alreadyLiked = likeZone.getAttribute("liked");
-        if (alreadyLiked === "no") {
-            likesOnMedia++;
-            likeZone.setAttribute("liked", "yes");
-            mediaCounter[0].innerHTML = likesOnMedia;
-        } else {
-            likesOnMedia--;
-            likeZone.setAttribute("liked", "no");
-            mediaCounter[0].innerHTML = likesOnMedia;
-        }
-    })
-}*/
 
 const getPhotographerMedias = () => {
     let btnActive = "";
+
     let photographerMedias = medias.filter(media => media.photographerId == urlId)
     personnalMedias = photographerMedias.map(media => ({ ...media, liked: "far" }));
+    console.log(personnalMedias.reduce((likes, media) => likes + media.likes, 0));
     personnalMedias.sort((a, b) => {
         if (a.likes > b.likes) {
             return -1;
@@ -106,8 +83,11 @@ const getPhotographerMedias = () => {
     });
 
     getPhotographerPortfolio(personnalMedias);
-
+    const totalLikesFooter = document.querySelector(".footer__infos__cunt");
+    totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
     const likeZones = document.getElementsByClassName("portfolio__content__card__legend__like");
+
+
     Array.from(likeZones).forEach(likeZone => {
         likeZone.addEventListener("click", (e) => {
             const zoneToClick = e.target.classList.contains("portfolio__content__card__legend__like") ? e.target : e.target.closest(".portfolio__content__card__legend__like");
@@ -118,10 +98,12 @@ const getPhotographerMedias = () => {
                 if (mediaId == media.id) {
                     if (media.liked == "far") {
                         media.likes++;
+                        totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
                         media.liked = "fas";
                         heart.setAttribute("data-prefix", "fas");
                     } else {
                         media.likes--;
+                        totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
                         media.liked = "far";
                         heart.setAttribute("data-prefix", "far");
                     }
@@ -185,7 +167,7 @@ const getPhotographerMedias = () => {
 
         getPhotographerPortfolio(personnalMedias);
 
-        const likeZones = document.getElementsByClassName("portfolio__content__card__legend__like");
+
         Array.from(likeZones).forEach(likeZone => {
             likeZone.addEventListener("click", (e) => {
                 const zoneToClick = e.target.classList.contains("portfolio__content__card__legend__like") ? e.target : e.target.closest(".portfolio__content__card__legend__like");
@@ -196,10 +178,12 @@ const getPhotographerMedias = () => {
                     if (mediaId == media.id) {
                         if (media.liked == "far") {
                             media.likes++;
+                            totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
                             media.liked = "fas";
                             heart.setAttribute("data-prefix", "fas");
                         } else {
                             media.likes--;
+                            totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
                             media.liked = "far";
                             heart.setAttribute("data-prefix", "far");
                         }
@@ -209,7 +193,6 @@ const getPhotographerMedias = () => {
                 })
             })
         })
-
     });
 };
 
