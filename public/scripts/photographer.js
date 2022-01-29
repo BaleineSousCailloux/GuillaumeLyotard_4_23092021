@@ -68,10 +68,18 @@ const getPhotographerPortfolio = (mediasArray) => {
 
 const getPhotographerMedias = () => {
     let btnActive = "";
-
-    let photographerMedias = medias.filter(media => media.photographerId == urlId)
+    let photographerMedias = medias.filter(media => media.photographerId == urlId);
     personnalMedias = photographerMedias.map(media => ({ ...media, liked: "far" }));
-    console.log(personnalMedias.reduce((likes, media) => likes + media.likes, 0));
+    ////////////////////////////////////////////////////////////////////////////////////
+    /////     CTRL IF LOCAL STORAGE     ////////////////////////////////////////////////
+    personnalMedias = personnalMedias.map(media => {
+        if (localStorage.getItem(`${media.id}_heart`) !== null) {
+            media.liked = localStorage.getItem(`${media.id}_heart`);
+            media.likes = parseInt(localStorage.getItem(`${media.id}_likes`));
+        }
+        return media;
+    });
+    /////////////////////////////////////////////////////////////////////////////////////
     personnalMedias.sort((a, b) => {
         if (a.likes > b.likes) {
             return -1;
@@ -82,8 +90,10 @@ const getPhotographerMedias = () => {
         };
     });
 
+
     getPhotographerPortfolio(personnalMedias);
     const totalLikesFooter = document.querySelector(".footer__infos__cunt");
+    console.log(personnalMedias.reduce((likes, media) => media.likes + likes, 0));
     totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
     const likeZones = document.getElementsByClassName("portfolio__content__card__legend__like");
 
@@ -98,16 +108,22 @@ const getPhotographerMedias = () => {
                 if (mediaId == media.id) {
                     if (media.liked == "far") {
                         media.likes++;
-                        totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
                         media.liked = "fas";
                         heart.setAttribute("data-prefix", "fas");
                     } else {
                         media.likes--;
-                        totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
                         media.liked = "far";
                         heart.setAttribute("data-prefix", "far");
                     }
                     likesVue.innerHTML = media.likes;
+                    totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
+                    ////////////////////////////////////////////////////////////
+                    /////////   ADD TO LOCAL STORAGE   /////////////////////////
+                    localStorage.setItem(`${media.id}_likes`, `${media.likes}`);
+                    localStorage.setItem(`${media.id}_heart`, `${media.liked}`);
+                    //console.log(localStorage.getItem(`${media.id}_heart`));
+                    //console.log(localStorage.getItem(`${media.id}_likes`));
+                    ////////////////////////////////////////////////////////////
                 }
                 return media;
             })
@@ -178,16 +194,22 @@ const getPhotographerMedias = () => {
                     if (mediaId == media.id) {
                         if (media.liked == "far") {
                             media.likes++;
-                            totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
                             media.liked = "fas";
                             heart.setAttribute("data-prefix", "fas");
                         } else {
                             media.likes--;
-                            totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
                             media.liked = "far";
                             heart.setAttribute("data-prefix", "far");
                         }
                         likesVue.innerHTML = media.likes;
+                        totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
+                        ////////////////////////////////////////////////////////////
+                        /////////   ADD TO LOCAL STORAGE   /////////////////////////
+                        localStorage.setItem(`${media.id}_likes`, `${media.likes}`);
+                        localStorage.setItem(`${media.id}_heart`, `${media.liked}`);
+                        //console.log(localStorage.getItem(`${media.id}_heart`));
+                        //console.log(localStorage.getItem(`${media.id}_likes`));
+                        ////////////////////////////////////////////////////////////
                     }
                     return media;
                 })
@@ -197,6 +219,7 @@ const getPhotographerMedias = () => {
 };
 
 const init = async () => {
+    //localStorage.clear();
     photographers = await getPhotographersData();
     medias = await getMediasData();
     getPhotographerCard();
