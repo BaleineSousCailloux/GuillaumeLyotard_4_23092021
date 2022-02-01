@@ -23,24 +23,25 @@
         <a href="./index.html" class="container">
             <img src="./public/images/logo.png" class="logo" />
         </a>
+        <a class="shortcut" id="shortcut" href="#main">
+            Passer au contenu
+        </a>
         <nav id="tags" class="tags">
-            <p class="tags__help" id="help">Passer au contenu</p>
-            <p class="tags__liste" id="tagsList"></p>
+            <p class="tags__liste" id="tagsList">
+                <!-- insert tags via index.js -->
+            </p>
         </nav>
-        <h1>Nos photographes</h1>
     </header>
     <main id="main">
+        <h1>Nos photographes</h1>
         <section class="photographers" id="photographers">
+            <!-- insert articles (photographers) via index.js -->
         </section>
     </main>
-    <script src="./public/scripts/searchLegend.js"></script>
+    <script src="./public/scripts/shortcutToMain.js"></script>
     <script src="./public/scripts/headerTagFactory.js"></script>
     <script src="./public/scripts/photographerIndexCardFactory.js"></script>
     <script src="./public/scripts/index.js"></script>
-
-    <!-- <script src="scripts/factories/Photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographer.js"></script> -->
 </body>
 
 </html>

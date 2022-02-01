@@ -2,28 +2,46 @@
 @use "./utils/mixins" as m;
 @use "./base/body";
 @use "./base/link";
-@use "./layouts/logo";
 @use "./layouts/header";
 
 
 #main {
     width: 100%;
+    box-sizing: border-box;
     position: relative;
-    top: 110px;
+    padding-top: 90px;
     padding-bottom: 70px;
+    user-select: none;
+    cursor: default;
+    h1 {
+        z-index: 1;
+        position: fixed;
+        top: 40px;
+        right: 0;
+        width: 25%;
+        box-sizing: border-box;
+        text-align: right;
+        font-size: 2,25em;
+        white-space: nowrap;
+        margin: 0 5% 0 0;
+        padding: 0;
+        color: v.$primaire;
+    }
     .photographers {
         display: flex;
         flex-direction: row;
-        justify-content: stretch;
-        align-content: center;
+        justify-content: space-around;
         flex-wrap: wrap;
         box-sizing: border-box;
         width: 100%;
         .photographer {
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            //justify-content: space-around;
+            box-sizing: border-box;
             width: 33.3%;
+            min-width: 395px;
+            padding: 40px;
             height: fit-content;
             
             &__card {
@@ -80,14 +98,13 @@
                     justify-content: center;
                     align-items: center;
                     &__tag {
-                        font-size: 12px;
+                        font-size: 0.75em;
                         font-weight: 500;
                         color: v.$primaire;
                         border: 0.5px solid v.$shadow;
                         border-radius: 11px;
                         padding: 3px 5px;
                         margin: 3px;
-                        cursor: pointer;
                     }
                 }
             }

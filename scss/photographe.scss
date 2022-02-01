@@ -2,18 +2,16 @@
 @use "./utils/mixins" as m;
 @use "./base/body";
 @use "./base/link";
-@use "./layouts/logo";
 @use "./layouts/header";
 
 header {
-    z-index: 0;
     position: relative;
-    
-    .tags {
-        display: none;
-    }
-    h1 {
-        display: none;
+    z-index: 0;
+    .container {
+        .logo {
+            position: absolute;
+            z-index: 0;
+        }
     }
 }
 #main {
@@ -24,6 +22,8 @@ header {
     flex-direction: column;
     align-items: center;
     padding-bottom: 70px;
+    user-select: none;
+    cursor: default;
     .photographer {
         box-sizing: border-box;
         display: flex;
@@ -42,25 +42,26 @@ header {
             &__contact {
                 display: flex;
                 flex-direction: row;
-                justify-content: space-between;
+                justify-content: left;
                 width: 100%;
                 &__name {
                     color: v.$secondaire;
-                    font-size: 64px;
-                    margin: 0;
+                    font-size: 4em;
+                    margin: 0 10% 0 0;
                 }
                 &__btn {
                     @include m.police--texte;
-                    width: 170px;
+                    min-width: 170px;
                     height: 69px;
                     border: none;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     background-color: v.$primaire;
-                    font-size: 20px;
+                    font-size: 1.25em;
                     font-weight: 700;
                     color: v.$txt_2;
-                    margin-right: 25%;
-                    box-shadow: 2px 3px 10px v.$shadow;
+                    margin: 5px 0 0 0;
+                    box-shadow: 3px 2px 5px v.$shadow;
+                    cursor: pointer;
                 }
             }
         }
@@ -72,13 +73,13 @@ header {
             box-sizing: border-box;
 
             &__city {
-                font-size: 24px;
+                font-size: 1.5em;
                 color: v.$primaire;
                 margin: 20px 0 0 0;
             }
             &__slogan {
                 margin: 20px 0 15px 0;
-                font-size: 18px;
+                font-size: 1.125em;
                 color: v.$tertiaire;
             }
             &__tags {
@@ -88,12 +89,12 @@ header {
                 justify-content: left;
                 align-items: left;
                 &__tag {
-                    font-size: 18px;
+                    font-size: 1.125em;
                     font-weight: 500;
                     color: v.$primaire;
                     border: 0.5px solid v.$shadow;
                     border-radius: 15px;
-                    padding: 3px 5px;
+                    padding: 2px 8px 2px 5px;
                     margin-right: 6px;
                 }
             }
@@ -102,12 +103,13 @@ header {
             margin: 0;
             padding: 0;
             width: 25%;
+            min-width: 200px;
             display: flex;
             justify-content: right;
             &__img {
                 border-radius: 50%;
-                max-width: 200px;
-                min-height: 200px;
+                width: 200px;
+                height: 200px;
                 box-shadow: 4px 4px 8px v.$shadow;
                 object-fit: cover;
             }
@@ -115,24 +117,52 @@ header {
     }
     .portfolio {
         box-sizing: border-box;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: left;
-        width: 85%;
+        width: 100%;
         &__menu {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
             box-sizing: border-box;
+            margin-left: 7.5%;
             width: 270px;
             line-height: 69px;
             &__title {
                 margin-right: 15px;
-                font-size: 18px;
+                font-size: 1.125em;
                 font-weight: 700;
             }
+            /*&__btn {
+                border: none;
+                appearance: none;
+            
+                //display: flex;
+                //flex-direction: row;
+                //justify-content: space-between;
+                padding: 0 20px;
+                align-items: center;
+                box-sizing: border-box;
+                box-shadow: 3px 2px 5px v.$shadow;
+                min-width: 170px;
+                height: 69px;
+                border-radius: 5px;
+                @include m.police--texte;
+                background-color: v.$primaire;
+                color: v.$txt_2;
+                font-size: 1.125em;
+                font-weight: 700;
+                &__title, &__date {
+                    border-top: 1.5px solid v.$txt_2;
+                    text-align: center;
+                    padding: 0 20px;
+                    height: 69px;
+                }
+            }*/
             &__btn {
                 position: relative;
                 &:hover .portfolio__menu__btn--2 {
@@ -146,14 +176,14 @@ header {
                     padding: 0 20px;
                     align-items: center;
                     box-sizing: border-box;
-                    box-shadow: 2px 3px 10px v.$shadow;
+                    box-shadow: 3px 2px 4px v.$shadow;
                     width: 170px;
                     height: 69px;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     @include m.police--texte;
                     background-color: v.$primaire;
                     color: v.$txt_2;
-                    font-size: 18px;
+                    font-size: 1.125em;
                     font-weight: 700;
                 }
                 &--2 {
@@ -164,18 +194,18 @@ header {
                     flex-direction: column;
                     justify-content: flex-start;
                     box-sizing: border-box;
-                    box-shadow: 2px 3px 10px v.$shadow;
+                    box-shadow: 3px 2px 4px v.$shadow;
                     width: 170px;
                     height: 170px;
                     padding: 0;
-                    border-radius: 10px;
-                    @include m.police--texte;
+                    border-radius: 5px;
+                    overflow: hidden;
                     background-color: v.$primaire;
                     color: v.$txt_2;
-                    font-size: 18px;
+                    font-size: 1.125em;
                     font-weight: 700;
                     z-index: 1;
-                    &__hover {
+                    &__option-1 {
                         display: flex;
                         flex-direction: row;
                         justify-content: space-between;
@@ -184,22 +214,28 @@ header {
                         padding: 0 20px;
                         width: 100%;
                         height: 69px;
-                        border-radius: 10px;
+                        line-height: 69px;
                         @include m.police--texte;
                         background-color: v.$primaire;
                         color: v.$txt_2;
-                        font-size: 18px;
-                        font-weight: 700;
+                        &-vue {
+                            font-weight: 700;
+                        }
+                        &-icon {
+                            font-weight: 700;
+                        }
                     }
-                    &__date, &__title {
+                    &__option-2, &__option-3 {
+                        @include m.police--texte;
+                        font-weight: 700;
                         box-sizing: border-box;
+                        font-size: 1em;
                         height: 49px;
                         line-height: 49px;
                         text-align: left;
                         margin: 0 10px;
                         padding: 0 10px;
                         border-top: 1.5px solid v.$txt_2;
-                        
                     }
                 }
             }
@@ -207,59 +243,70 @@ header {
         &__content {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-            align-content: left;
+            justify-content: space-around;
+            box-sizing: border-box;
+            //align-content: left;
             flex-wrap: wrap;
+            padding: 20px 2%;
             width: 100%;
-            margin-top: 20px;
             &__card {
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
-                width: 350px;
-                height: 350px;
+                justify-content: flex-start;
+                align-items: center;
+                width: 33.33%;
+                min-width: 380px;
+                min-height: 350px;
                 background-color: v.$fond_2;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
                 position: relative;
                 &__media {
                     width: 350px;
                     height: 300px;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     object-fit: cover;
+                    cursor: pointer;
+                    position: relative;
                     &__icon {
                         position: absolute;
+                        transform: translate(-50%, -50%);
                         color: v.$secondaire;
-                        font-size: 44px;
+                        font-size: 4em;
                         opacity: 0.8;
-                        top: 245px;
-                        left: 20px;
-                        
+                        top: 150px;
+                        left: 50%;
                     }
-
                 }
                 &__legend {
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
-                    align-items: center;
+                    align-items: flex-start;
                     width: 350px;
                     height: 50px;
+                    line-height: 2.25emem;
                     color: v.$primaire;
-                    padding: 0 3px;
-                    font-size: 24px;
+                    padding: 3px;
                     box-sizing: border-box;
+                    font-weight: 400;
                     &__title {
-                        font-weight: 400;
+                        font-size: 1.5em;
+                        margin: 0 10px 0 0;
                     }
                     &__like {
-                        font-weight: 500;
+                        cursor: pointer;
                         display: flex;
                         flex-direction: row;
                         justify-content: flex-end;
                         align-items: center;
-                        .fa-heart {
-                            font-size: 18px;
-                            margin-left: 5px;
+                        &__cunt {
+                            font-weight: 500;
+                            font-size: 1.5em;
+                            margin: 0;
+                        }
+                        &__empty {
+                            font-size: 1.25em;
+                            margin: 0 0 0 5px;
                         }
                     }
                     
@@ -269,6 +316,7 @@ header {
     }
 }
 .lightbox {
+    user-select: none;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -371,10 +419,11 @@ header {
             box-sizing: border-box;
             width: 75%;
             margin: 0;
-            font-size: 58px;
+            font-size: 3.5em;
+            user-select: none;
         }
         &__close {
-            font-size: 64px;
+            font-size: 3.5em;
             position: absolute;
             cursor: pointer;
             top: 20px;
@@ -383,7 +432,7 @@ header {
         }
         &__body {
             box-sizing: border-box;
-            font-size: 26px;
+            font-size: 1em;
             color: v.$tertiaire;
             margin: 0;
             width: 100%;
@@ -396,16 +445,20 @@ header {
                     width: 100%;
                     margin-top: 7px;
                     position: relative;
+                    &__label {
+                        user-select: none;
+                        font-size: 1.7em;
+                    }
                     &__control {
                         height: 30px;
                         padding: 5px 7px;
                         border: none;
                         border-radius: 5px;
-                        font-size: 22px;
+                        font-size: 1.4em;
                         line-height: 25px;
                         @include m.police--texte;
                         &::placeholder {
-                            font-size: 18px;
+                            font-size: 1em;
                             @include m.police--texte;
                             color: v.$tertiaire;
                             opacity: 0.5;
@@ -417,7 +470,7 @@ header {
                             position: absolute;
                             top: 11px;
                             right: 10px;
-                            font-size: 16px;
+                            font-size: 1em;
                             color: v.$txt_2;
                             font-weight: 500;
                         }
@@ -426,7 +479,7 @@ header {
                             position: absolute;
                             top: 11px;
                             right: 10px;
-                            font-size: 16px;
+                            font-size: 1em;
                             color: v.$txt_2;
                             font-weight: 500;
                         }
@@ -435,7 +488,7 @@ header {
                             position: absolute;
                             top: 11px;
                             right: 10px;
-                            font-size: 16px;
+                            font-size: 1em;
                             color: v.$txt_2;
                             font-weight: 500;
                         }
@@ -444,7 +497,7 @@ header {
                             position: absolute;
                             top: 11px;
                             right: 10px;
-                            font-size: 16px;
+                            font-size: 1em;
                             color: v.$txt_2;
                             font-weight: 500;
                         }
@@ -456,21 +509,24 @@ header {
                     align-items: center;
                     margin-top: 20px;
                     line-height: 69px;
+                    cursor: pointer;
                     &__btn {
                     border: none;
                     height: 69px;
                     width: 170px;
                     background-color: v.$primaire;
                     color: v.$txt_2;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     @include m.police--texte;
-                    font-size: 18px;
+                    font-size: 1.4em;
                     font-weight: 700;
                     box-shadow: 2px 3px 10px v.$shadow;
+                    cursor: pointer;
                     }
                     &__confirm {
                         display: none;
                         color: v.$txt_2;
+                        font-size: 1.5em;
                         font-weight: 700;
                         padding-right: 10px;
                     }
@@ -488,11 +544,16 @@ header {
 #message-counter {
 position: absolute;
 bottom: -20px;
-right: 10px;
-font-size: 16px;
-&::after {
-    content: " / 500";
+right: 3.9em;
+font-size: 0.8em;
+user-select: none;
 }
+#message-max-length {
+    bottom: -20px;
+    right: 10px;
+    position: absolute;
+    font-size: 0.8em;
+    user-select: none;
 }
 .footer {
     position: fixed;

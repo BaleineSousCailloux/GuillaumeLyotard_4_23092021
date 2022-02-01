@@ -26,132 +26,53 @@
     </header>
     <main id="main">
         <section class="photographer" id="photographer">
-            <!-- <article class="photographer__card">
-                <div class="photographer__card__contact">
-                    <h1 class="photographer__card__contact__name">Mimi Keel</h1>
-                    <button class="photographer__card__contact__btn" id="openForm">Contactez-moi</button>
-                </div>
-                <div class="photographer__legend">
-                    <h2 class="photographer__legend__city">London, UK</h2>
-                    <p class="photographer__legend__slogan">Voir le beau dans le quotidien</p>
-                    <div class="photographer__legend__tags">
-                        <span class="photographer__legend__tags__tag portrait">#portrait</span>
-                        <span class="photographer__legend__tags__tag events">#events</span>
-                        <span class="photographer__legend__tags__tag travel">#travel</span>
-                        <span class="photographer__legend__tags__tag animals">#animals</span>
-                    </div>
-                </div>
-            </article>
-            <div class="photographer__container">
-                <img class="photographer__container__img"
-                    src="../public/images/Photos/Photographers ID Photos/MimiKeel.jpg" />
-            </div> -->
+            <!-- insert photographer article via photographer.js -->
         </section>
         <section class="portfolio">
             <div class="portfolio__menu">
                 <p class="portfolio__menu__title">Trier par</p>
                 <div class="portfolio__menu__btn">
                     <button class="portfolio__menu__btn--1">
-                        <span class="portfolio__menu__btn--1__pop">Popularité</span>
+                        <span class="portfolio__menu__btn--1__pop" id="btn-vue">Popularité</span>
                         <span class="portfolio__menu__btn--1__icon fa-solid fa-angle-down"></span>
                     </button>
-                    <button class="portfolio__menu__btn--2">
-                        <div class="portfolio__menu__btn--2__hover">
-                            <span class="portfolio__menu__btn--2__hover__pop" id="pop">Popularité</span>
-                            <span class="portfolio__menu__btn--2__hover__icon fa-solid fa-angle-up"></span>
+                    <button class="portfolio__menu__btn--2" id="btn-select-menu">
+                        <div class="portfolio__menu__btn--2__option-1">
+                            <span class="portfolio__menu__btn--2__option-1-vue" data-option="pop">Popularité</span>
+                            <span class="portfolio__menu__btn--2__option-1-icon fa-solid fa-angle-up"></span>
                         </div>
-                        <span class="portfolio__menu__btn--2__date" id="date">Date</span>
-                        <span class="portfolio__menu__btn--2__title" id="title">Titre</span>
+                        <span class="portfolio__menu__btn--2__option-2" data-option="date">Date</span>
+                        <span class="portfolio__menu__btn--2__option-3" data-option="title">Titre</span>
                     </button>
                 </div>
+                <!--<label class="portfolio__menu__title" for="portfolio__sort__btn">Trier par</label>
+                <select class="portfolio__menu__btn" name="sort__options" id="portfolio__sort__btn">
+                    <option class="portfolio__menu__btn__pop" id="pop" value="pop" selected>Popularité</option>
+                    <option class="portfolio__menu__btn__date" id="date" value="date">Date</option>
+                    <option class="portfolio__menu__btn__title" id="title" value="title">Titre</option>
+                </select>-->
             </div>
             <div class="portfolio__content" id="portfolioContent">
-                <!-- <article class="portfolio__content__card">
-                    <img class="portfolio__content__card__img" src="../public/images/Photos/Mimi/Animals_Rainbow.jpg" />
-                    <div class="portfolio__content__card__legend">
-                        <p class="portfolio__content__card__legend__title">Arc-en-ciel</p>
-                        <div class="portfolio__content__card__legend__like">
-                            <span class="portfolio__content__card__legend___like__cunt">12</span>
-                            <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
-                            <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
-                        </div>
-                    </div>
-                </article>
-                <article class="portfolio__content__card">
-                    <img class="portfolio__content__card__img" src="../public/images/Photos/Mimi/Animals_Rainbow.jpg" />
-                    <div class="portfolio__content__card__legend">
-                        <p class="portfolio__content__card__legend__title">Arc-en-ciel</p>
-                        <div class="portfolio__content__card__legend__like">
-                            <span class="portfolio__content__card__legend___like__cunt">12</span>
-                            <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
-                            <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
-                        </div>
-                    </div>
-                </article>
-                <article class="portfolio__content__card">
-                    <img class="portfolio__content__card__img" src="../public/images/Photos/Mimi/Animals_Rainbow.jpg" />
-                    <div class="portfolio__content__card__legend">
-                        <p class="portfolio__content__card__legend__title">Arc-en-ciel</p>
-                        <div class="portfolio__content__card__legend__like">
-                            <span class="portfolio__content__card__legend___like__cunt">12</span>
-                            <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
-                            <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
-                        </div>
-                    </div>
-                </article>
-                <article class="portfolio__content__card">
-                    <img class="portfolio__content__card__img" src="../public/images/Photos/Mimi/Animals_Rainbow.jpg" />
-                    <div class="portfolio__content__card__legend">
-                        <p class="portfolio__content__card__legend__title">Arc-en-ciel</p>
-                        <div class="portfolio__content__card__legend__like">
-                            <span class="portfolio__content__card__legend___like__cunt">12</span>
-                            <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
-                            <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
-                        </div>
-                    </div>
-                </article>
-                <article class="portfolio__content__card">
-                    <img class="portfolio__content__card__img" src="../public/images/Photos/Mimi/Animals_Rainbow.jpg" />
-                    <div class="portfolio__content__card__legend">
-                        <p class="portfolio__content__card__legend__title">Arc-en-ciel</p>
-                        <div class="portfolio__content__card__legend__like">
-                            <span class="portfolio__content__card__legend___like__cunt">12</span>
-                            <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
-                            <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
-                        </div>
-                    </div>
-                </article>
-                <article class="portfolio__content__card">
-                    <img class="portfolio__content__card__img" src="../public/images/Photos/Mimi/Animals_Rainbow.jpg" />
-                    <div class="portfolio__content__card__legend">
-                        <p class="portfolio__content__card__legend__title">Arc-en-ciel</p>
-                        <div class="portfolio__content__card__legend__like">
-                            <span class="portfolio__content__card__legend___like__cunt">12</span>
-                            <span class="portfolio__content__card__legend___like__empty far fa-heart"></span>
-                            <span class="portfolio__content__card__legend___like__full fas fa-heart"></span>
-                        </div>
-                    </div>
-                </article> -->
+                <!-- insert articles medias via photographer.js -->
             </div>
         </section>
     </main>
     <footer class="footer" id="footer">
         <div class="footer__infos">
-            <span class="footer__infos__cunt"></span>
+            <span class="footer__infos__cunt">
+                <!-- insert cunt via photographer.js -->
+            </span>
             <span class="footer__infos__heart fas fa-heart"></span>
         </div>
-        <!-- <p class="footer__price">300€ / jour</p> -->
+        <!-- insert price via photographerCardFactory.js -->
     </footer>
-    <!-- <script src="scripts/factories/Photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographer.js"></script> -->
 </body>
+
 <div class="lightbox" id="lightbox">
     <div class="lightbox__content">
         <span class="lightbox__content__icon--left fa-solid fa-angle-left"></span>
         <div class="lightbox__content__container" id="lightbox-container">
-            <!-- <img class="lightbox__content__container__img" src="../public/images/Photos/Mimi/Travel_Lonesome.jpg" />
-            <p class="lightbox__content__container__title">Arc-en-ciel</p> -->
+            <!-- insert lightbox.js -->
         </div>
         <span class="lightbox__content__icon--right fa-solid fa-angle-right"></span>
         <div class="lightbox__content__icon__close" id="closeBox">
@@ -163,7 +84,9 @@
 
 <div class="contact" id="contact">
     <div class="contact__content" id="content">
-        <p class="contact__content__title" id="contactForm-photographer-name">Contactez Mimi Keel</p>
+        <p class="contact__content__title" id="contactForm-photographer-name">
+            <!-- insert contactForm.js -->
+        </p>
         <div class="contact__content__close" id="closeForm">
             <span class="contact__content__close__icon fas fa-times"></span>
         </div>
@@ -195,7 +118,10 @@
                         message</label>
                     <textarea class="contact__content__body__form__data__control" id="message" name="message"
                         maxlength="500" placeholder="Votre message est nécessaire."></textarea>
-                    <span id="message-counter"></span>
+                    <span id="message-counter">
+                        <!-- insert via contactForm.js -->
+                    </span>
+                    <span id="message-max-length">/ 500</span>
                     <span class="contact__content__body__form__data__error__message" id="message-error">Saisie
                         incorrecte</span>
                 </div>
@@ -214,7 +140,5 @@
 <script src="../public/scripts/photographerCardFactory.js"></script>
 <script src="../public/scripts/photographerPortfolioFactory.js"></script>
 <script src="../public/scripts/photographer.js"></script>
-
-<!--<script src="../public/scripts/contactForm.js"></script>-->
 
 </html>

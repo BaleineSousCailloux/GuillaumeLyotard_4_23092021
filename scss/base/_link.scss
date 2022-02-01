@@ -1,4 +1,7 @@
+@use "../utils/variables" as v;
+
 a {
     text-decoration: none;
     cursor: pointer;
+    color: v.$txt_1;
 }

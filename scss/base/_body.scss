@@ -3,6 +3,8 @@
 
 body {
     @include m.police--texte;
+    box-sizing: border-box;
+    width: 100%;
     font-style: normal;
     background-color: v.$fond_1;
     margin: 0;

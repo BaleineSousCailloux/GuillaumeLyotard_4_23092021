@@ -39,12 +39,14 @@ const getPhotographerCard = () => {
     });
 };
 
-
-const popBtn = document.getElementById("pop");
-const dateBtn = document.getElementById("date");
-const titleBtn = document.getElementById("title");
-const btnSelected = [];
-btnSelected.push(popBtn, dateBtn, titleBtn);
+const btnVue = document.getElementById("btn-vue");
+const btnSelectMenu = document.getElementById("btn-select-menu");
+let option1Btn = document.querySelector(".portfolio__menu__btn--2__option-1-vue");
+let option2Btn = document.querySelector(".portfolio__menu__btn--2__option-2");
+let option3Btn = document.querySelector(".portfolio__menu__btn--2__option-3");
+let btnSelected = [];
+btnSelected.push(option1Btn, option2Btn, option3Btn);
+console.log(btnSelected);
 
 const btnSelection = (btnClicked, btnClickAction) => {
     btnClicked.forEach(btn => {
@@ -130,9 +132,9 @@ const getPhotographerMedias = () => {
         })
     })
 
-
     btnSelection(btnSelected, event => {
-        btnActive = event.target.getAttribute("id");
+        event.preventDefault();
+        btnActive = event.target.getAttribute("data-option");
         switch (btnActive) {
             case "date":
                 personnalMedias.sort((a, b) => {
@@ -144,6 +146,13 @@ const getPhotographerMedias = () => {
                         return 0
                     };
                 });
+                btnVue.innerText = "Date";
+                option1Btn.setAttribute("data-option", "date");
+                option1Btn.innerText = "Date";
+                option2Btn.setAttribute("data-option", "pop");
+                option2Btn.innerText = "Popularité";
+                option3Btn.setAttribute("data-option", "title");
+                option3Btn.innerText = "Titre";
                 break
             case "title":
                 personnalMedias.sort((a, b) => {
@@ -155,6 +164,13 @@ const getPhotographerMedias = () => {
                         return 0
                     };
                 });
+                btnVue.innerText = "Titre";
+                option1Btn.setAttribute("data-option", "title");
+                option1Btn.innerText = "Titre";
+                option2Btn.setAttribute("data-option", "pop");
+                option2Btn.innerText = "Popularité";
+                option3Btn.setAttribute("data-option", "date");
+                option3Btn.innerText = "Date";
                 break
             case "pop":
                 personnalMedias.sort((a, b) => {
@@ -166,6 +182,13 @@ const getPhotographerMedias = () => {
                         return 0
                     };
                 });
+                btnVue.innerText = "Popularité";
+                option1Btn.setAttribute("data-option", "pop");
+                option1Btn.innerText = "Popularité";
+                option2Btn.setAttribute("data-option", "date");
+                option2Btn.innerText = "Date";
+                option3Btn.setAttribute("data-option", "title");
+                option3Btn.innerText = "Titre";
                 break
             default:
                 personnalMedias.sort((a, b) => {
@@ -177,12 +200,17 @@ const getPhotographerMedias = () => {
                         return 0
                     };
                 });
+                btnVue.innerText = "Popularité";
+                option1Btn.setAttribute("data-option", "pop");
+                option1Btn.innerText = "Popularité";
+                option2Btn.setAttribute("data-option", "date");
+                option2Btn.innerText = "Date";
+                option3Btn.setAttribute("data-option", "title");
+                option3Btn.innerText = "Titre";
                 break
-        }
-
+        };
 
         getPhotographerPortfolio(personnalMedias);
-
 
         Array.from(likeZones).forEach(likeZone => {
             likeZone.addEventListener("click", (e) => {
