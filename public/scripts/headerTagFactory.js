@@ -4,6 +4,7 @@ const headerTagFactory = (headerTag) => {
         newHeaderTag.classList.add("tag");
         newHeaderTag.classList.add(headerTag)
         newHeaderTag.setAttribute("data-tag", headerTag);
+        newHeaderTag.setAttribute("tabindex", 2);
         newHeaderTag.innerHTML = `#${headerTag}`;
         return newHeaderTag;
     }

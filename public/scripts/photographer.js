@@ -34,8 +34,13 @@ const getPhotographerCard = () => {
             document.getElementById("photographer").appendChild(card);
             surname = photographer.name;
             getContactForm(photographer);
-            return photographer
         }
+        const personnalTags = document.querySelectorAll(".photographer__legend__tags__tag");
+        Array.from(personnalTags).forEach(personnalTag => {
+            personnalTag.addEventListener("click", event => {
+                document.location.href = `../index.html?tag=${event.target.getAttribute("data-tag")}`;
+            });
+        });
     });
 };
 

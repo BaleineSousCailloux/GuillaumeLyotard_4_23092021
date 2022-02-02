@@ -33,6 +33,12 @@ const lightboxVue = (medias) => {
     console.log(medias.length);
     leftArrow.addEventListener("click", leftAction);
     rightArrow.addEventListener("click", rightAction);
+    /* window.addeventlistener("keydown", event => {
+      if (event.key == "ArrowLeft") {
+        leftAction()
+      }
+      else if ou swith/case
+    }*////////////////////////////////////////////////////////////////////////////////////////////////////////
   };
 
 

@@ -24,12 +24,20 @@ const getTagsListData = (photographers) => {
 }
 
 
-const getHeaderTagsList = (listTags, tagClick) => {
+const getHeaderTagsList = (listTags) => {
     listTags.forEach(tag => {
         const instance = headerTagFactory(tag);
         const newHeaderTag = instance.getHeaderTag();
         document.getElementById("tagsList").appendChild(newHeaderTag);
-        newHeaderTag.addEventListener("click", tagClick)
+        newHeaderTag.addEventListener("click", e => {
+            if (e.target.id == "tag-selected") {
+                document.location.href = "index.html"
+            } else {
+                document.location.href = `index.html?tag=${e.target.getAttribute("data-tag")}`
+            }
+
+
+        })
 
     });
 
@@ -46,34 +54,33 @@ const getPhotographerCards = (photographers, tagSelected) => {
         const instance = indexCardFactory(photographer);
         const newCard = instance.getCard();
         container.appendChild(newCard);
-        return photographer;
-    });
+        const personnalTags = newCard.querySelectorAll(".photographer__legend__tags__tag");
+        Array.from(personnalTags).forEach(personnalTag => {
+            personnalTag.addEventListener("click", event => {
+                document.location.href = `index.html?tag=${event.target.getAttribute("data-tag")}`
+            });
 
+        });
+    });
 };
 
 const init = async () => {
     const photographers = await getPhotographersData();
     const tagsList = getTagsListData(photographers);
-    let tagSelected = null;
-    getHeaderTagsList(tagsList, event => {
-        const clickedTag = event.target.getAttribute("data-tag");
-        if (clickedTag == tagSelected) {
-            // permet de revenir à la liste complète des photographes en cliquant à nouveau sur le tag actif
-            tagSelected = null;
-            event.target.removeAttribute("id");
-        } else {
-            tagSelected = clickedTag;
-            //la sélection d'un tag annule un éventuel tag déjà sélectionné
-            tagsList.forEach(tag => {
-                const unselect = document.getElementsByClassName(tag);
-                unselect[0].removeAttribute("id");
-            });
-            event.target.setAttribute("id", "tag-selected");
-
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let tagUrl = urlParams.get("tag");
+    getHeaderTagsList(tagsList);
+    tagsList.forEach(tag => {
+        console.log(tag);
+        if (tag == tagUrl) {
+            let domCardTag = document.getElementsByClassName(tag)[0];
+            if (domCardTag) {
+                domCardTag.setAttribute("id", "tag-selected")
+            }
         }
-        getPhotographerCards(photographers, tagSelected);
-    });
-    getPhotographerCards(photographers, tagSelected)
+    })
+    getPhotographerCards(photographers, tagUrl);
 }
 
 init();

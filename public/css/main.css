@@ -74,6 +74,10 @@ header .tags__liste .tag {
   margin: 3px;
   cursor: pointer;
 }
+header .tags__liste .tag:hover, header .tags__liste .tag:focus {
+  color: #fff;
+  background-color: #901c1c;
+}
 header #tag-selected {
   color: #fff;
   background-color: #d3573c;
@@ -180,4 +184,8 @@ header #tag-selected {
   border-radius: 11px;
   padding: 3px 5px;
   margin: 3px;
+}
+#main .photographers .photographer__legend__tags__tag:hover, #main .photographers .photographer__legend__tags__tag:focus {
+  color: #fff;
+  background-color: #901c1c;
 }

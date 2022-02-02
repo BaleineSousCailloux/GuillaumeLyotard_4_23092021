@@ -24,6 +24,7 @@ const getContactForm = (person) => {
     function launchContactForm() {
         sendConfirm.style.display = "none";
         contactForm.style.display = "flex";
+        /// gestion des onfocus sur les éléments //////////////////////////////////////////////////////
     };
 
     // delay to close functions

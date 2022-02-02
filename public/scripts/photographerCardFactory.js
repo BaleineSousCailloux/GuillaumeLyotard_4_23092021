@@ -18,7 +18,7 @@ const photographerCardFactory = (photographerCard) => {
         photographerCard.tags.forEach(tag => {
             const newTag = document.createElement("span");
             newTag.classList.add("photographer__legend__tags__tag");
-            newTag.classList.add(`${tag}`)
+            newTag.setAttribute("data-tag", tag);
             newTag.innerHTML = `#${tag}`;
             photographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
         });

@@ -59,7 +59,10 @@ header {
                 padding: 3px 5px;
                 margin: 3px;
                 cursor: pointer;
-                
+                &:hover, &:focus {
+                   color: v.$txt_2;
+                   background-color: v.$primaire;
+                } 
             }
         }
     }
