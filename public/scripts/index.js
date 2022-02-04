@@ -24,25 +24,72 @@ const getTagsListData = (photographers) => {
 }
 
 
+const tagsZoneDom = document.getElementById("tagsList");
+
+const enterTagsNav = (e) => {
+    const tagZoneDom = document.querySelectorAll(".tag");
+    const firstTag = tagZoneDom[0]
+    const lastTag = tagZoneDom[tagZoneDom.length - 1];
+    if (e.keyCode === 13 || e.keyCode === 32) {
+        //e.preventDefault();
+        tagZoneDom.forEach(tag => {
+            tag.setAttribute("tabindex", "4");
+        });
+        firstTag.focus(); ///ok
+
+        lastTag.addEventListener("keydown", event => {
+            if (event.keyCode === 9) {
+                event.preventDefault();
+                firstTag.focus();
+            }
+        }); /// revient au premier tag OK
+
+        firstTag.addEventListener("keydown", event => {
+            if (event.keyCode === 8) {
+                event.preventDefault();
+                lastTag.focus();
+            }
+        }); //// en cas de back-toolbar, doit aller au dernier tag   KO !
+
+
+    };
+
+    if (e.keyCode === 27 && tagsZoneDom.contains(document.activeElement)) {
+        tagZoneDom.forEach(tag => {
+            tag.removeAttribute("tabindex", "4");
+        });
+        tagsZoneDom.focus();
+    }
+
+    if (tagsZoneDom.activeElement && e.keyCode === 9) {
+        e.preventDefault();
+        tagZoneDom.forEach(tag => {
+            tag.removeAttribute("tabindex", "4");
+        });
+        document.querySelector("h1").focus();
+    };
+
+
+}
+
+
 const getHeaderTagsList = (listTags) => {
     listTags.forEach(tag => {
         const instance = headerTagFactory(tag);
         const newHeaderTag = instance.getHeaderTag();
-        document.getElementById("tagsList").appendChild(newHeaderTag);
+        tagsZoneDom.appendChild(newHeaderTag);
+
         newHeaderTag.addEventListener("click", e => {
             if (e.target.id == "tag-selected") {
                 document.location.href = "index.html"
             } else {
                 document.location.href = `index.html?tag=${e.target.getAttribute("data-tag")}`
             }
-
-
         })
-
     });
-
-
 };
+
+
 
 const getPhotographerCards = (photographers, tagSelected) => {
     const filteredPhotographers = photographers.filter(photographer => {
@@ -80,6 +127,7 @@ const init = async () => {
             }
         }
     })
+    tagsZoneDom.addEventListener("keydown", enterTagsNav);
     getPhotographerCards(photographers, tagUrl);
 }
 

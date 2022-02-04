@@ -8,8 +8,11 @@ header {
     position: relative;
     z-index: 0;
     .container {
-        .logo {
+        .logo-1 {
             position: absolute;
+            z-index: 0;
+        }
+        .logo-2 {
             z-index: 0;
         }
     }
@@ -145,32 +148,6 @@ header {
                 font-size: 1.125em;
                 font-weight: 700;
             }
-            /*&__btn {
-                border: none;
-                appearance: none;
-            
-                //display: flex;
-                //flex-direction: row;
-                //justify-content: space-between;
-                padding: 0 20px;
-                align-items: center;
-                box-sizing: border-box;
-                box-shadow: 3px 2px 5px v.$shadow;
-                min-width: 170px;
-                height: 69px;
-                border-radius: 5px;
-                @include m.police--texte;
-                background-color: v.$primaire;
-                color: v.$txt_2;
-                font-size: 1.125em;
-                font-weight: 700;
-                &__title, &__date {
-                    border-top: 1.5px solid v.$txt_2;
-                    text-align: center;
-                    padding: 0 20px;
-                    height: 69px;
-                }
-            }*/
             &__btn {
                 position: relative;
                 cursor: pointer;

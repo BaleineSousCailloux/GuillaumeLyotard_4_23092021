@@ -15,7 +15,10 @@ header {
     z-index: 1;
     .container {
         width: fit-content;
-        .logo {
+        &:hover .logo-2, &:focus .logo-2 {
+            opacity: 0.65;
+        }
+        .logo-1 {
             position: fixed;
             box-sizing: border-box;
             width: 200px;
@@ -25,6 +28,19 @@ header {
             top: 35px;
             left: 5%;
             z-index: 1;
+        }
+        .logo-2 {
+            position: absolute;
+            box-sizing: border-box;
+            width: 200px;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            top: 37px;
+            left: 5.1%;
+            z-index: 1;
+            opacity: 0;
+            
         }
     }
     .shortcut {
@@ -40,16 +56,31 @@ header {
         top: -200px;
         // cible finale -> top: 20px;
         display: block;
+        &:hover, &:focus {
+            color: v.$txt_2;
+            background-color: v.$primaire;
+            top: 20px;
+        }
     }
     .tags {
         box-sizing: border-box;
+        display: flex;
+            justify-content: center;
         width: 50%;
         margin: 0 25% 0 21.5%;
         padding: 0;
         &__liste {
+            box-sizing: border-box;
             display: flex;
             justify-content: center;
+            align-items: center;
             flex-direction: row;
+            width: fit-content;
+            outline: none;
+            &:hover, &:focus {
+                border-radius: 15px;
+                border-bottom: 1px solid v.$secondaire;
+            }
             .tag {
                 font-size: 0.75em;
                 font-weight: 500;

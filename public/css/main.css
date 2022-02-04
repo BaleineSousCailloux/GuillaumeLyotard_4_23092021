@@ -29,7 +29,10 @@ header {
 header .container {
   width: fit-content;
 }
-header .container .logo {
+header .container:hover .logo-2, header .container:focus .logo-2 {
+  opacity: 0.65;
+}
+header .container .logo-1 {
   position: fixed;
   box-sizing: border-box;
   width: 200px;
@@ -39,6 +42,18 @@ header .container .logo {
   top: 35px;
   left: 5%;
   z-index: 1;
+}
+header .container .logo-2 {
+  position: absolute;
+  box-sizing: border-box;
+  width: 200px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  top: 37px;
+  left: 5.1%;
+  z-index: 1;
+  opacity: 0;
 }
 header .shortcut {
   position: absolute;
@@ -53,16 +68,31 @@ header .shortcut {
   top: -200px;
   display: block;
 }
+header .shortcut:hover, header .shortcut:focus {
+  color: #fff;
+  background-color: #901c1c;
+  top: 20px;
+}
 header .tags {
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
   width: 50%;
   margin: 0 25% 0 21.5%;
   padding: 0;
 }
 header .tags__liste {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: row;
+  width: fit-content;
+  outline: none;
+}
+header .tags__liste:hover, header .tags__liste:focus {
+  border-radius: 15px;
+  border-bottom: 1px solid #d3573c;
 }
 header .tags__liste .tag {
   font-size: 0.75em;
@@ -97,14 +127,18 @@ header #tag-selected {
   position: fixed;
   top: 40px;
   right: 0;
-  width: 25%;
+  width: fit-content;
   box-sizing: border-box;
-  text-align: right;
+  text-align: center;
   font-size: 2, 25em;
   white-space: nowrap;
   margin: 0 5% 0 0;
   padding: 0;
   color: #901c1c;
+  outline: none;
+}
+#main h1:hover, #main h1:focus {
+  border-bottom: 1px solid #d3573c;
 }
 #main .photographers {
   display: flex;

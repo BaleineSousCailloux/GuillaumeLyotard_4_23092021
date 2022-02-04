@@ -20,21 +20,24 @@
 
 <body>
     <header>
-        <a href="./index.html" class="container" tabindex="1">
-            <img src="./public/images/logo.png" class="logo" />
+        <a href="./index.html" class="container" tabindex="2" aria-label="retour à l'accueil">
+            <img src="./public/images/logo2.png" class="logo-2" tabindex="-1" />
+            <img src="./public/images/logo.png" class="logo-1" tabindex="-1" />
         </a>
-        <a class="shortcut" id="shortcut" href="#main">
+        <a class="shortcut" id="shortcut" href="#photographers" tabindex="1"
+            aria-label="activer pour consulter directement notre liste de photographes">
             Passer au contenu
         </a>
-        <nav id="tags" class="tags">
-            <p class="tags__liste" id="tagsList">
+        <nav id="tags" class="tags" tabindex="-1">
+            <p class="tags__liste" id="tagsList" role="navigation" tabindex="3"
+                aria-label="trier nos photographes à l'aide d'un mot clef" aria-haspopup="true">
                 <!-- insert tags via index.js -->
             </p>
         </nav>
     </header>
-    <main id="main">
-        <h1>Nos photographes</h1>
-        <section class="photographers" id="photographers">
+    <main id="main" tabindex="-1">
+        <h1 aria-label="contenu de la page d'accueil" tabindex="5">Nos photographes</h1>
+        <section class="photographers" id="photographers" aria-label="tous nos photographes">
             <!-- insert articles (photographers) via index.js -->
         </section>
     </main>
