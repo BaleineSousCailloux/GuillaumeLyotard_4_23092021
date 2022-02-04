@@ -36,12 +36,11 @@ const enterTagsNav = (e) => {
             tag.setAttribute("tabindex", "4");
             tag.addEventListener("keydown", active => {
                 if (active.keyCode === 13 || active.keyCode === 32) {
-                    //active.preventDefault();
+                    active.preventDefault();
                     tag.click();
                     tagZoneDom.forEach(tag => {
                         tag.setAttribute("tabindex", "-1");
                     });
-                    //document.querySelector("h1").focus();
                 }
             })
         });
@@ -88,8 +87,10 @@ const getHeaderTagsList = (listTags) => {
         tagsZoneDom.appendChild(newHeaderTag);
 
         newHeaderTag.addEventListener("click", e => {
+            console.log(e.target);
             if (e.target.id == "tag-selected") {
                 document.location.href = "index.html";
+                document.querySelector("h1").focus();
             } else {
                 document.location.href = `index.html?tag=${e.target.getAttribute("data-tag")}`;
             }
@@ -103,8 +104,7 @@ const getPhotographerCards = (photographers, tagSelected) => {
     const filteredPhotographers = photographers.filter(photographer => {
         return !tagSelected || photographer.tags.includes(tagSelected);
     })
-    if (tagSelected) {
-        console.log(tagSelected);
+    if (tagSelected !== null) {
         document.querySelector("h1").focus();
     }
     const container = document.getElementById("photographers");
@@ -137,8 +137,6 @@ const init = async () => {
                 domCardTag.setAttribute("id", "tag-selected");
                 domCardTag.setAttribute("aria-label", `le mot-clef ${tag} est sélectionné`);
             }
-        } else {
-            document.querySelector("h1").focus();
         }
     })
 
