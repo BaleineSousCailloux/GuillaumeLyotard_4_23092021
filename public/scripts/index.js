@@ -25,51 +25,59 @@ const getTagsListData = (photographers) => {
 
 
 const tagsZoneDom = document.getElementById("tagsList");
-
 const enterTagsNav = (e) => {
     const tagZoneDom = document.querySelectorAll(".tag");
     const firstTag = tagZoneDom[0]
     const lastTag = tagZoneDom[tagZoneDom.length - 1];
+    //// entrer et naviguer dans la liste de tags OK
     if (e.keyCode === 13 || e.keyCode === 32) {
-        //e.preventDefault();
+        e.preventDefault();
         tagZoneDom.forEach(tag => {
             tag.setAttribute("tabindex", "4");
+            tag.addEventListener("keydown", active => {
+                if (active.keyCode === 13 || active.keyCode === 32) {
+                    //active.preventDefault();
+                    tag.click();
+                    tagZoneDom.forEach(tag => {
+                        tag.setAttribute("tabindex", "-1");
+                    });
+                    //document.querySelector("h1").focus();
+                }
+            })
         });
         firstTag.focus(); ///ok
-
+        /// revient au premier tag OK
         lastTag.addEventListener("keydown", event => {
-            if (event.keyCode === 9) {
+            if (event.keyCode === 9 && !event.shiftKey) {
                 event.preventDefault();
                 firstTag.focus();
             }
-        }); /// revient au premier tag OK
+        });
+        //// en cas de back-toolbar, doit aller au dernier tag   KO !
+        firstTag.addEventListener("keydown", backEvent => {
 
-        firstTag.addEventListener("keydown", event => {
-            if (event.keyCode === 8) {
-                event.preventDefault();
+            if (backEvent.keyCode === 9 && backEvent.shiftKey) {
+                backEvent.preventDefault();
                 lastTag.focus();
             }
-        }); //// en cas de back-toolbar, doit aller au dernier tag   KO !
-
-
+        });
     };
-
+    //  sortie de la selection de tag avec ESC  OK
     if (e.keyCode === 27 && tagsZoneDom.contains(document.activeElement)) {
+
         tagZoneDom.forEach(tag => {
-            tag.removeAttribute("tabindex", "4");
+            tag.setAttribute("tabindex", "-1");
         });
         tagsZoneDom.focus();
     }
-
+    // passer directement à l'élément suivant, sans rentrer dans la selection de tag  OK
     if (tagsZoneDom.activeElement && e.keyCode === 9) {
         e.preventDefault();
         tagZoneDom.forEach(tag => {
-            tag.removeAttribute("tabindex", "4");
+            tag.setAttribute("tabindex", "-1");
         });
         document.querySelector("h1").focus();
     };
-
-
 }
 
 
@@ -81,9 +89,9 @@ const getHeaderTagsList = (listTags) => {
 
         newHeaderTag.addEventListener("click", e => {
             if (e.target.id == "tag-selected") {
-                document.location.href = "index.html"
+                document.location.href = "index.html";
             } else {
-                document.location.href = `index.html?tag=${e.target.getAttribute("data-tag")}`
+                document.location.href = `index.html?tag=${e.target.getAttribute("data-tag")}`;
             }
         })
     });
@@ -95,6 +103,10 @@ const getPhotographerCards = (photographers, tagSelected) => {
     const filteredPhotographers = photographers.filter(photographer => {
         return !tagSelected || photographer.tags.includes(tagSelected);
     })
+    if (tagSelected) {
+        console.log(tagSelected);
+        document.querySelector("h1").focus();
+    }
     const container = document.getElementById("photographers");
     container.innerHTML = "";
     filteredPhotographers.forEach(photographer => {
@@ -119,16 +131,19 @@ const init = async () => {
     let tagUrl = urlParams.get("tag");
     getHeaderTagsList(tagsList);
     tagsList.forEach(tag => {
-        console.log(tag);
         if (tag == tagUrl) {
             let domCardTag = document.getElementsByClassName(tag)[0];
             if (domCardTag) {
-                domCardTag.setAttribute("id", "tag-selected")
+                domCardTag.setAttribute("id", "tag-selected");
+                domCardTag.setAttribute("aria-label", `le mot-clef ${tag} est sélectionné`);
             }
+        } else {
+            document.querySelector("h1").focus();
         }
     })
-    tagsZoneDom.addEventListener("keydown", enterTagsNav);
+
     getPhotographerCards(photographers, tagUrl);
+    tagsZoneDom.addEventListener("keydown", enterTagsNav);
 }
 
 init();

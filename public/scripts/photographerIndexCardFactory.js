@@ -2,7 +2,7 @@ const indexCardFactory = (indexCard) => {
     getCard = () => {
         const newPhotographer = document.createElement("article");
         newPhotographer.classList.add("photographer");
-        newPhotographer.setAttribute("tabindex", 5);
+        newPhotographer.setAttribute("tabindex", 6);
         newPhotographer.setAttribute("aria-label", "carte d'un photographe");
         newPhotographer.innerHTML = `
         <a href="./pages/photographe.html?id=${indexCard.id}" class="photographer__card">
