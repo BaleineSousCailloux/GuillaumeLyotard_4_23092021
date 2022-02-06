@@ -2,23 +2,24 @@ const indexCardFactory = (indexCard) => {
     getCard = () => {
         const newPhotographer = document.createElement("article");
         newPhotographer.classList.add("photographer");
-        newPhotographer.setAttribute("tabindex", 6);
-        newPhotographer.setAttribute("aria-label", "carte d'un photographe");
+        newPhotographer.setAttribute("tabindex", -1);
+        newPhotographer.setAttribute("aria-label", `carte du photographe ${indexCard.name}`);
         newPhotographer.innerHTML = `
-        <a href="./pages/photographe.html?id=${indexCard.id}" class="photographer__card">
-            <img class="photographer__card__img" src="./public/images/Photos/Photographers ID Photos/${indexCard.portrait}" />
-            <h2 class="photographer__card__name">${indexCard.name}</h2>
+        <a href="./pages/photographe.html?id=${indexCard.id}" class="photographer__card" tabindex="6" aria-label="se rendre sur la page de ${indexCard.name}">
+            <img class="photographer__card__img" src="./public/images/Photos/Photographers ID Photos/${indexCard.portrait}" aria-label="portrait de ${indexCard.name}" />
+            <h2 class="photographer__card__name" aria-label="nom du photographe">${indexCard.name}</h2>
         </a>
-        <div class="photographer__legend">
-            <h3 class="photographer__legend__city">${indexCard.city}, ${indexCard.country}</h3>
-            <p class="photographer__legend__slogan">${indexCard.tagline}</p>
-            <p class="photographer__legend__price">${indexCard.price}€/jour</p>
-            <div class="photographer__legend__tags"></div>
+        <div class="photographer__legend" tabindex="6" aria-label="informations sur ${indexCard.name}">
+            <h3 class="photographer__legend__city" aria-label="sa localisation">${indexCard.city}, ${indexCard.country}</h3>
+            <p class="photographer__legend__slogan" aria-label="son slogan">${indexCard.tagline}</p>
+            <p class="photographer__legend__price" aria-label="son prix">${indexCard.price}€/jour</p>
         </div>
+        <div class="photographer__legend__tags" tabindex="6" aria-label="ses mots-clef, via lequels vous pouvez lancer une recherche"></div>
         `;
         indexCard.tags.forEach(tag => {
             const newTag = document.createElement("span");
             newTag.classList.add("photographer__legend__tags__tag");
+            newTag.classList.add("tag");
             newTag.setAttribute("data-tag", tag);
             newTag.setAttribute("aria-label", tag);
             newTag.innerHTML = `#${tag}`;

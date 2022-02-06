@@ -1,5 +1,7 @@
 let listTags = [];
 let tagSelected = 0;
+let tagsZoneDom = document.getElementById("tagsList");
+let tagsPhotographerDom = document.querySelector(".photographer__legend__tags");
 
 const fetchData = async () => {
     const res = await fetch("./public/data/FishEyeData.json");
@@ -24,60 +26,6 @@ const getTagsListData = (photographers) => {
 }
 
 
-const tagsZoneDom = document.getElementById("tagsList");
-const enterTagsNav = (e) => {
-    const tagZoneDom = document.querySelectorAll(".tag");
-    const firstTag = tagZoneDom[0]
-    const lastTag = tagZoneDom[tagZoneDom.length - 1];
-    //// entrer et naviguer dans la liste de tags OK
-    if (e.keyCode === 13 || e.keyCode === 32) {
-        e.preventDefault();
-        tagZoneDom.forEach(tag => {
-            tag.setAttribute("tabindex", "4");
-            tag.addEventListener("keydown", active => {
-                if (active.keyCode === 13 || active.keyCode === 32) {
-                    active.preventDefault();
-                    tag.click();
-                    tagZoneDom.forEach(tag => {
-                        tag.setAttribute("tabindex", "-1");
-                    });
-                }
-            })
-        });
-        firstTag.focus(); ///ok
-        /// revient au premier tag OK
-        lastTag.addEventListener("keydown", event => {
-            if (event.keyCode === 9 && !event.shiftKey) {
-                event.preventDefault();
-                firstTag.focus();
-            }
-        });
-        //// en cas de back-toolbar, doit aller au dernier tag   KO !
-        firstTag.addEventListener("keydown", backEvent => {
-
-            if (backEvent.keyCode === 9 && backEvent.shiftKey) {
-                backEvent.preventDefault();
-                lastTag.focus();
-            }
-        });
-    };
-    //  sortie de la selection de tag avec ESC  OK
-    if (e.keyCode === 27 && tagsZoneDom.contains(document.activeElement)) {
-
-        tagZoneDom.forEach(tag => {
-            tag.setAttribute("tabindex", "-1");
-        });
-        tagsZoneDom.focus();
-    }
-    // passer directement à l'élément suivant, sans rentrer dans la selection de tag  OK
-    if (tagsZoneDom.activeElement && e.keyCode === 9) {
-        e.preventDefault();
-        tagZoneDom.forEach(tag => {
-            tag.setAttribute("tabindex", "-1");
-        });
-        document.querySelector("h1").focus();
-    };
-}
 
 
 const getHeaderTagsList = (listTags) => {
@@ -97,7 +45,6 @@ const getHeaderTagsList = (listTags) => {
         })
     });
 };
-
 
 
 const getPhotographerCards = (photographers, tagSelected) => {
@@ -121,6 +68,8 @@ const getPhotographerCards = (photographers, tagSelected) => {
 
         });
     });
+
+
 };
 
 const init = async () => {
@@ -138,10 +87,19 @@ const init = async () => {
                 domCardTag.setAttribute("aria-label", `le mot-clef ${tag} est sélectionné`);
             }
         }
-    })
+    });
 
     getPhotographerCards(photographers, tagUrl);
-    tagsZoneDom.addEventListener("keydown", enterTagsNav);
+
+    tagsZoneDom = document.getElementById("tagsList");
+    tagsPhotographerDom = document.querySelector(".photographer__legend__tags");
+
+    tagsZoneDom.addEventListener("keydown", e => {
+        enterTagsNav(e, tagsZoneDom);
+    });
+    tagsPhotographerDom.addEventListener("keydown", e => {
+        enterTagsNav(e, tagsPhotographerDom);
+    });
 }
 
 init();

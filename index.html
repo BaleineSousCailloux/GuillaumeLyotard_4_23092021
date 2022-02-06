@@ -24,7 +24,7 @@
             <img src="./public/images/logo2.png" class="logo-2" tabindex="-1" />
             <img src="./public/images/logo.png" class="logo-1" tabindex="-1" />
         </a>
-        <a class="shortcut" id="shortcut" href="#photographers" tabindex="1"
+        <a class="shortcut" id="shortcut" href="#main-content" tabindex="1"
             aria-label="activer pour consulter directement notre liste de photographes">
             Passer au contenu
         </a>
@@ -36,12 +36,13 @@
         </nav>
     </header>
     <main id="main" tabindex="-1">
-        <h1 aria-label="contenu de la page d'accueil" tabindex="5">Nos photographes</h1>
-        <section class="photographers" id="photographers" aria-label="tous nos photographes">
+        <h1 aria-label="contenu de la page d'accueil" tabindex="5" id="main-content">Nos photographes</h1>
+        <section class="photographers" id="photographers" aria-label="tous nos photographes" tabindex="-1">
             <!-- insert articles (photographers) via index.js -->
         </section>
     </main>
     <script src="./public/scripts/shortcutToMain.js"></script>
+    <script src="./public/scripts/tagsNavWithKeyboard.js"></script>
     <script src="./public/scripts/headerTagFactory.js"></script>
     <script src="./public/scripts/photographerIndexCardFactory.js"></script>
     <script src="./public/scripts/index.js"></script>

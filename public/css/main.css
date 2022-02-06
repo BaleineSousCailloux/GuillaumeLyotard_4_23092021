@@ -153,40 +153,55 @@ header #tag-selected {
   flex-direction: column;
   box-sizing: border-box;
   width: 33.3%;
-  min-width: 395px;
-  padding: 40px;
-  height: fit-content;
+  min-width: 400px;
+  padding: 35px;
+  height: 430px;
 }
 #main .photographers .photographer__card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  height: 270px;
+  height: 260px;
   margin: 0;
+  padding: 10px 0 0 0;
+}
+#main .photographers .photographer__card:hover, #main .photographers .photographer__card:focus {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #d3573c;
 }
 #main .photographers .photographer__card__img {
   border-radius: 50%;
   width: 200px;
-  height: 200px;
+  min-height: 200px;
   box-shadow: 4px 4px 8px #c4c4c4;
   object-fit: cover;
+  margin: 0;
 }
 #main .photographers .photographer__card__name {
+  padding: 0;
   color: #d3573c;
   font-size: 36px;
   margin: 10px 0 0 0;
 }
 #main .photographers .photographer__legend {
   width: 100%;
+  height: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  margin: 0 0 20px 0;
+  padding: 5px;
+  margin: 0 0 5px 0;
+}
+#main .photographers .photographer__legend:hover, #main .photographers .photographer__legend:focus {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #d3573c;
 }
 #main .photographers .photographer__legend__city {
   font-size: 13px;
@@ -208,7 +223,13 @@ header #tag-selected {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+}
+#main .photographers .photographer__legend__tags:hover, #main .photographers .photographer__legend__tags:focus {
+  outline: none;
+  width: fit-content;
+  align-self: center;
+  border-radius: 15px;
+  border-bottom: 1px solid #d3573c;
 }
 #main .photographers .photographer__legend__tags__tag {
   font-size: 0.75em;
