@@ -151,7 +151,7 @@ header {
             &__btn {
                 position: relative;
                 cursor: pointer;
-                &:hover, &:focus {
+                &:hover {
                     #btn-select-menu {
                         display: flex;
                     }
@@ -176,6 +176,19 @@ header {
                     color: v.$txt_2;
                     font-size: 1.125em;
                     font-weight: 700;
+                    &:focus {
+                        border: none;
+                        outline: none;
+                        background-color: v.$secondaire;
+                    }
+                    &:active {
+                        #btn-select-menu {
+                            display: flex;
+                        }
+                        #btn-inactive {
+                            box-shadow: none;
+                        }
+                    }
                 }
                 &--2 {
                     position: absolute;
@@ -184,11 +197,12 @@ header {
                     display: none;
                     flex-direction: column;
                     justify-content: flex-start;
+                    align-items: left;
                     box-sizing: border-box;
                     box-shadow: 3px 2px 4px v.$shadow;
                     width: 170px;
                     height: 170px;
-                    padding: 0;
+                    padding: 0 20px;
                     border-radius: 5px;
                     overflow: hidden;
                     background-color: v.$secondaire;
@@ -202,16 +216,30 @@ header {
                         justify-content: space-between;
                         align-items: center;
                         box-sizing: border-box;
-                        padding: 0 20px;
+                        margin: 0;
+                        padding: 0;
                         width: 100%;
                         height: 69px;
                         line-height: 69px;
                         @include m.police--texte;
                         &-vue {
+                            @include m.police--texte;
+                            display: flex;
+                            align-content: left;
+                            width: 100px;
+                            margin: 0;
                             font-weight: 700;
+                            &:hover, &:focus {
+                                outline: none;
+                                color: v.$txt_2;
+                            }
                         }
                         &-icon {
+                            @include m.police--texte;
+                            display: flex;
+                            align-content: right;
                             font-weight: 700;
+                            color: v.$txt_2;
                         }
                     }
                     &__option-2, &__option-3 {
@@ -220,11 +248,16 @@ header {
                         box-sizing: border-box;
                         font-size: 1em;
                         height: 49px;
+                        width: 100px;
                         line-height: 49px;
                         text-align: left;
-                        margin: 0 10px;
-                        padding: 0 10px;
+                        margin: 0;
+                        //padding: 0 20px;
                         border-top: 1.5px solid v.$txt_2;
+                        &:hover, &:focus {
+                            outline: none;
+                            color: v.$txt_2;
+                        }
                     }
                 }
             }

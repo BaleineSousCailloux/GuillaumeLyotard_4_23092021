@@ -46,18 +46,95 @@ const getPhotographerCard = () => {
 
 const btnVue = document.getElementById("btn-vue");
 const btnSelectMenu = document.getElementById("btn-select-menu");
+const btnNotExpanded = document.querySelector(".portfolio__menu__btn");
+const btnMenuInactive = document.getElementById("btn-inactive");
 let option1Btn = document.querySelector(".portfolio__menu__btn--2__option-1-vue");
 let option2Btn = document.querySelector(".portfolio__menu__btn--2__option-2");
 let option3Btn = document.querySelector(".portfolio__menu__btn--2__option-3");
 let btnSelected = [];
 btnSelected.push(option1Btn, option2Btn, option3Btn);
-console.log(btnSelected);
 
 const btnSelection = (btnClicked, btnClickAction) => {
+
+
+    let indexOfSelectedBtn = 0;
+
     btnClicked.forEach(btn => {
         btn.addEventListener("click", btnClickAction)
-    })
+        btn.addEventListener("keydown", enterEvent => {
+            if (enterEvent.keyCode === 13 || enterEvent.keyCode === 32) {
+                enterEvent.preventDefault();
+                enterEvent.stopPropagation();
+                btn.click();
+                btnMenuInactive.focus();
+                //document.querySelector(".portfolio__content__card__media").focus();
+                btnSelectMenu.style.display = "none";
+                btnMenuInactive.style.boxShadow = "3px 2px 4px v.$shadow";
+                indexOfSelectedBtn = 0;
+            }
+        })
+    });
+
+    btnNotExpanded.addEventListener("keydown", btnEvent => {
+        if (btnEvent.keyCode === 13 || btnEvent.keyCode === 32) {
+            btnEvent.preventDefault();
+            btnEvent.stopPropagation();
+            btnSelectMenu.style.display = "flex";
+            btnMenuInactive.style.boxShadow = "none";
+            btnSelected[indexOfSelectedBtn].focus();
+        }
+    });
+    btnNotExpanded.addEventListener("mouseover", mouseEvent => {
+        mouseEvent.preventDefault();
+        mouseEvent.stopPropagation();
+        btnSelectMenu.style.display = "flex";
+        btnMenuInactive.style.boxShadow = "none";
+        btnSelected[indexOfSelectedBtn].focus();
+    });
+    btnNotExpanded.addEventListener("mouseout", mouseEvent => {
+        mouseEvent.preventDefault();
+        mouseEvent.stopPropagation();
+        document.querySelector(".portfolio__content__card__media").focus();
+        btnSelectMenu.style.display = "none";
+        btnMenuInactive.style.boxShadow = "3px 2px 4px v.$shadow";
+        indexOfSelectedBtn = 0;
+    });
+    btnSelectMenu.addEventListener("keydown", navEvent => {
+        if (navEvent.keyCode === 27 && btnSelectMenu.contains(document.activeElement) || navEvent.keyCode === 9 && !btnSelectMenu.contains(document.activeElement)) {
+            navEvent.preventDefault();
+            navEvent.stopPropagation();
+            btnMenuInactive.focus();
+            //document.querySelector(".portfolio__content__card__media").focus();
+            btnSelectMenu.style.display = "none";
+            btnMenuInactive.style.boxShadow = "3px 2px 4px v.$shadow";
+            indexOfSelectedBtn = 0;
+        };
+        if (navEvent.keyCode === 9 && !navEvent.shiftKey) {
+            navEvent.preventDefault();
+            indexOfSelectedBtn++;
+            if (indexOfSelectedBtn == btnSelected.length) {
+                indexOfSelectedBtn = 0;
+                console.log(indexOfSelectedBtn);
+                btnSelected[indexOfSelectedBtn].focus();
+            } else {
+                btnSelected[indexOfSelectedBtn].focus();
+                console.log(indexOfSelectedBtn);
+            }
+        } else if (navEvent.shiftKey && navEvent.keyCode === 9) {
+            navEvent.preventDefault();
+            indexOfSelectedBtn--;
+            if (indexOfSelectedBtn == -1) {
+                indexOfSelectedBtn = btnSelected.length - 1;
+                console.log(indexOfSelectedBtn);
+                btnSelected[indexOfSelectedBtn].focus();
+            } else {
+                btnSelected[indexOfSelectedBtn].focus();
+                console.log(indexOfSelectedBtn);
+            }
+        }
+    });
 };
+
 
 
 const getPhotographerPortfolio = (mediasArray) => {
@@ -135,6 +212,8 @@ const getPhotographerMedias = () => {
             })
         })
     })
+
+
 
     btnSelection(btnSelected, event => {
         event.preventDefault();

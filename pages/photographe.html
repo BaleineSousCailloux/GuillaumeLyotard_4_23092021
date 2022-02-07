@@ -32,19 +32,21 @@
         <section class="portfolio" tabindex="-1">
             <div class="portfolio__menu" tabindex="-1">
                 <p class="portfolio__menu__title" tabindex="10" aria-label="trier par...">Trier par</p>
-                <div class="portfolio__menu__btn" tabindex="11" role="button" aria-haspopup="listbox"
-                    aria-expanded="false">
-                    <button class="portfolio__menu__btn--1" id="btn-inactive">
+                <div class="portfolio__menu__btn">
+                    <button class="portfolio__menu__btn--1" tabindex="11" id="btn-inactive" role="button"
+                        aria-haspopup="listbox" aria-expanded="false">
                         <span class="portfolio__menu__btn--1__pop" id="btn-vue">Popularité</span>
                         <span class="portfolio__menu__btn--1__icon fa-solid fa-angle-down"></span>
                     </button>
-                    <button class="portfolio__menu__btn--2" id="btn-select-menu">
+                    <button class="portfolio__menu__btn--2" id="btn-select-menu" tabindex="11" role="button"
+                        aria-haspopup="listbox" aria-expanded="true">
                         <div class="portfolio__menu__btn--2__option-1">
-                            <span class="portfolio__menu__btn--2__option-1-vue" data-option="pop">Popularité</span>
+                            <span class="portfolio__menu__btn--2__option-1-vue" tabindex="0"
+                                data-option="pop">Popularité</span>
                             <span class="portfolio__menu__btn--2__option-1-icon fa-solid fa-angle-up"></span>
                         </div>
-                        <span class="portfolio__menu__btn--2__option-2" data-option="date">Date</span>
-                        <span class="portfolio__menu__btn--2__option-3" data-option="title">Titre</span>
+                        <span class="portfolio__menu__btn--2__option-2" tabindex="0" data-option="date">Date</span>
+                        <span class="portfolio__menu__btn--2__option-3" tabindex="0" data-option="title">Titre</span>
                     </button>
                 </div>
                 <!--<label class="portfolio__menu__title" for="portfolio__sort__btn">Trier par</label>
