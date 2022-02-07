@@ -4,9 +4,12 @@ const getContactForm = (person) => {
 
     const openBtn = document.getElementById("openForm");
     const contactForm = document.getElementById("contact");
+    const formContent = document.getElementById("content");
     const closeBtn = document.getElementById("closeForm");
     const photographerContactName = document.getElementById("contactForm-photographer-name");
     photographerContactName.innerHTML = `Contactez ${person.name}`;
+    photographerContactName.setAttribute("aria-label", `${person.name}`);
+    photographerContactName.setAttribute("tabindex", 1);
 
     //photographerContactName.innerText = "contactez " + person.name;
 
@@ -24,6 +27,20 @@ const getContactForm = (person) => {
     function launchContactForm() {
         sendConfirm.style.display = "none";
         contactForm.style.display = "flex";
+        formContent.focus();
+        closeBtn.addEventListener("keydown", e => {
+            e.preventDefault();
+            if (e.keyCode === 9 && closeBtn.contains(document.activeElement)) {
+                photographerContactName.focus();
+            } else if (e.keyCode === 13 || e.keyCode === 32) {
+                closeBtn.click();
+            }
+        });
+        contactForm.addEventListener("keydown", e => {
+            if (e.keyCode === 27 && formContent.contains(document.activeElement)) {
+                closeBtn.click();
+            }
+        })
         /// gestion des onfocus sur les éléments //////////////////////////////////////////////////////
     };
 

@@ -30,7 +30,7 @@ header .container {
   width: fit-content;
 }
 header .container:hover .logo-2, header .container:focus .logo-2 {
-  opacity: 0.65;
+  opacity: 1;
 }
 header .container .logo-1 {
   position: fixed;
@@ -50,9 +50,9 @@ header .container .logo-2 {
   height: auto;
   margin: 0;
   padding: 0;
-  top: 37px;
-  left: 5.1%;
-  z-index: 1;
+  top: 35px;
+  left: 5%;
+  z-index: 2;
   opacity: 0;
 }
 header .shortcut {
@@ -263,8 +263,11 @@ header .container .logo-2 {
   position: relative;
   cursor: pointer;
 }
-#main .portfolio__menu__btn:hover #btn-select-menu, #main .portfolio__menu__btn:hover #btn-select-menu {
+#main .portfolio__menu__btn:hover #btn-select-menu, #main .portfolio__menu__btn:focus #btn-select-menu {
   display: flex;
+}
+#main .portfolio__menu__btn:hover #btn-inactive, #main .portfolio__menu__btn:focus #btn-inactive {
+  box-shadow: none;
 }
 #main .portfolio__menu__btn--1 {
   border: none;

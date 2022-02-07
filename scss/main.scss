@@ -28,7 +28,7 @@
         color: v.$primaire;
         outline: none;
         &:hover, &:focus {
-            border-bottom: 1px solid v.$secondaire;
+            color: v.$secondaire;
         }
     }
     .photographers {

@@ -16,7 +16,7 @@ header {
     .container {
         width: fit-content;
         &:hover .logo-2, &:focus .logo-2 {
-            opacity: 0.65;
+            opacity: 1;
         }
         .logo-1 {
             position: fixed;
@@ -36,9 +36,9 @@ header {
             height: auto;
             margin: 0;
             padding: 0;
-            top: 37px;
-            left: 5.1%;
-            z-index: 1;
+            top: 35px;
+            left: 5%;
+            z-index: 2;
             opacity: 0;
             
         }

@@ -9,13 +9,13 @@ const lightboxVue = (medias) => {
   const rightArrow = document.querySelector(".fa-angle-right");
   let domInsertMediaId = 0;
   let indexOfMediaVue = -1;
+  console.log(openLightbox);
 
 
   // open Lightbox event (img click)
   openLightbox.forEach(mediaClicked => {
     mediaClicked.addEventListener("click", event => {
       let mediaId = event.target.getAttribute("media-ID");
-      console.log(medias);
       medias.forEach(media => {
         if (media.id == mediaId) {
           getLightbox(media, mediaInLightbox);
@@ -25,6 +25,11 @@ const lightboxVue = (medias) => {
       launchLightbox();
       navigate();
     })
+    mediaClicked.addEventListener("keydown", enterEvent => {
+      if (enterEvent.keyCode === 13 || enterEvent.keyCode === 32) {
+        mediaClicked.click();
+      }
+    });
   });
 
 
@@ -33,12 +38,33 @@ const lightboxVue = (medias) => {
     console.log(medias.length);
     leftArrow.addEventListener("click", leftAction);
     rightArrow.addEventListener("click", rightAction);
-    /* window.addeventlistener("keydown", event => {
-      if (event.key == "ArrowLeft") {
-        leftAction()
+    leftArrow.addEventListener("keydown", leftEvent => {
+      if (leftEvent.keyCode === 13 || leftEvent.keyCode === 32) {
+        leftAction();
       }
-      else if ou swith/case
-    }*////////////////////////////////////////////////////////////////////////////////////////////////////////
+    })
+    rightArrow.addEventListener("keydown", rightEvent => {
+      if (rightEvent.keyCode === 13 || rightEvent.keyCode === 32) {
+        rightAction();
+      }
+    })
+    window.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") {
+        leftAction();
+      } else if (event.key === "ArrowRight") {
+        rightAction()
+      } else if (event.keyCode === 27 && lightbox.contains(document.activeElement)) {
+        closeLightbox.click();
+      }
+    })
+    closeLightbox.addEventListener("keydown", e => {
+      e.preventDefault();
+      if (e.keyCode === 9 && closeLightbox.contains(document.activeElement)) {
+        lightbox.focus();
+      } else if (e.keyCode === 13 || e.keyCode === 32) {
+        closeLightbox.click();
+      }
+    });
   };
 
 
@@ -74,6 +100,8 @@ const lightboxVue = (medias) => {
   // open lightbox fonction
   function launchLightbox() {
     lightbox.style.display = "flex";
+    lightbox.focus();
+
   };
 
 
@@ -83,10 +111,16 @@ const lightboxVue = (medias) => {
 
   // close lightbox function
   function quitLightbox() {
-    leftArrow.removeEventListener("click", leftAction);
-    rightArrow.removeEventListener("click", rightAction);
     lightbox.style.display = "none";
+    const lastMediaId = document.querySelector(".lightbox__content__container__media__insert").getAttribute("media-id");
     document.getElementById("lightbox-container").innerHTML = ``;
+    openLightbox.forEach(media => {
+      let mediaTarget = media.getAttribute("media-id");
+      console.log(mediaTarget);
+      if (mediaTarget == lastMediaId) {
+        media.focus();
+      }
+    })
   };
 
 
@@ -96,15 +130,16 @@ const lightboxVue = (medias) => {
       mediaContainerInLightbox.classList.add("lightbox__content__container__media");
       if (isVideo) {
         mediaContainerInLightbox.innerHTML = `
-            <video class="lightbox__content__container__media__insert" media-ID="${light.id}" controls autoplay>
+            <video class="lightbox__content__container__media__insert" media-ID="${light.id}" controls autoplay tabindex="1" aria-label="${light.title}">
                 <source src="../public/images/Photos/${surname}/${light.video}" type="video/mp4">
             </video>
-            <p class="lightbox__content__container__media__title">${light.title}</p>
+            <p class="lightbox__content__container__media__title" tabindex="1" aria-label="titre du média">${light.title}</p>
           `;
       } else {
         mediaContainerInLightbox.innerHTML = `
-            <img class="lightbox__content__container__media__insert" media-ID="${light.id}" src="../public/images/Photos/${surname}/${light.image}" />
-            <p class="lightbox__content__container__media__title">${light.title}</p>
+            <img class="lightbox__content__container__media__insert" media-ID="${light.id}" src="../public/images/Photos/${surname}/${light.image}" 
+            tabindex="1" aria-label="${light.title}"/>
+            <p class="lightbox__content__container__media__title" tabindex="1" aria-label="titre du média">${light.title}</p>
           `;
       }
       return mediaContainerInLightbox;

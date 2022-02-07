@@ -22,6 +22,7 @@ const indexCardFactory = (indexCard) => {
             newTag.classList.add("tag");
             newTag.setAttribute("data-tag", tag);
             newTag.setAttribute("aria-label", tag);
+            newTag.setAttribute("tabindex", -1);
             newTag.innerHTML = `#${tag}`;
             newPhotographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
         })

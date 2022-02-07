@@ -151,8 +151,13 @@ header {
             &__btn {
                 position: relative;
                 cursor: pointer;
-                &:hover #btn-select-menu, &:hover #btn-select-menu {
-                    display: flex;
+                &:hover, &:focus {
+                    #btn-select-menu {
+                        display: flex;
+                    }
+                    #btn-inactive {
+                        box-shadow: none;
+                    }
                 }
                 &--1 {
                     border: none;

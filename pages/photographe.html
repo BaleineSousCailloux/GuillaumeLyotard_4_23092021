@@ -20,20 +20,21 @@
 
 <body>
     <header>
-        <a href="../index.html" class="container" tabindex="1">
-            <img src="../public/images/logo2.png" class="logo-2" />
-            <img src="../public/images/logo.png" class="logo-1" />
+        <a href="../index.html" class="container" tabindex="3" aria-label="logo du site et retour à l'accueil">
+            <img src="../public/images/logo2.png" class="logo-2" tabindex="-1" alt="logo" />
+            <img src="../public/images/logo.png" class="logo-1" tabindex="-1" alt="logo" />
         </a>
     </header>
-    <main id="main">
-        <section class="photographer" id="photographer">
+    <main id="main" tabindex="-1">
+        <section class="photographer" id="photographer" tabindex="-1">
             <!-- insert photographer article via photographer.js -->
         </section>
-        <section class="portfolio">
-            <div class="portfolio__menu">
-                <p class="portfolio__menu__title">Trier par</p>
-                <div class="portfolio__menu__btn">
-                    <button class="portfolio__menu__btn--1">
+        <section class="portfolio" tabindex="-1">
+            <div class="portfolio__menu" tabindex="-1">
+                <p class="portfolio__menu__title" tabindex="10" aria-label="trier par...">Trier par</p>
+                <div class="portfolio__menu__btn" tabindex="11" role="button" aria-haspopup="listbox"
+                    aria-expanded="false">
+                    <button class="portfolio__menu__btn--1" id="btn-inactive">
                         <span class="portfolio__menu__btn--1__pop" id="btn-vue">Popularité</span>
                         <span class="portfolio__menu__btn--1__icon fa-solid fa-angle-down"></span>
                     </button>
@@ -58,67 +59,70 @@
             </div>
         </section>
     </main>
-    <footer class="footer" id="footer">
-        <div class="footer__infos">
-            <span class="footer__infos__cunt">
+    <footer class="footer" id="footer" tabindex="9" aria-label="total des mentions j'aime, et prix par jour">
+        <div class="footer__infos" tabindex="-1">
+            <span class="footer__infos__cunt" aria-label="total des mentions j'aime" tabindex="-1">
                 <!-- insert cunt via photographer.js -->
             </span>
-            <span class="footer__infos__heart fas fa-heart"></span>
+            <span class="footer__infos__heart fas fa-heart" aria-label="icone coeur" tabindex="-1"></span>
         </div>
         <!-- insert price via photographerCardFactory.js -->
     </footer>
 </body>
 
-<div class="lightbox" id="lightbox">
+<div class="lightbox" id="lightbox" aria-label="média affiché en plein écran" tabindex="1">
     <div class="lightbox__content">
-        <span class="lightbox__content__icon--left fa-solid fa-angle-left"></span>
+        <span class="lightbox__content__icon--left fa-solid fa-angle-left" aria-label="média précédant"
+            tabindex="2"></span>
         <div class="lightbox__content__container" id="lightbox-container">
             <!-- insert lightbox.js -->
         </div>
-        <span class="lightbox__content__icon--right fa-solid fa-angle-right"></span>
+        <span class="lightbox__content__icon--right fa-solid fa-angle-right" aria-label="média suivant"
+            tabindex="2"></span>
         <div class="lightbox__content__icon__close" id="closeBox">
-            <span class="lightbox__content__icon__close__icon fas fa-times"></span>
+            <span class="lightbox__content__icon__close__icon fas fa-times" aria-label="quitter l'affichage plein écran"
+                tabindex="2"></span>
         </div>
     </div>
 </div>
 
 
 <div class="contact" id="contact">
-    <div class="contact__content" id="content">
+    <div class="contact__content" id="content" aria-labelledby="contactForm-photographer-name" tabindex="1">
         <p class="contact__content__title" id="contactForm-photographer-name">
             <!-- insert contactForm.js -->
         </p>
-        <div class="contact__content__close" id="closeForm">
+        <div class="contact__content__close" id="closeForm" tabindex="2">
             <span class="contact__content__close__icon fas fa-times"></span>
         </div>
         <div class="contact__content__body">
             <form class="contact__content__body__form" name="user" action="photographe.html" method="get" id="form">
                 <div class="contact__content__body__form__data">
-                    <label class="contact__content__body__form__data__label" for="first">Prénom</label>
+                    <label class="contact__content__body__form__data__label" for="first" tabindex="1">Prénom</label>
                     <input class="contact__content__body__form__data__control" type="text" id="first" name="first"
-                        placeholder="Ne peut être inférieur à 2 lettres." />
+                        placeholder="Ne peut être inférieur à 2 lettres." tabindex="1" />
                     <span class="contact__content__body__form__data__error__first" id="first-error">Saisie
                         incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__data">
-                    <label class="contact__content__body__form__data__label" for="last">Nom</label>
+                    <label class="contact__content__body__form__data__label" for="last" tabindex="1">Nom</label>
                     <input class="contact__content__body__form__data__control" type="text" id="last" name="last"
-                        placeholder="Ne peut être inférieur à 1 lettre." />
+                        placeholder="Ne peut être inférieur à 1 lettre." tabindex="1" />
                     <span class="contact__content__body__form__data__error__last" id="last-error">Saisie
                         incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__data">
-                    <label class="contact__content__body__form__data__label" for="email">Email</label>
+                    <label class="contact__content__body__form__data__label" for="email" tabindex="1">Email</label>
                     <input class="contact__content__body__form__data__control" type="text" id="email" name="email"
-                        placeholder="Veuillez indiquer une adresse mail valide." />
+                        placeholder="Veuillez indiquer une adresse mail valide." tabindex="1" />
                     <span class="contact__content__body__form__data__error__email" id="email-error">Saisie
                         incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__data">
-                    <label class="contact__content__body__form__data__label" for="message">Votre
+                    <label class="contact__content__body__form__data__label" for="message" tabindex="1">Votre
                         message</label>
                     <textarea class="contact__content__body__form__data__control" id="message" name="message"
-                        maxlength="500" placeholder="Votre message est nécessaire."></textarea>
+                        maxlength="500" placeholder="Votre message est nécessaire." tabindex="1"></textarea>
                     <span id="message-counter">
                         <!-- insert via contactForm.js -->
                     </span>
@@ -127,8 +131,8 @@
                         incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__submit">
-                    <input id="submit" class="contact__content__body__form__submit__btn" type="submit"
-                        value="Envoyer" />
+                    <input id="submit" class="contact__content__body__form__submit__btn" type="submit" value="Envoyer"
+                        tabindex="1" />
                     <span class="contact__content__body__form__submit__confirm" id="confirm">Message envoyé,
                         merci.</span>
                 </div>
@@ -136,6 +140,7 @@
         </div>
     </div>
 </div>
+<script src="../public/scripts/tagsNavWithKeyboard.js"></script>
 <script src="../public/scripts/lightbox.js"></script>
 <script src="../public/scripts/contactForm.js"></script>
 <script src="../public/scripts/photographerCardFactory.js"></script>

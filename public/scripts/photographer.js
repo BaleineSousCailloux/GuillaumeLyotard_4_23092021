@@ -100,7 +100,6 @@ const getPhotographerMedias = () => {
 
     getPhotographerPortfolio(personnalMedias);
     const totalLikesFooter = document.querySelector(".footer__infos__cunt");
-    console.log(personnalMedias.reduce((likes, media) => media.likes + likes, 0));
     totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
     const likeZones = document.getElementsByClassName("portfolio__content__card__legend__like");
 
@@ -252,10 +251,14 @@ const getPhotographerMedias = () => {
 };
 
 const init = async () => {
-    //localStorage.clear();
+    //localStorage.clear(); //// pour vider le stockage sur la mémoire local au besoin ////
     photographers = await getPhotographersData();
     medias = await getMediasData();
     getPhotographerCard();
+    let tagsPhotographerDom = document.querySelector(".photographer__legend__tags");
+    tagsPhotographerDom.addEventListener("keydown", e => {
+        enterTagsNav(e, tagsPhotographerDom);
+    });
     getPhotographerMedias();
 };
 
