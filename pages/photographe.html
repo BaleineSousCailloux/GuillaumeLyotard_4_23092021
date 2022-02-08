@@ -33,21 +33,23 @@
             <div class="portfolio__menu" tabindex="-1">
                 <p class="portfolio__menu__title" tabindex="10" aria-label="trier par...">Trier par</p>
                 <div class="portfolio__menu__btn">
-                    <button class="portfolio__menu__btn--1" tabindex="11" id="btn-inactive" role="button"
+                    <div class="portfolio__menu__btn--1" tabindex="11" id="btn-inactive" role="button"
                         aria-haspopup="listbox" aria-expanded="false">
                         <span class="portfolio__menu__btn--1__pop" id="btn-vue">Popularité</span>
                         <span class="portfolio__menu__btn--1__icon fa-solid fa-angle-down"></span>
-                    </button>
-                    <button class="portfolio__menu__btn--2" id="btn-select-menu" tabindex="11" role="button"
-                        aria-haspopup="listbox" aria-expanded="true">
-                        <div class="portfolio__menu__btn--2__option-1">
-                            <span class="portfolio__menu__btn--2__option-1-vue" tabindex="0"
-                                data-option="pop">Popularité</span>
+                    </div>
+                    <div class="portfolio__menu__btn--2" id="btn-select-menu" tabindex="11" aria-haspopup="listbox"
+                        aria-expanded="true">
+                        <span class="portfolio__menu__btn--2__option-1">
+                            <span class="portfolio__menu__btn--2__option-1-vue" aria-label="option de tri des médias"
+                                tabindex="0" data-option="pop">Popularité</span>
                             <span class="portfolio__menu__btn--2__option-1-icon fa-solid fa-angle-up"></span>
-                        </div>
-                        <span class="portfolio__menu__btn--2__option-2" tabindex="0" data-option="date">Date</span>
-                        <span class="portfolio__menu__btn--2__option-3" tabindex="0" data-option="title">Titre</span>
-                    </button>
+                        </span>
+                        <span class="portfolio__menu__btn--2__option-2" aria-label="option de tri des médias"
+                            tabindex="0" data-option="date">Date</span>
+                        <span class="portfolio__menu__btn--2__option-3" aria-label="option de tri des médias"
+                            tabindex="0" data-option="title">Titre</span>
+                    </div>
                 </div>
                 <!--<label class="portfolio__menu__title" for="portfolio__sort__btn">Trier par</label>
                 <select class="portfolio__menu__btn" name="sort__options" id="portfolio__sort__btn">

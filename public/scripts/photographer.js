@@ -2,7 +2,7 @@ let surname = "";
 let videoName;
 let isVideo;
 let sortMedias = [];
-
+const tototo = 8;
 
 const fetchData = async () => {
     const res = await fetch("../public/data/FishEyeData.json");
@@ -31,7 +31,7 @@ const getPhotographerCard = () => {
         if (photographer.id == urlId) {
             const instance = photographerCardFactory(photographer);
             const card = instance.getPersonnalCard();
-            document.getElementById("photographer").appendChild(card);
+            document.getElementById("photographer").insertBefore(card, document.getElementById("photographer").firstChild);
             surname = photographer.name;
             getContactForm(photographer);
         }

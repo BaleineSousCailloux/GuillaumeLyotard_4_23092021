@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/BaleineSousCailloux/GuillaumeLyotard_6_23092021/issues"
   },
-  "homepage": "https://github.com/BaleineSousCailloux/GuillaumeLyotard_6_23092021#readme"
+  "homepage": "https://github.com/BaleineSousCailloux/GuillaumeLyotard_6_23092021#readme",
+  "devDependencies": {
+    "eslint": "^8.8.0"
+  }
 }

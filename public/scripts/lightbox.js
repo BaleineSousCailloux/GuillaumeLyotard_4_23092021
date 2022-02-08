@@ -117,6 +117,7 @@ const lightboxVue = (medias) => {
     openLightbox.forEach(media => {
       let mediaTarget = media.getAttribute("media-id");
       console.log(mediaTarget);
+      console.log("last" + lastMediaId);
       if (mediaTarget == lastMediaId) {
         media.focus();
       }
