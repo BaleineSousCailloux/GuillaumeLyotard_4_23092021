@@ -130,16 +130,16 @@ const lightboxVue = (medias) => {
       mediaContainerInLightbox.classList.add("lightbox__content__container__media");
       if (isVideo) {
         mediaContainerInLightbox.innerHTML = `
-            <video class="lightbox__content__container__media__insert" media-ID="${light.id}" controls autoplay tabindex="1" aria-label="${light.title}">
+            <video class="lightbox__content__container__media__insert" media-ID="${light.id}" controls autoplay tabindex="1" aria-label="${light.alt}">
                 <source src="../public/images/Photos/${surname}/${light.video}" type="video/mp4">
             </video>
-            <p class="lightbox__content__container__media__title" tabindex="1" aria-label="titre du média">${light.title}</p>
+            <p class="lightbox__content__container__media__title" tabindex="1" lang="en" aria-label="titre du média">${light.title}</p>
           `;
       } else {
         mediaContainerInLightbox.innerHTML = `
             <img class="lightbox__content__container__media__insert" media-ID="${light.id}" src="../public/images/Photos/${surname}/${light.image}" 
-            tabindex="1" aria-label="${light.title}"/>
-            <p class="lightbox__content__container__media__title" tabindex="1" aria-label="titre du média">${light.title}</p>
+            tabindex="1" alt="${light.alt}" aria-label="${light.alt}"/>
+            <p class="lightbox__content__container__media__title" tabindex="1" lang="en" aria-label="titre du média">${light.title}</p>
           `;
       }
       return mediaContainerInLightbox;

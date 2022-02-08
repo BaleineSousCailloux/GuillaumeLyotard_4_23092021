@@ -50,7 +50,7 @@ const getContactForm = (person) => {
         delayToClose = setTimeout(closeContactForm, 200);
     }
     function autoCloseDelay() {
-        delayToClose = setTimeout(closeContactForm, 4000);
+        delayToClose = setTimeout(closeContactForm, 5000);
     }
 
     // close contact form function
@@ -147,6 +147,7 @@ const getContactForm = (person) => {
             formulaireIsValid = true;
             autoCloseDelay(); // rappel de la fonction de clotûre de la modale automatique
             sendConfirm.style.display = 'block';
+            sendConfirm.focus();
             console.log("prénom : " + firstName.value); // Affichage des données saisies dans la console
             console.log("nom : " + lastName.value);
             console.log("email : " + email.value);

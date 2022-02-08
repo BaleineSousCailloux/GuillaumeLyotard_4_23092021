@@ -81,9 +81,9 @@
         </div>
         <span class="lightbox__content__icon--right fa-solid fa-angle-right" aria-label="média suivant"
             tabindex="2"></span>
-        <div class="lightbox__content__icon__close" id="closeBox">
-            <span class="lightbox__content__icon__close__icon fas fa-times" aria-label="quitter l'affichage plein écran"
-                tabindex="2"></span>
+        <div class="lightbox__content__icon__close" id="closeBox" aria-label="quitter l'affichage plein écran"
+            tabindex="2">
+            <span class="lightbox__content__icon__close__icon fas fa-times"></span>
         </div>
     </div>
 </div>
@@ -103,21 +103,24 @@
                     <label class="contact__content__body__form__data__label" for="first" tabindex="1">Prénom</label>
                     <input class="contact__content__body__form__data__control" type="text" id="first" name="first"
                         placeholder="Ne peut être inférieur à 2 lettres." tabindex="1" />
-                    <span class="contact__content__body__form__data__error__first" id="first-error">Saisie
+                    <span class="contact__content__body__form__data__error__first" id="first-error" tabindex="1"
+                        aria-label="saisie du prénom incorrecte">Saisie
                         incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__data">
                     <label class="contact__content__body__form__data__label" for="last" tabindex="1">Nom</label>
                     <input class="contact__content__body__form__data__control" type="text" id="last" name="last"
                         placeholder="Ne peut être inférieur à 1 lettre." tabindex="1" />
-                    <span class="contact__content__body__form__data__error__last" id="last-error">Saisie
+                    <span class="contact__content__body__form__data__error__last" id="last-error" tabindex="1"
+                        aria-label="saisie du nom incorrecte">Saisie
                         incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__data">
                     <label class="contact__content__body__form__data__label" for="email" tabindex="1">Email</label>
                     <input class="contact__content__body__form__data__control" type="text" id="email" name="email"
                         placeholder="Veuillez indiquer une adresse mail valide." tabindex="1" />
-                    <span class="contact__content__body__form__data__error__email" id="email-error">Saisie
+                    <span class="contact__content__body__form__data__error__email" id="email-error" tabindex="1"
+                        aria-label="saisie de l'adresse mail incorrecte">Saisie
                         incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__data">
@@ -129,13 +132,14 @@
                         <!-- insert via contactForm.js -->
                     </span>
                     <span id="message-max-length">/ 500</span>
-                    <span class="contact__content__body__form__data__error__message" id="message-error">Saisie
-                        incorrecte</span>
+                    <span class="contact__content__body__form__data__error__message" id="message-error" tabindex="1"
+                        aria-label="votre message est vide">Saisie incorrecte</span>
                 </div>
                 <div class="contact__content__body__form__submit">
                     <input id="submit" class="contact__content__body__form__submit__btn" type="submit" value="Envoyer"
                         tabindex="1" />
-                    <span class="contact__content__body__form__submit__confirm" id="confirm">Message envoyé,
+                    <span class="contact__content__body__form__submit__confirm" id="confirm" tabindex="1"
+                        aria-label="Message envoyé avec succès">Message envoyé,
                         merci.</span>
                 </div>
             </form>

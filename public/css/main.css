@@ -90,7 +90,7 @@ header .tags__liste {
   width: fit-content;
   outline: none;
 }
-header .tags__liste:hover, header .tags__liste:focus {
+header .tags__liste:focus {
   border-radius: 15px;
   border-bottom: 1px solid #d3573c;
 }
@@ -137,7 +137,7 @@ header #tag-selected {
   color: #901c1c;
   outline: none;
 }
-#main h1:hover, #main h1:focus {
+#main h1:focus {
   color: #d3573c;
 }
 #main .photographers {
@@ -168,7 +168,7 @@ header #tag-selected {
   margin: 0;
   padding: 10px 0 0 0;
 }
-#main .photographers .photographer__card:hover, #main .photographers .photographer__card:focus {
+#main .photographers .photographer__card:focus {
   outline: none;
   border-radius: 5px;
   border: 1px solid #d3573c;
@@ -198,7 +198,7 @@ header #tag-selected {
   padding: 5px;
   margin: 0 0 5px 0;
 }
-#main .photographers .photographer__legend:hover, #main .photographers .photographer__legend:focus {
+#main .photographers .photographer__legend:focus {
   outline: none;
   border-radius: 5px;
   border: 1px solid #d3573c;
@@ -224,7 +224,7 @@ header #tag-selected {
   flex-direction: row;
   justify-content: center;
 }
-#main .photographers .photographer__legend__tags:hover, #main .photographers .photographer__legend__tags:focus {
+#main .photographers .photographer__legend__tags:focus {
   outline: none;
   width: fit-content;
   align-self: center;

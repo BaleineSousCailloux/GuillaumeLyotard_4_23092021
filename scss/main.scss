@@ -27,7 +27,7 @@
         padding: 0;
         color: v.$primaire;
         outline: none;
-        &:hover, &:focus {
+        &:focus {
             color: v.$secondaire;
         }
     }
@@ -56,7 +56,7 @@
                 height: 260px;
                 margin: 0;
                 padding: 10px 0 0 0;
-                &:hover, &:focus {
+                &:focus {
                     outline: none;
                     border-radius: 5px;
                     border: 1px solid v.$secondaire;
@@ -87,7 +87,7 @@
                 box-sizing: border-box;
                 padding: 5px;
                 margin: 0 0 5px 0;
-                &:hover, &:focus {
+                &:focus {
                     outline: none;
                     border-radius: 5px;
                     border: 1px solid v.$secondaire;
@@ -112,7 +112,7 @@
                     display: flex;
                     flex-direction: row;
                     justify-content: center;
-                    &:hover, &:focus {
+                    &:focus {
                         outline: none;
                         width: fit-content;
                         align-self: center;
