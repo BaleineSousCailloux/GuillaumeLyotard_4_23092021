@@ -30,7 +30,6 @@ const getPhotographerCard = () => {
             const card = instance.self.getPersonnalCard();
             document.getElementById("photographer").insertBefore(card, document.getElementById("photographer").firstChild);
             surname = photographer.name;
-            console.log(surname);
             self.getContactForm(photographer);
         }
         const personnalTags = document.querySelectorAll(".photographer__legend__tags__tag");

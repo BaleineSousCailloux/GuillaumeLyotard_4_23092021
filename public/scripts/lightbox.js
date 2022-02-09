@@ -10,6 +10,7 @@ this.lightboxVue = (medias) => {
   let domInsertMediaId = 0;
   let indexOfMediaVue = -1;
   let lastMediaId = 29;
+  let photographe = document.querySelector(".photographer__card__contact__name").innerHTML;
 
 
   // open Lightbox event (img click)
@@ -18,7 +19,7 @@ this.lightboxVue = (medias) => {
       let mediaId = event.target.getAttribute("data-media-id");
       medias.forEach(media => {
         if (media.id == mediaId) {
-          getLightbox(media, mediaInLightbox, surname);
+          getLightbox(media, mediaInLightbox, photographe);
           indexOfMediaVue = medias.findIndex((media) => media.id == domInsertMediaId);
         }
       });
@@ -71,11 +72,11 @@ this.lightboxVue = (medias) => {
     if (indexOfMediaVue > -1 && indexOfMediaVue < medias.length - 1) {
       indexOfMediaVue++;
       mediaInLightbox.innerHTML = "";
-      getLightbox(medias[indexOfMediaVue], mediaInLightbox, surname);
+      getLightbox(medias[indexOfMediaVue], mediaInLightbox, photographe);
     } else if (indexOfMediaVue == medias.length - 1) {
       indexOfMediaVue = 0;
       mediaInLightbox.innerHTML = "";
-      getLightbox(medias[0], mediaInLightbox, surname);
+      getLightbox(medias[0], mediaInLightbox, photographe);
     }
   }
 
@@ -83,11 +84,11 @@ this.lightboxVue = (medias) => {
     if (indexOfMediaVue > 0) {
       indexOfMediaVue--;
       mediaInLightbox.innerHTML = "";
-      getLightbox(medias[indexOfMediaVue], mediaInLightbox, surname);
+      getLightbox(medias[indexOfMediaVue], mediaInLightbox, photographe);
     } else if (indexOfMediaVue == 0) {
       indexOfMediaVue = medias.length - 1;
       mediaInLightbox.innerHTML = "";
-      getLightbox(medias[medias.length - 1], mediaInLightbox, surname);
+      getLightbox(medias[medias.length - 1], mediaInLightbox, photographe);
     }
   }
 

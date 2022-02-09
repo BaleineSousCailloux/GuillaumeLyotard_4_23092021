@@ -31,15 +31,14 @@ this.getContactForm = (person) => {
             }
         })
         /// gestion des onfocus sur les éléments //////////////////////////////////////////////////////
-    };
+    }
 
     // delay to close functions
-    let delayToClose;
     function manualCloseDelay() {
-        delayToClose = setTimeout(closeContactForm, 200);
+        setTimeout(closeContactForm, 200);
     }
     function autoCloseDelay() {
-        delayToClose = setTimeout(closeContactForm, 5000);
+        setTimeout(closeContactForm, 5000);
     }
 
     // close contact form function
@@ -49,7 +48,7 @@ this.getContactForm = (person) => {
         document.getElementById("last-error").style.display = 'none';
         document.getElementById("email-error").style.display = 'none';
         document.getElementById("message-error").style.display = 'none';
-    };
+    }
 
     // close contact form event
     //closeBtn.addEventListener("click", manualCloseDelay);
@@ -79,9 +78,9 @@ this.getContactForm = (person) => {
         charLength = event.target.value.length;
         if (charLength > maxLengthMessage) {
             return;
-        };
+        }
         counter.innerText = charLength;
-    });
+    })
 
 
     // contrôle et envoi
@@ -90,29 +89,32 @@ this.getContactForm = (person) => {
 
         event.preventDefault();
 
+        // ex regex : (/^[A-Z|a-z|\-]{2,}$/g.test(firstName.value))
         let firstNameIsValid = false;
-        if (/^[A-Z|a-z|\-]{2,}$/g.test(firstName.value)) {
+        if (/^[A-Z|a-z|-]{2,}$/g.test(firstName.value)) {
             firstNameIsValid = true;
             document.getElementById("first-error").style.display = 'none';
         } else {
             document.getElementById("first-error").style.display = 'block';
-        };
+        }
 
+        // ex regex : (/^[A-Z|a-z|\-]{1,}$/g.test(lastName.value))
         let lastNameIsValid = false;
-        if (/^[A-Z|a-z|\-]{1,}$/g.test(lastName.value)) {
+        if (/^[A-Z|a-z|-]{1,}$/g.test(lastName.value)) {
             lastNameIsValid = true;
             document.getElementById("last-error").style.display = 'none';
         } else {
             document.getElementById("last-error").style.display = 'block';
-        };
+        }
 
+        // ex regex : (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(email.value.trim().toLowerCase()))
         let emailIsValid = false; // regex trouvée sur internet, mais déjà géré automatiquement par le html
-        if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(email.value.trim().toLowerCase())) {
+        if (/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(email.value.trim().toLowerCase())) {
             emailIsValid = true;
             document.getElementById("email-error").style.display = 'none';
         } else {
             document.getElementById("email-error").style.display = 'block';
-        };
+        }
 
         let messageIsValid = false;
         if (message.value !== "") {
@@ -120,11 +122,9 @@ this.getContactForm = (person) => {
             document.getElementById("message-error").style.display = 'none';
         } else {
             document.getElementById("message-error").style.display = 'block';
-        };
+        }
 
-        //let formulaireIsValid = false; // validation globale
         if (firstNameIsValid && lastNameIsValid && emailIsValid && messageIsValid) {
-            //formulaireIsValid = true;
             autoCloseDelay(); // rappel de la fonction de clotûre de la modale automatique
             sendConfirm.style.display = 'block';
             sendConfirm.focus();
@@ -135,5 +135,5 @@ this.getContactForm = (person) => {
             console.log("envoyer à : " + person.name.replace(" ", '') + "@gmail.com")
             formulaire.reset(); // vider le formulaire
         }
-    });
-};
+    })
+}
