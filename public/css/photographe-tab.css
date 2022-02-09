@@ -16,7 +16,7 @@ a {
 }
 
 header {
-  min-height: 160px;
+  min-height: 90px;
 }
 header .container {
   width: 100%;
@@ -29,4 +29,88 @@ header .container .logo-2 {
   top: 30px;
   left: 10%;
   position: absolute;
+}
+
+#main .photographer {
+  width: 100%;
+  padding: 0 10%;
+  align-items: bottom;
+}
+#main .photographer__card__contact__name {
+  font-size: 3em;
+}
+#main .photographer__card__contact__btn {
+  position: fixed;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  bottom: 0;
+  z-index: 1;
+  height: fit-content;
+  font-size: 1.125em;
+  padding: 5px 0;
+}
+#main .photographer__legend {
+  height: fit-content;
+  justify-content: flex-end;
+}
+#main .photographer__legend__city {
+  font-size: 1.25em;
+  padding: 5px 0 5px 0;
+  margin: 0;
+}
+#main .photographer__legend__slogan {
+  margin: 0;
+  padding: 0 0 10px 0;
+  font-size: 1em;
+}
+#main .photographer__legend__tags {
+  margin: 5px 0 0 0;
+}
+#main .photographer__legend__tags__tag {
+  font-size: 1em;
+}
+#main .photographer__container {
+  min-width: 175px;
+}
+#main .photographer__container__img {
+  width: 175px;
+  height: 175px;
+}
+#main .portfolio__menu {
+  display: none;
+}
+
+.lightbox__content {
+  width: 94%;
+}
+.lightbox__content__container__media__title {
+  font-size: 1.4em;
+}
+.lightbox__content__icon__close {
+  font-size: 35px;
+}
+.lightbox__content__icon--right, .lightbox__content__icon--left {
+  font-size: 35px;
+}
+
+.contact__content {
+  width: 75%;
+}
+.contact__content__title {
+  font-size: 2.75em;
+}
+.contact__content__close {
+  font-size: 3em;
+  top: 12px;
+}
+.contact__content__body__form__data__label {
+  font-size: 1.5em;
+}
+.contact__content__body__form__data__control {
+  font-size: 1.35em;
+}
+
+.footer {
+  display: none;
 }

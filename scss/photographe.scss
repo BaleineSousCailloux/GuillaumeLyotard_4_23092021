@@ -34,7 +34,7 @@ header {
         justify-content: space-between;
         align-items: center;
         width: 85%;
-        height: 315px;
+        height: fit-content;
         padding: 0 50px;
         background-color: v.$fond_2;
         &__card {
@@ -57,6 +57,7 @@ header {
                     }
                 }
                 &__btn {
+                    box-sizing: border-box;
                     @include m.police--texte;
                     min-width: 170px;
                     height: 69px;
@@ -413,7 +414,7 @@ header {
     left: 0;
     background-color: v.$fond_2;
     &__content {
-        width: 90%;
+        width: 92%;
         height: 100%;
         display: flex;
         flex-direction: row;
@@ -454,7 +455,7 @@ header {
                     height: 3%;
                     margin: 5px 0 0 0;
                     color: v.$primaire;
-                    font-size: 24px;
+                    font-size: 1.625em;
                     &:focus, &:active {
                         font-weight: 700;
                         outline: none;

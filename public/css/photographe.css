@@ -149,7 +149,7 @@ header .container .logo-2 {
   justify-content: space-between;
   align-items: center;
   width: 85%;
-  height: 315px;
+  height: fit-content;
   padding: 0 50px;
   background-color: #fafafa;
 }
@@ -175,6 +175,7 @@ header .container .logo-2 {
   outline: none;
 }
 #main .photographer__card__contact__btn {
+  box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
   min-width: 170px;
@@ -526,7 +527,7 @@ header .container .logo-2 {
   background-color: #fafafa;
 }
 .lightbox__content {
-  width: 90%;
+  width: 92%;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -570,7 +571,7 @@ header .container .logo-2 {
   height: 3%;
   margin: 5px 0 0 0;
   color: #901c1c;
-  font-size: 24px;
+  font-size: 1.625em;
 }
 .lightbox__content__container__media__title:focus, .lightbox__content__container__media__title:active {
   font-weight: 700;

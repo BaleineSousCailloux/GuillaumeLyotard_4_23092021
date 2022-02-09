@@ -5,7 +5,7 @@
 
 
 header {
-    min-height: 160px;
+    min-height: 90px;
     .container {
         width: 100%;
         .logo-1 {
@@ -18,4 +18,108 @@ header {
             position: absolute;
         }
     }
+}
+#main {
+    .photographer {
+        width: 100%;
+        padding: 0 10%;
+        align-items: bottom;
+        &__card {
+            &__contact {
+                &__name {
+                    font-size: 3em;
+                }
+                &__btn {
+                    position: fixed;
+                    margin: 0;
+                    transform: translate(-50%, -50%);
+                    left: 50%;
+                    bottom: 0;
+                    z-index: 1;
+                    height: fit-content;
+                    font-size: 1.125em;
+                    padding: 5px 0;
+                }
+            }
+        }
+        &__legend {
+            height: fit-content;
+            justify-content: flex-end;
+            &__city {
+                font-size: 1.25em;
+                padding: 5px 0 5px 0;
+                margin: 0;
+            }
+            &__slogan {
+                margin: 0;
+                padding: 0 0 10px 0;
+                font-size: 1em;
+            }
+            &__tags {
+                margin: 5px 0 0 0;
+                &__tag {
+                    font-size: 1em;
+                }
+            }
+        }
+        &__container {
+            min-width: 175px;
+            &__img {
+                width: 175px;
+                height: 175px;
+            }
+        }
+    }
+    .portfolio {
+        &__menu {
+            display: none;
+        }
+    }
+}
+.lightbox {
+    &__content {
+        width: 94%;
+        &__container {
+            &__media {
+                &__title {
+                    font-size: 1.4em;
+                }
+            }
+        }
+        &__icon {
+            &__close {
+            font-size: 35px;
+            }
+            &--right, &--left {
+                font-size: 35px;
+            }
+        }
+    }
+}
+.contact {
+    &__content {
+        width: 75%;
+        &__title {
+            font-size: 2.75em;
+        }
+        &__close {
+            font-size: 3em;
+            top: 12px;
+        }
+        &__body {
+            &__form {
+                &__data {
+                    &__label {
+                        font-size: 1.5em;
+                    }
+                    &__control {
+                        font-size: 1.35em;
+                    }
+                }
+            }
+        }
+    }
+}
+.footer {
+    display: none;
 }
