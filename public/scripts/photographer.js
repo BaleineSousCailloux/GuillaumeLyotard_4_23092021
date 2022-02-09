@@ -1,5 +1,4 @@
 let surname = "";
-let sortMedias = [];
 
 const fetchData = async () => {
     const res = await fetch("../public/data/FishEyeData.json");
@@ -22,7 +21,7 @@ const urlParams = new URLSearchParams(queryString);
 const urlId = urlParams.get("id");
 
 
-const getPhotographerCard = () => {
+const getPhotographerCard = (photographers) => {
     let self = this;
     photographers.forEach(photographer => {
         if (photographer.id == urlId) {
@@ -148,10 +147,10 @@ const getPhotographerPortfolio = (mediasArray, photographerName) => {
 }
 
 
-const getPhotographerMedias = (photographerIdentity) => {
+const getPhotographerMedias = (medias, photographerIdentity) => {
     let btnActive = "";
     let photographerMedias = medias.filter(media => media.photographerId == urlId);
-    personnalMedias = photographerMedias.map(media => ({ ...media, liked: "far" }));
+    let personnalMedias = photographerMedias.map(media => ({ ...media, liked: "far" }));
     ////////////////////////////////////////////////////////////////////////////////////
     /////     CTRL IF LOCAL STORAGE     ////////////////////////////////////////////////
     personnalMedias = personnalMedias.map(media => {
@@ -330,14 +329,14 @@ const getPhotographerMedias = (photographerIdentity) => {
 const init = async () => {
     //localStorage.clear(); //// pour vider le stockage sur la mémoire local au besoin ////
     let self = this;
-    photographers = await getPhotographersData();
-    medias = await getMediasData();
-    getPhotographerCard();
+    const photographers = await getPhotographersData();
+    const medias = await getMediasData();
+    getPhotographerCard(photographers);
     let tagsPhotographerDom = document.querySelector(".photographer__legend__tags");
     tagsPhotographerDom.addEventListener("keydown", e => {
         self.enterTagsNav(e, tagsPhotographerDom);
     })
-    getPhotographerMedias(surname);
+    getPhotographerMedias(medias, surname);
 }
 
 init()
