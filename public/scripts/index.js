@@ -1,5 +1,5 @@
 let listTags = [];
-let tagSelected = 0;
+//let tagSelected = 0;
 let tagsZoneDom = document.getElementById("tagsList");
 let tagsPhotographerDom = document.querySelector(".photographer__legend__tags");
 
@@ -19,9 +19,9 @@ const getTagsListData = (photographers) => {
         photographer.tags.forEach(tag => {
             if (!listTags.includes(tag)) {
                 listTags.push(tag)
-            };
-        });
-    });
+            }
+        })
+    })
     return listTags;
 }
 
@@ -29,9 +29,10 @@ const getTagsListData = (photographers) => {
 
 
 const getHeaderTagsList = (listTags) => {
+    let self = this;
     listTags.forEach(tag => {
-        const instance = headerTagFactory(tag);
-        const newHeaderTag = instance.getHeaderTag();
+        const instance = self.headerTagFactory(tag);
+        const newHeaderTag = instance.self.getHeaderTag();
         tagsZoneDom.appendChild(newHeaderTag);
 
         newHeaderTag.addEventListener("click", e => {
@@ -43,11 +44,12 @@ const getHeaderTagsList = (listTags) => {
                 document.location.href = `index.html?tag=${e.target.getAttribute("data-tag")}`;
             }
         })
-    });
-};
+    })
+}
 
 
 const getPhotographerCards = (photographers, tagSelected) => {
+    let self = this;
     const filteredPhotographers = photographers.filter(photographer => {
         return !tagSelected || photographer.tags.includes(tagSelected);
     })
@@ -57,22 +59,20 @@ const getPhotographerCards = (photographers, tagSelected) => {
     const container = document.getElementById("photographers");
     container.innerHTML = "";
     filteredPhotographers.forEach(photographer => {
-        const instance = indexCardFactory(photographer);
-        const newCard = instance.getCard();
+        const instance = self.indexCardFactory(photographer);
+        const newCard = instance.self.getCard();
         container.appendChild(newCard);
         const personnalTags = newCard.querySelectorAll(".photographer__legend__tags__tag");
         Array.from(personnalTags).forEach(personnalTag => {
             personnalTag.addEventListener("click", event => {
                 document.location.href = `index.html?tag=${event.target.getAttribute("data-tag")}`
-            });
-
-        });
-    });
-
-
-};
+            })
+        })
+    })
+}
 
 const init = async () => {
+    let self = this;
     const photographers = await getPhotographersData();
     const tagsList = getTagsListData(photographers);
     const queryString = window.location.search;
@@ -87,7 +87,7 @@ const init = async () => {
                 domCardTag.setAttribute("aria-label", `le mot-clef ${tag} est sélectionné`);
             }
         }
-    });
+    })
 
     getPhotographerCards(photographers, tagUrl);
 
@@ -95,11 +95,11 @@ const init = async () => {
     tagsPhotographerDom = document.querySelector(".photographer__legend__tags");
 
     tagsZoneDom.addEventListener("keydown", e => {
-        enterTagsNav(e, tagsZoneDom);
-    });
+        self.enterTagsNav(e, tagsZoneDom);
+    })
     tagsPhotographerDom.addEventListener("keydown", e => {
-        enterTagsNav(e, tagsPhotographerDom);
-    });
+        self.enterTagsNav(e, tagsPhotographerDom);
+    })
 }
 
-init();
+init()

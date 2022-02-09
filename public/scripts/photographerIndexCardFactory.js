@@ -1,5 +1,5 @@
-const indexCardFactory = (indexCard) => {
-    getCard = () => {
+this.indexCardFactory = (indexCard) => {
+    this.getCard = () => {
         const newPhotographer = document.createElement("article");
         newPhotographer.classList.add("photographer");
         newPhotographer.setAttribute("aria-label", `carte du photographe ${indexCard.name}`);

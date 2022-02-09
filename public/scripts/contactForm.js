@@ -1,4 +1,4 @@
-const getContactForm = (person) => {
+this.getContactForm = (person) => {
     // open & close contact form
 
 
@@ -122,9 +122,9 @@ const getContactForm = (person) => {
             document.getElementById("message-error").style.display = 'block';
         };
 
-        let formulaireIsValid = false; // validation globale
+        //let formulaireIsValid = false; // validation globale
         if (firstNameIsValid && lastNameIsValid && emailIsValid && messageIsValid) {
-            formulaireIsValid = true;
+            //formulaireIsValid = true;
             autoCloseDelay(); // rappel de la fonction de clotûre de la modale automatique
             sendConfirm.style.display = 'block';
             sendConfirm.focus();

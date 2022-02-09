@@ -1,11 +1,11 @@
-const mediaPortfolioFactory = (portfolio) => {
-    getMediaCard = () => {
+this.mediaPortfolioFactory = (portfolio, directory) => {
+    this.getMediaCard = () => {
         const mediaCard = document.createElement("article");
         mediaCard.classList.add("portfolio__content__card");
-        if (videoName) {
+        if (portfolio.video) {
             mediaCard.innerHTML = `
             <video class="portfolio__content__card__media" data-media-id="${portfolio.id}" tabindex="12" aria-label="${portfolio.alt}, ouvrir en pleine page">
-                <source src="../public/images/Photos/${surname}/${portfolio.video}" type="video/mp4">
+                <source src="../public/images/Photos/${directory}/${portfolio.video}" type="video/mp4">
             </video>
             <span class="portfolio__content__card__media__icon fa-solid fa-video"></span>
             <div class="portfolio__content__card__legend">
@@ -18,7 +18,7 @@ const mediaPortfolioFactory = (portfolio) => {
             `;
         } else {
             mediaCard.innerHTML = `
-        <img class="portfolio__content__card__media" data-media-id="${portfolio.id}" src="../public/images/Photos/${surname}/${portfolio.image}"
+        <img class="portfolio__content__card__media" data-media-id="${portfolio.id}" src="../public/images/Photos/${directory}/${portfolio.image}"
          tabindex="12" alt="${portfolio.alt}" aria-label="${portfolio.alt}, ouvrir en pleine page"/>
         <div class="portfolio__content__card__legend">
             <p class="portfolio__content__card__legend__title" tabindex="12" lang="en" aria-label="${portfolio.title}">${portfolio.title}</p>

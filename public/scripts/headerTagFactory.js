@@ -1,5 +1,5 @@
-const headerTagFactory = (headerTag) => {
-    getHeaderTag = () => {
+this.headerTagFactory = (headerTag) => {
+    this.getHeaderTag = () => {
         const newHeaderTag = document.createElement("span");
         newHeaderTag.classList.add("tag");
         newHeaderTag.classList.add(headerTag)

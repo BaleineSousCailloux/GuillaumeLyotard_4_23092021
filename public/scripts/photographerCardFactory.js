@@ -1,5 +1,5 @@
-const photographerCardFactory = (photographerCard) => {
-    getPersonnalCard = () => {
+this.photographerCardFactory = (photographerCard) => {
+    this.getPersonnalCard = () => {
         const photographer = document.createElement("article");
         photographer.classList.add("photographer__card");
         photographer.innerHTML = `
