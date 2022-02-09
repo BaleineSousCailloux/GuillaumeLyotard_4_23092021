@@ -15,7 +15,13 @@ header {
     z-index: 1;
     .container {
         width: fit-content;
+        &:hover, &:focus, &:active {
+            border: none;
+            outline: none;
+        }
         &:hover .logo-2, &:focus .logo-2 {
+            border: none;
+            outline: none;
             opacity: 1;
         }
         .logo-1 {

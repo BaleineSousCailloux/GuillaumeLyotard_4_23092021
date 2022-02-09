@@ -9,13 +9,12 @@ const lightboxVue = (medias) => {
   const rightArrow = document.querySelector(".fa-angle-right");
   let domInsertMediaId = 0;
   let indexOfMediaVue = -1;
-  console.log(openLightbox);
 
 
   // open Lightbox event (img click)
   openLightbox.forEach(mediaClicked => {
     mediaClicked.addEventListener("click", event => {
-      let mediaId = event.target.getAttribute("media-ID");
+      let mediaId = event.target.getAttribute("data-media-id");
       medias.forEach(media => {
         if (media.id == mediaId) {
           getLightbox(media, mediaInLightbox);
@@ -35,7 +34,6 @@ const lightboxVue = (medias) => {
 
   // navigation in lightbox
   function navigate() {
-    console.log(medias.length);
     leftArrow.addEventListener("click", leftAction);
     rightArrow.addEventListener("click", rightAction);
     leftArrow.addEventListener("keydown", leftEvent => {
@@ -71,12 +69,10 @@ const lightboxVue = (medias) => {
   const rightAction = () => {
     if (indexOfMediaVue > -1 && indexOfMediaVue < medias.length - 1) {
       indexOfMediaVue++;
-      console.log(indexOfMediaVue);
       mediaInLightbox.innerHTML = "";
       getLightbox(medias[indexOfMediaVue], mediaInLightbox);
     } else if (indexOfMediaVue == medias.length - 1) {
       indexOfMediaVue = 0;
-      console.log(indexOfMediaVue);
       mediaInLightbox.innerHTML = "";
       getLightbox(medias[0], mediaInLightbox);
     }
@@ -85,12 +81,10 @@ const lightboxVue = (medias) => {
   const leftAction = () => {
     if (indexOfMediaVue > 0) {
       indexOfMediaVue--;
-      console.log(indexOfMediaVue);
       mediaInLightbox.innerHTML = "";
       getLightbox(medias[indexOfMediaVue], mediaInLightbox);
     } else if (indexOfMediaVue == 0) {
       indexOfMediaVue = medias.length - 1;
-      console.log(indexOfMediaVue);
       mediaInLightbox.innerHTML = "";
       getLightbox(medias[medias.length - 1], mediaInLightbox);
     }
@@ -116,8 +110,6 @@ const lightboxVue = (medias) => {
     document.getElementById("lightbox-container").innerHTML = ``;
     openLightbox.forEach(media => {
       let mediaTarget = media.getAttribute("media-id");
-      console.log(mediaTarget);
-      console.log("last" + lastMediaId);
       if (mediaTarget == lastMediaId) {
         media.focus();
       }
@@ -131,14 +123,14 @@ const lightboxVue = (medias) => {
       mediaContainerInLightbox.classList.add("lightbox__content__container__media");
       if (isVideo) {
         mediaContainerInLightbox.innerHTML = `
-            <video class="lightbox__content__container__media__insert" media-ID="${light.id}" controls autoplay tabindex="1" aria-label="${light.alt}">
+            <video class="lightbox__content__container__media__insert" data-media-id="${light.id}" controls autoplay tabindex="1" aria-label="${light.alt}">
                 <source src="../public/images/Photos/${surname}/${light.video}" type="video/mp4">
             </video>
             <p class="lightbox__content__container__media__title" tabindex="1" lang="en" aria-label="titre du média">${light.title}</p>
           `;
       } else {
         mediaContainerInLightbox.innerHTML = `
-            <img class="lightbox__content__container__media__insert" media-ID="${light.id}" src="../public/images/Photos/${surname}/${light.image}" 
+            <img class="lightbox__content__container__media__insert" data-media-id="${light.id}" src="../public/images/Photos/${surname}/${light.image}" 
             tabindex="1" alt="${light.alt}" aria-label="${light.alt}"/>
             <p class="lightbox__content__container__media__title" tabindex="1" lang="en" aria-label="titre du média">${light.title}</p>
           `;
@@ -154,7 +146,7 @@ const lightboxVue = (medias) => {
     const temp = lightboxFactory(mediaSelected);
     const newLightboxVue = temp.getLightboxVue();
     domPlace.appendChild(newLightboxVue);
-    domInsertMediaId = newLightboxVue.querySelector(".lightbox__content__container__media__insert").getAttribute("media-ID");
+    domInsertMediaId = newLightboxVue.querySelector(".lightbox__content__container__media__insert").getAttribute("data-media-id");
     return domInsertMediaId;
   };
 };

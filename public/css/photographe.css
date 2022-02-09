@@ -29,7 +29,13 @@ header {
 header .container {
   width: fit-content;
 }
+header .container:hover, header .container:focus, header .container:active {
+  border: none;
+  outline: none;
+}
 header .container:hover .logo-2, header .container:focus .logo-2 {
+  border: none;
+  outline: none;
   opacity: 1;
 }
 header .container .logo-1 {

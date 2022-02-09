@@ -21,16 +21,16 @@
 <body>
     <header>
         <a href="../index.html" class="container" tabindex="3" aria-label="logo du site et retour à l'accueil">
-            <img src="../public/images/logo2.png" class="logo-2" tabindex="-1" alt="logo" />
-            <img src="../public/images/logo.png" class="logo-1" tabindex="-1" alt="logo" />
+            <img src="../public/images/logo2.png" class="logo-2" alt="logo" />
+            <img src="../public/images/logo.png" class="logo-1" alt="logo" />
         </a>
     </header>
-    <main id="main" tabindex="-1">
-        <section class="photographer" id="photographer" tabindex="-1">
+    <main id="main">
+        <section class="photographer" id="photographer">
             <!-- insert photographer article via photographer.js -->
         </section>
-        <section class="portfolio" tabindex="-1">
-            <div class="portfolio__menu" tabindex="-1">
+        <section class="portfolio">
+            <div class="portfolio__menu">
                 <p class="portfolio__menu__title" tabindex="10" aria-label="trier par...">Trier par</p>
                 <div class="portfolio__menu__btn">
                     <div class="portfolio__menu__btn--1" tabindex="11" id="btn-inactive" role="button"
@@ -38,8 +38,8 @@
                         <span class="portfolio__menu__btn--1__pop" id="btn-vue">Popularité</span>
                         <span class="portfolio__menu__btn--1__icon fa-solid fa-angle-down"></span>
                     </div>
-                    <div class="portfolio__menu__btn--2" id="btn-select-menu" tabindex="11" aria-haspopup="listbox"
-                        aria-expanded="true">
+                    <div class="portfolio__menu__btn--2" id="btn-select-menu" role="listbox" tabindex="11"
+                        aria-haspopup="listbox" aria-expanded="true">
                         <span class="portfolio__menu__btn--2__option-1">
                             <span class="portfolio__menu__btn--2__option-1-vue" aria-label="option de tri des médias"
                                 tabindex="0" data-option="pop">Popularité</span>
@@ -51,12 +51,6 @@
                             tabindex="0" data-option="title">Titre</span>
                     </div>
                 </div>
-                <!--<label class="portfolio__menu__title" for="portfolio__sort__btn">Trier par</label>
-                <select class="portfolio__menu__btn" name="sort__options" id="portfolio__sort__btn">
-                    <option class="portfolio__menu__btn__pop" id="pop" value="pop" selected>Popularité</option>
-                    <option class="portfolio__menu__btn__date" id="date" value="date">Date</option>
-                    <option class="portfolio__menu__btn__title" id="title" value="title">Titre</option>
-                </select>-->
             </div>
             <div class="portfolio__content" id="portfolioContent">
                 <!-- insert articles medias via photographer.js -->
@@ -64,11 +58,11 @@
         </section>
     </main>
     <footer class="footer" id="footer" tabindex="9" aria-label="total des mentions j'aime, et prix par jour">
-        <div class="footer__infos" tabindex="-1">
-            <span class="footer__infos__cunt" aria-label="total des mentions j'aime" tabindex="-1">
+        <div class="footer__infos">
+            <span class="footer__infos__cunt" aria-label="total des mentions j'aime">
                 <!-- insert cunt via photographer.js -->
             </span>
-            <span class="footer__infos__heart fas fa-heart" aria-label="icone coeur" tabindex="-1"></span>
+            <span class="footer__infos__heart fas fa-heart" aria-label="icone coeur"></span>
         </div>
         <!-- insert price via photographerCardFactory.js -->
     </footer>

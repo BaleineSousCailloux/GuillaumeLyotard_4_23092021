@@ -11,17 +11,6 @@ const getContactForm = (person) => {
     photographerContactName.setAttribute("aria-label", `${person.name}`);
     photographerContactName.setAttribute("tabindex", 1);
 
-    //photographerContactName.innerText = "contactez " + person.name;
-
-
-    // DOM Elements
-    /*const openBtn = document.getElementById("openForm");
-    const contactForm = document.getElementById("contact");
-    const closeBtn = document.getElementById("closeForm");*/
-
-    // open contact form event (img click)
-
-    //openBtn.addEventListener("click", launchContactForm);
 
     // open contact form fonction
     function launchContactForm() {
@@ -75,7 +64,6 @@ const getContactForm = (person) => {
 
     // DOM Elements
     const formulaire = document.getElementById("form")
-    //const sendBtn = document.getElementById("submit");
     const sendConfirm = document.getElementById("confirm")
 
     const firstName = document.getElementById("first");
@@ -106,40 +94,32 @@ const getContactForm = (person) => {
         if (/^[A-Z|a-z|\-]{2,}$/g.test(firstName.value)) {
             firstNameIsValid = true;
             document.getElementById("first-error").style.display = 'none';
-            //console.log("prénom OK");
         } else {
             document.getElementById("first-error").style.display = 'block';
-            //console.log("prénom incorrect")
         };
 
         let lastNameIsValid = false;
         if (/^[A-Z|a-z|\-]{1,}$/g.test(lastName.value)) {
             lastNameIsValid = true;
             document.getElementById("last-error").style.display = 'none';
-            //console.log("nom OK");
         } else {
             document.getElementById("last-error").style.display = 'block';
-            //console.log("nom incorrect")
         };
 
         let emailIsValid = false; // regex trouvée sur internet, mais déjà géré automatiquement par le html
         if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(email.value.trim().toLowerCase())) {
             emailIsValid = true;
             document.getElementById("email-error").style.display = 'none';
-            //console.log("email OK");
         } else {
             document.getElementById("email-error").style.display = 'block';
-            //console.log("email incorrect")
         };
 
         let messageIsValid = false;
         if (message.value !== "") {
             messageIsValid = true;
             document.getElementById("message-error").style.display = 'none';
-            //console.log("message présent");
         } else {
             document.getElementById("message-error").style.display = 'block';
-            //console.log("message absent")
         };
 
         let formulaireIsValid = false; // validation globale

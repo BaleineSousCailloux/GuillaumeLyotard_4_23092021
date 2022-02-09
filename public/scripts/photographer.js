@@ -186,7 +186,7 @@ const getPhotographerMedias = () => {
             const zoneToClick = e.target.classList.contains("portfolio__content__card__legend__like") ? e.target : e.target.closest(".portfolio__content__card__legend__like");
             const heart = Array.from(zoneToClick.children).find(el => el.classList.contains("portfolio__content__card__legend__like__empty"));
             const likesVue = zoneToClick.querySelector(".portfolio__content__card__legend__like__cunt");
-            const mediaId = zoneToClick.getAttribute("data-media-ID");
+            const mediaId = zoneToClick.getAttribute("data-like-id");
             personnalMedias = personnalMedias.map(media => {
                 if (mediaId == media.id) {
                     if (media.liked == "far") {
@@ -300,7 +300,7 @@ const getPhotographerMedias = () => {
                 const zoneToClick = e.target.classList.contains("portfolio__content__card__legend__like") ? e.target : e.target.closest(".portfolio__content__card__legend__like");
                 const heart = Array.from(zoneToClick.children).find(el => el.classList.contains("portfolio__content__card__legend__like__empty"));
                 const likesVue = zoneToClick.querySelector(".portfolio__content__card__legend__like__cunt");
-                const mediaId = zoneToClick.getAttribute("data-media-ID");
+                const mediaId = zoneToClick.getAttribute("data-like-id");
                 personnalMedias = personnalMedias.map(media => {
                     if (mediaId == media.id) {
                         if (media.liked == "far") {

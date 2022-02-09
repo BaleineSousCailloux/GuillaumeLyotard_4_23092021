@@ -2,11 +2,10 @@ const indexCardFactory = (indexCard) => {
     getCard = () => {
         const newPhotographer = document.createElement("article");
         newPhotographer.classList.add("photographer");
-        newPhotographer.setAttribute("tabindex", -1);
         newPhotographer.setAttribute("aria-label", `carte du photographe ${indexCard.name}`);
         newPhotographer.innerHTML = `
         <a href="./pages/photographe.html?id=${indexCard.id}" class="photographer__card" tabindex="6" aria-label="se rendre sur la page de ${indexCard.name}">
-            <img class="photographer__card__img" src="./public/images/Photos/Photographers ID Photos/${indexCard.portrait}" aria-label="portrait de ${indexCard.name}" />
+            <img class="photographer__card__img" src="./public/images/Photos/Photographers ID Photos/${indexCard.portrait}" alt="portrait de ${indexCard.name}" aria-label="portrait de ${indexCard.name}" />
             <h2 class="photographer__card__name" aria-label="nom du photographe">${indexCard.name}</h2>
         </a>
         <div class="photographer__legend" tabindex="6" aria-label="informations sur ${indexCard.name}">
@@ -22,7 +21,6 @@ const indexCardFactory = (indexCard) => {
             newTag.classList.add("tag");
             newTag.setAttribute("data-tag", tag);
             newTag.setAttribute("aria-label", tag);
-            newTag.setAttribute("tabindex", -1);
             newTag.innerHTML = `#${tag}`;
             newPhotographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
         })
