@@ -9,8 +9,8 @@
     width: 100%;
     box-sizing: border-box;
     position: relative;
-    padding-top: 90px;
-    padding-bottom: 70px;
+    padding-top: 110px;
+    padding-bottom: 60px;
     user-select: none;
     cursor: default;
     h1 {
@@ -44,8 +44,8 @@
             box-sizing: border-box;
             width: 33.3%;
             min-width: 400px;
-            padding: 35px;
-            height: 430px;
+            padding: 15px 35px;
+            height: fit-content;
             &__card {
                 display: flex;
                 flex-direction: column;
@@ -53,7 +53,7 @@
                 align-items: center;
                 box-sizing: border-box;
                 width: 100%;
-                height: 260px;
+                height: fit-content;
                 margin: 0;
                 padding: 10px 0 0 0;
                 &:focus {
@@ -64,7 +64,7 @@
                 &__img {
                     border-radius: 50%;
                     width: 200px;
-                    min-height: 200px;
+                    height: 200px;
                     box-shadow: 4px 4px 8px v.$shadow;
                     object-fit: cover;
                     margin: 0;
@@ -72,14 +72,14 @@
                 &__name {
                     padding: 0;
                     color: v.$secondaire;
-                    font-size: 36px;
+                    font-size: 2.25em;
                     margin: 10px 0 0 0;
 
                 }
             }
             &__legend {
                 width: 100%;
-                height: 60px;
+                height: fit-content;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -93,17 +93,17 @@
                     border: 1px solid v.$secondaire;
                 }
                 &__city {
-                    font-size: 13px;
+                    font-size: 0.85em;
                     color: v.$primaire;
                     margin: 2px;
                 }
                 &__slogan {
-                    font-size: 10px;
+                    font-size: 0.75em;
                     color: v.$txt_1;
                     margin: 2px;
                 }
                 &__price {
-                    font-size: 9px;
+                    font-size: 0.65em;
                     color: v.$tertiaire;
                     margin: 2px;
                 }

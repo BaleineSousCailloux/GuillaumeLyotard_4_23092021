@@ -19,12 +19,13 @@ header {
   display: flex;
   box-sizing: border-box;
   width: 100%;
-  min-height: 90px;
+  height: 110px;
   background-color: #fff;
   padding-top: 30px;
-  margin-bottom: 20px;
   position: fixed;
   z-index: 1;
+  user-select: none;
+  box-shadow: 7px 0px 7px #c4c4c4;
 }
 header .container {
   width: fit-content;
@@ -94,6 +95,7 @@ header .tags__liste {
   align-items: center;
   flex-direction: row;
   width: fit-content;
+  height: fit-content;
   outline: none;
 }
 header .tags__liste:focus {
@@ -122,6 +124,7 @@ header #tag-selected {
 header {
   position: relative;
   z-index: 0;
+  box-shadow: none;
 }
 header .container .logo-1 {
   position: absolute;
@@ -138,7 +141,7 @@ header .container .logo-2 {
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 70px;
+  padding-bottom: 40px;
   user-select: none;
   cursor: default;
 }
@@ -148,8 +151,8 @@ header .container .logo-2 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
-  height: fit-content;
+  width: 88%;
+  height: 250px;
   padding: 0 50px;
   background-color: #fafafa;
 }
@@ -158,16 +161,19 @@ header .container .logo-2 {
   flex-direction: column;
   justify-content: left;
   width: 75%;
+  height: fit-content;
 }
 #main .photographer__card__contact {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  height: fit-content;
 }
 #main .photographer__card__contact__name {
+  height: fit-content;
   color: #d3573c;
-  font-size: 4em;
+  font-size: 3.5em;
   margin: 0 5% 0 0;
 }
 #main .photographer__card__contact__name:focus, #main .photographer__card__contact__name:active {
@@ -186,7 +192,7 @@ header .container .logo-2 {
   font-size: 1.25em;
   font-weight: 700;
   color: #fff;
-  margin: 5px 100px 0 0;
+  margin: 0 100px 0 0;
   box-shadow: 3px 2px 5px #c4c4c4;
   cursor: pointer;
 }
@@ -202,7 +208,7 @@ header .container .logo-2 {
   justify-content: flex-start;
   align-items: left;
   box-sizing: border-box;
-  height: 80px;
+  height: fit-content;
 }
 #main .photographer__legend:focus, #main .photographer__legend:active {
   outline: none;
@@ -217,7 +223,7 @@ header .container .logo-2 {
 #main .photographer__legend__city {
   font-size: 1.5em;
   color: #901c1c;
-  margin: 5px 0 0 0;
+  margin: 0;
 }
 #main .photographer__legend__slogan {
   margin: 15px 0 0 0;
@@ -255,7 +261,7 @@ header .container .logo-2 {
   margin: 0;
   padding: 0;
   width: 25%;
-  min-width: 200px;
+  min-width: fit-content;
   display: flex;
   justify-content: right;
 }
@@ -444,6 +450,7 @@ header .container .logo-2 {
   position: relative;
 }
 #main .portfolio__content__card__media:focus {
+  width: 100%;
   outline: none;
   border-right: 3px solid #d3573c;
   border-left: 3px solid #d3573c;
@@ -454,8 +461,8 @@ header .container .logo-2 {
   color: #d3573c;
   font-size: 2.5em;
   opacity: 0.8;
-  top: 30px;
-  right: 20px;
+  top: 150px;
+  left: 50%;
 }
 #main .portfolio__content__card__legend {
   display: flex;
@@ -465,7 +472,7 @@ header .container .logo-2 {
   align-items: flex-start;
   max-width: 350px;
   height: 70px;
-  line-height: 2.25emem;
+  line-height: 2.25em;
   color: #901c1c;
   padding: 3px;
   box-sizing: border-box;
@@ -569,7 +576,7 @@ header .container .logo-2 {
 .lightbox__content__container__media__title {
   align-items: left;
   height: 3%;
-  margin: 5px 0 0 0;
+  margin: 10px 5px;
   color: #901c1c;
   font-size: 1.625em;
 }

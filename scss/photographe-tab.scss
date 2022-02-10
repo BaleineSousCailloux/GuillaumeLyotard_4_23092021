@@ -5,16 +5,16 @@
 
 
 header {
-    min-height: 90px;
+    height: 100px;
     .container {
-        width: 100%;
+        width: 40%;
         .logo-1 {
             top: 30px;
-            left: 10%;
+            left: 8%;
         }
         .logo-2 {
             top: 30px;
-            left: 10%;
+            left: 8%;
             position: absolute;
         }
     }
@@ -23,7 +23,7 @@ header {
     .photographer {
         width: 100%;
         padding: 0 10%;
-        align-items: bottom;
+        height: 210px;
         &__card {
             &__contact {
                 &__name {
@@ -36,7 +36,6 @@ header {
                     left: 50%;
                     bottom: 0;
                     z-index: 1;
-                    height: fit-content;
                     font-size: 1.125em;
                     padding: 5px 0;
                 }
@@ -63,10 +62,9 @@ header {
             }
         }
         &__container {
-            min-width: 175px;
             &__img {
-                width: 175px;
-                height: 175px;
+                width: 190px;
+                height: 190px;
             }
         }
     }
@@ -89,6 +87,7 @@ header {
         &__icon {
             &__close {
             font-size: 35px;
+            top: 20px;
             }
             &--right, &--left {
                 font-size: 35px;
@@ -114,6 +113,20 @@ header {
                     }
                     &__control {
                         font-size: 1.35em;
+                    }
+                    &__error {
+                        &__first {
+                            top: 9px;
+                        }
+                        &__last {
+                            top: 9px;
+                        }
+                        &__email {
+                            top: 9px;
+                        }
+                        &__message {
+                            top: 9px;
+                        }
                     }
                 }
             }

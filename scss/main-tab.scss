@@ -5,16 +5,16 @@
 
 
 header {
-    min-height: 160px;
+    height: 160px;
     .container {
-        width: 100%;
+        width: 40%;
         .logo-1 {
             top: 30px;
-            left: 10%;
+            left: 8%;
         }
         .logo-2 {
             top: 30px;
-            left: 10%;
+            left: 8%;
             position: absolute;
         }
     }

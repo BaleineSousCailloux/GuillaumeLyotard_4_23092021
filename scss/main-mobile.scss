@@ -1,0 +1,66 @@
+@use "./utils/variables" as v;
+@use "./utils/mixins" as m;
+@use "./base/body";
+@use "./base/link";
+
+
+header {
+    height: 140px;
+    .container {
+        width: 45%;
+        .logo-1 {
+            width: 140px;
+            top: 20px;
+            left: 6%;
+        }
+        .logo-2 {
+            width: 140px;
+            top: 20px;
+            left: 6%;
+        }
+    }
+    .tags {
+        top: 75px;
+        &__liste {
+            .tag {
+                font-size: 0.65em;
+            }
+        }
+    }
+}
+#main {
+    padding-top: 140px;
+    h1 {
+        font-size: 0.9em;
+        top: 28px;
+        margin-right: 6%;
+    }
+    .photographers {
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        .photographer {
+            width: 100%;
+            min-width: 300px;
+            padding: 6%;
+            &__card {
+                padding: 0;
+                &__img {
+                    width: 190px;
+                    height: 190px;
+                }
+                &__name {
+                    font-size: 2em;
+                }
+            }
+            &__legend {
+                padding: 0;
+                &__tags {
+                    &__tag {
+                        font-size: 0.7em;
+                    }
+                }
+            }
+        }
+    }
+}
