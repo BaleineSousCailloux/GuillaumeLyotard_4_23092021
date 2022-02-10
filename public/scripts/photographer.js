@@ -208,6 +208,14 @@ const getPhotographerMedias = (medias, photographerIdentity) => {
                 return media;
             })
         })
+        likeZone.addEventListener("keydown", onClick => {
+
+            if (onClick.keyCode === 13 || onClick.keyCode === 32) {
+                onClick.preventDefault();
+                onClick.stopPropagation();
+                likeZone.click();
+            }
+        })
     })
 
 
@@ -321,6 +329,13 @@ const getPhotographerMedias = (medias, photographerIdentity) => {
                     }
                     return media;
                 })
+            })
+            likeZone.addEventListener("keydown", onClick => {
+                if (onClick.keyCode === 13 || onClick.keyCode === 32) {
+                    onClick.preventDefault();
+                    onClick.stopPropagation();
+                    likeZone.click();
+                }
             })
         })
     })

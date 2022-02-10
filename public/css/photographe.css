@@ -456,7 +456,6 @@ header .container .logo-2 {
   position: relative;
 }
 #main .portfolio__content__card__media:focus {
-  width: 100%;
   outline: none;
   border-right: 3px solid #d3573c;
   border-left: 3px solid #d3573c;

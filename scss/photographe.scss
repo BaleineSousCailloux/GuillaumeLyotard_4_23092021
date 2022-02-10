@@ -332,7 +332,6 @@ header {
                     cursor: pointer;
                     position: relative;
                     &:focus {
-                        width: 100%;
                         outline: none;
                         border-right: 3px solid v.$secondaire;
                         border-left: 3px solid v.$secondaire;
