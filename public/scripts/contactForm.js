@@ -17,6 +17,10 @@ this.getContactForm = (person) => {
         sendConfirm.style.display = "none";
         contactForm.style.display = "flex";
         formContent.focus();
+
+        document.getElementById("body").setAttribute("aria-hidden", true);
+        document.getElementById("body").classList.add("hidden");
+
         closeBtn.addEventListener("keydown", e => {
             e.preventDefault();
             if (e.keyCode === 9 && closeBtn.contains(document.activeElement)) {
@@ -43,6 +47,9 @@ this.getContactForm = (person) => {
 
     // close contact form function
     function closeContactForm() {
+        document.getElementById("body").setAttribute("aria-hidden", false);
+        document.getElementById("body").classList.remove("hidden");
+
         contactForm.style.display = "none";
         document.getElementById("first-error").style.display = 'none';
         document.getElementById("last-error").style.display = 'none';

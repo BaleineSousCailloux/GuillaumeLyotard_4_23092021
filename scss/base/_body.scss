@@ -2,6 +2,7 @@
 @use "../utils/mixins" as m;
 
 body {
+    display: block;
     @include m.police--texte;
     box-sizing: border-box;
     width: 100%;

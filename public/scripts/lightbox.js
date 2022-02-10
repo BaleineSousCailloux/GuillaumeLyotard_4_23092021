@@ -98,6 +98,9 @@ this.lightboxVue = (medias) => {
     lightbox.style.display = "flex";
     lightbox.focus();
 
+    document.getElementById("body").setAttribute("aria-hidden", true);
+    document.getElementById("body").classList.add("hidden");
+
   }
 
 
@@ -110,7 +113,11 @@ this.lightboxVue = (medias) => {
 
   // close lightbox function
   function quitLightbox(lastMedia) {
+    document.getElementById("body").setAttribute("aria-hidden", false);
+    document.getElementById("body").classList.remove("hidden");
+
     lightbox.style.display = "none";
+
     //const lastMediaId = document.querySelector(".lightbox__content__container__media__insert").getAttribute("data-media-id");
     document.getElementById("lightbox-container").innerHTML = ``;
     openLightbox.forEach(media => {
