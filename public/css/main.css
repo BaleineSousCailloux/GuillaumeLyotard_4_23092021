@@ -16,6 +16,10 @@ a {
   color: #000;
 }
 
+.shadow {
+  box-shadow: 7px 0px 7px #c4c4c4;
+}
+
 header {
   display: flex;
   box-sizing: border-box;
@@ -26,7 +30,6 @@ header {
   position: fixed;
   z-index: 1;
   user-select: none;
-  box-shadow: 7px 0px 7px #c4c4c4;
 }
 header .container {
   width: fit-content;
@@ -120,6 +123,10 @@ header .tags__liste .tag:hover, header .tags__liste .tag:focus {
 header #tag-selected {
   color: #fff;
   background-color: #d3573c;
+}
+
+header {
+  box-shadow: none;
 }
 
 #main {

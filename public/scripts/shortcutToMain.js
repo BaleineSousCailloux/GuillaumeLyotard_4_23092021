@@ -1,5 +1,6 @@
 // DOM elements
 const shortcut = document.getElementById("shortcut");
+const headerDom = document.getElementById("header");
 
 // visibility delay
 function visibilityDelay() {
@@ -11,6 +12,13 @@ function closeShortcut() {
 }
 
 // Scroll down event
-window.addEventListener("scroll", () => {
-    visibilityDelay()
+window.addEventListener("scroll", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    visibilityDelay();
+    if (window.scrollY >= 20) {
+        headerDom.classList.add("shadow");
+    } else {
+        headerDom.classList.remove("shadow");
+    }
 })

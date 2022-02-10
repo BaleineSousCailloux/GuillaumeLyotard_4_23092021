@@ -2,6 +2,9 @@
 @use "../base/body";
 @use "../base/link";
 
+.shadow {
+    box-shadow: 7px 0px 7px v.$shadow;
+}
 
 header {
     display: flex;
@@ -13,7 +16,6 @@ header {
     position: fixed;
     z-index: 1;
     user-select: none;
-    box-shadow: 7px 0px 7px v.$shadow;
     .container {
         width: fit-content;
         &:hover, &:focus, &:active {

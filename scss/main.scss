@@ -4,6 +4,9 @@
 @use "./base/link";
 @use "./layouts/header";
 
+header {
+    box-shadow: none;
+}
 
 #main {
     width: 100%;
