@@ -98,7 +98,7 @@ header .tags__liste {
   height: fit-content;
   outline: none;
 }
-header .tags__liste:focus {
+header .tags__liste:focus, header .tags__liste:active {
   border-radius: 15px;
   border-bottom: 1px solid #d3573c;
 }
@@ -498,14 +498,14 @@ header .container .logo-2 {
   justify-content: flex-end;
   align-items: center;
 }
-#main .portfolio__content__card__legend__like:focus, #main .portfolio__content__card__legend__like:hover {
+#main .portfolio__content__card__legend__like:focus, #main .portfolio__content__card__legend__like:hover #main .portfolio__content__card__legend__like:active {
   outline: none;
   border: none;
 }
-#main .portfolio__content__card__legend__like:focus .portfolio__content__card__legend__like__empty, #main .portfolio__content__card__legend__like:hover .portfolio__content__card__legend__like__empty {
+#main .portfolio__content__card__legend__like:focus .portfolio__content__card__legend__like__empty, #main .portfolio__content__card__legend__like:hover #main .portfolio__content__card__legend__like:active .portfolio__content__card__legend__like__empty {
   font-size: 1.5em;
 }
-#main .portfolio__content__card__legend__like:focus .portfolio__content__card__legend__like__cunt, #main .portfolio__content__card__legend__like:hover .portfolio__content__card__legend__like__cunt {
+#main .portfolio__content__card__legend__like:focus .portfolio__content__card__legend__like__cunt, #main .portfolio__content__card__legend__like:hover #main .portfolio__content__card__legend__like:active .portfolio__content__card__legend__like__cunt {
   color: #d3573c;
 }
 #main .portfolio__content__card__legend__like__cunt {
@@ -533,6 +533,10 @@ header .container .logo-2 {
   left: 0;
   background-color: #fafafa;
 }
+.lightbox:focus, .lightbox:hover, .lightbox:active {
+  border: none;
+  outline: none;
+}
 .lightbox__content {
   width: 92%;
   height: 100%;
@@ -543,6 +547,10 @@ header .container .logo-2 {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+}
+.lightbox__content:focus, .lightbox__content:hover, .lightbox__content:active {
+  border: none;
+  outline: none;
 }
 .lightbox__content__container {
   box-sizing: border-box;
@@ -555,22 +563,34 @@ header .container .logo-2 {
   margin: 0;
   padding: 40px 0 20px 0;
 }
+.lightbox__content__container:focus, .lightbox__content__container:hover, .lightbox__content__container:active {
+  border: none;
+  outline: none;
+}
 .lightbox__content__container__media {
-  width: fit-content;
+  width: 100%;
+  box-sizing: content-box;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left;
 }
+.lightbox__content__container__media:focus, .lightbox__content__container__media:hover, .lightbox__content__container__media:active {
+  border: none;
+  outline: none;
+}
 .lightbox__content__container__media__insert {
   margin: 0;
-  width: 100%;
-  height: 97%;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  max-height: 97%;
+  height: fit-content;
   object-fit: scale-down;
 }
 .lightbox__content__container__media__insert:focus, .lightbox__content__container__media__insert:active {
-  border: 0.5px solid #901c1c;
+  border: 1px solid #901c1c;
   outline: none;
 }
 .lightbox__content__container__media__title {

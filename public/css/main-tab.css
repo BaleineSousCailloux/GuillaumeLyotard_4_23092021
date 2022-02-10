@@ -44,6 +44,10 @@ header .tags__liste {
   flex-wrap: wrap;
   margin: 0 7%;
 }
+header .tags__liste:focus, header .tags__liste:active {
+  border-radius: 0;
+  border: none;
+}
 
 #main {
   padding-top: 160px;
@@ -51,4 +55,19 @@ header .tags__liste {
 #main h1 {
   top: 35px;
   margin-right: 10%;
+}
+#main h1:focus {
+  color: #901c1c;
+}
+#main .photographers .photographer__card:focus {
+  border: none;
+  border-radius: 0;
+}
+#main .photographers .photographer__legend:focus {
+  border: none;
+  border-radius: 0;
+}
+#main .photographers .photographer__legend__tags:focus {
+  border: none;
+  border-radius: 0;
 }

@@ -85,7 +85,7 @@ header {
             width: fit-content;
             height: fit-content ;
             outline: none;
-            &:focus {
+            &:focus, &:active {
                 border-radius: 15px;
                 border-bottom: 1px solid v.$secondaire;
             }

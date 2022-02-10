@@ -30,6 +30,10 @@ header {
         &__liste {
             flex-wrap: wrap;
             margin: 0 7%;
+            &:focus, &:active {
+                border-radius: 0;
+                border: none;
+            }
         }
     }
 }
@@ -38,5 +42,30 @@ header {
     h1 {
         top: 35px;
         margin-right: 10%;
+        &:focus {
+            color: v.$primaire;
+        }
+    }
+    .photographers {
+        .photographer {
+            &__card {
+                &:focus {
+                    border: none;
+                    border-radius: 0;
+                }
+            }
+            &__legend {
+                &:focus {
+                    border: none;
+                    border-radius: 0;
+                }
+                &__tags {
+                    &:focus {
+                        border: none;
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
     }
 }

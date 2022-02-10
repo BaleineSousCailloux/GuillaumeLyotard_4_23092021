@@ -98,7 +98,7 @@ header .tags__liste {
   height: fit-content;
   outline: none;
 }
-header .tags__liste:focus {
+header .tags__liste:focus, header .tags__liste:active {
   border-radius: 15px;
   border-bottom: 1px solid #d3573c;
 }

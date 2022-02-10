@@ -28,6 +28,9 @@ header {
             &__contact {
                 &__name {
                     font-size: 3em;
+                    &:focus, &:active {
+                        color: v.$secondaire;
+                    }
                 }
                 &__btn {
                     position: fixed;
@@ -44,6 +47,14 @@ header {
         &__legend {
             height: fit-content;
             justify-content: flex-end;
+            &:focus, &:active {
+                .photographer__legend__city {
+                    color: v.$primaire;
+                }
+                .photographer__legend__slogan {
+                    color: v.$tertiaire;
+                }
+            }
             &__city {
                 font-size: 1.25em;
                 padding: 5px 0 5px 0;
@@ -56,6 +67,9 @@ header {
             }
             &__tags {
                 margin: 5px 0 0 0;
+                &:focus {
+                    border: none;
+                }
                 &__tag {
                     font-size: 1em;
                 }
@@ -65,12 +79,39 @@ header {
             &__img {
                 width: 190px;
                 height: 190px;
+                &:focus, &:active {
+                    box-shadow: 4px 4px 8px v.$shadow;
+                }
             }
         }
     }
     .portfolio {
         &__menu {
             display: none;
+        }
+        &__content {
+            &__card {
+                &__media {
+                    &:focus {
+                        border: none;
+                    }
+                }
+                &__legend {
+                    &__title {
+                        &:focus {
+                            font-weight: 400;
+                            color: v.$primaire;
+                        }
+                    }
+                    &__like {
+                        &:focus, &:hover, &:active {
+                            .portfolio__content__card__legend__like__empty {
+                                font-size: 1.5em;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -79,8 +120,17 @@ header {
         width: 94%;
         &__container {
             &__media {
+                &__insert {
+                    &:focus, &:active {
+                        border: none;
+                    }
+                }
                 &__title {
                     font-size: 1.4em;
+                    &:focus, &:active {
+                        font-weight: 400;
+                        outline: none;
+                    }
                 }
             }
         }
@@ -100,6 +150,9 @@ header {
         width: 75%;
         &__title {
             font-size: 2.75em;
+            &:focus, &:active {
+                color: v.$txt_1;
+            }
         }
         &__close {
             font-size: 3em;
@@ -110,9 +163,18 @@ header {
                 &__data {
                     &__label {
                         font-size: 1.5em;
+                        &:focus, &:active {
+                            color: v.$tertiaire;
+                            outline: none;
+                        }
                     }
                     &__control {
                         font-size: 1.35em;
+                        &:focus, &:active {
+                            outline: none;
+                            border: none;
+                            color: v.$txt_1;
+                        }
                     }
                     &__error {
                         &__first {
