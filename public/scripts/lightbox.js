@@ -102,12 +102,15 @@ this.lightboxVue = (medias) => {
     document.getElementById("body").classList.add("hidden");
 
   }
-
+  // close delay
+  function closeDelay(currentMedia) {
+    setTimeout(quitLightbox(currentMedia), 100);
+  }
 
   // close lightbox event
   closeLightbox.addEventListener("click", () => {
     lastMediaId = document.querySelector(".lightbox__content__container__media__insert").getAttribute("data-media-id");
-    quitLightbox(lastMediaId);
+    closeDelay(lastMediaId);
   })
 
 
@@ -118,14 +121,13 @@ this.lightboxVue = (medias) => {
 
     lightbox.style.display = "none";
 
-    //const lastMediaId = document.querySelector(".lightbox__content__container__media__insert").getAttribute("data-media-id");
-    document.getElementById("lightbox-container").innerHTML = ``;
     openLightbox.forEach(media => {
       let mediaTarget = media.getAttribute("data-media-id");
       if (mediaTarget == lastMedia) {
         media.focus();
       }
     })
+    document.getElementById("lightbox-container").innerHTML = ``;
   }
 
 

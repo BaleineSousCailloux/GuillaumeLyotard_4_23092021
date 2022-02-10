@@ -125,10 +125,6 @@ header #tag-selected {
   background-color: #d3573c;
 }
 
-header {
-  box-shadow: none;
-}
-
 #main {
   width: 100%;
   box-sizing: border-box;
