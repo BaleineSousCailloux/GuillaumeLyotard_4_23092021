@@ -49,6 +49,8 @@ this.lightboxVue = (medias) => {
       }
     })
     window.addEventListener("keydown", event => {
+      event.preventDefault();
+      event.stopPropagation();
       if (event.key === "ArrowLeft") {
         leftAction();
       } else if (event.key === "ArrowRight") {
@@ -59,6 +61,7 @@ this.lightboxVue = (medias) => {
     })
     closeLightbox.addEventListener("keydown", e => {
       e.preventDefault();
+      e.stopPropagation();
       if (e.keyCode === 9 && closeLightbox.contains(document.activeElement)) {
         lightbox.focus();
       } else if (e.keyCode === 13 || e.keyCode === 32) {

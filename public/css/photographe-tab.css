@@ -106,7 +106,7 @@ header .container .logo-2 {
 .lightbox__content {
   width: 94%;
 }
-.lightbox__content__container__media__insert:focus, .lightbox__content__container__media__insert:active {
+.lightbox__content__container__media__insert:focus {
   border: none;
 }
 .lightbox__content__container__media__title {

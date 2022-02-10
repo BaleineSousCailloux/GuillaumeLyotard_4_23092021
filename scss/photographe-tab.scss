@@ -121,7 +121,7 @@ header {
         &__container {
             &__media {
                 &__insert {
-                    &:focus, &:active {
+                    &:focus {
                         border: none;
                     }
                 }

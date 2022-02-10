@@ -576,8 +576,8 @@ header .container .logo-2 {
   outline: none;
 }
 .lightbox__content__container__media {
-  width: 100%;
-  box-sizing: content-box;
+  width: fit-content;
+  box-sizing: border-box;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -592,12 +592,12 @@ header .container .logo-2 {
   margin: 0;
   box-sizing: border-box;
   width: fit-content;
+  height: fit-content;
   max-width: 100%;
   max-height: 97%;
-  height: fit-content;
   object-fit: scale-down;
 }
-.lightbox__content__container__media__insert:focus, .lightbox__content__container__media__insert:active {
+.lightbox__content__container__media__insert:focus {
   border: 1px solid #901c1c;
   outline: none;
 }
