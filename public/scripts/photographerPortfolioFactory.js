@@ -4,7 +4,7 @@ this.mediaPortfolioFactory = (portfolio, directory) => {
         mediaCard.classList.add("portfolio__content__card");
         if (portfolio.video) {
             mediaCard.innerHTML = `
-            <video class="portfolio__content__card__media" data-media-id="${portfolio.id}" tabindex="12" preload="metadata" aria-label="${portfolio.alt}, ouvrir en pleine page">
+            <video class="portfolio__content__card__media" data-media-id="${portfolio.id}" poster="../public/images/Photos/${directory}/${portfolio.video}" tabindex="12" preload="metadata" aria-label="${portfolio.alt}, ouvrir en pleine page">
                 <source src="../public/images/Photos/${directory}/${portfolio.video}" type="video/mp4">
             </video>
             <span class="portfolio__content__card__media__icon fa-solid fa-video"></span>

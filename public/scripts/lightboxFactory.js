@@ -4,7 +4,7 @@ this.lightboxFactory = (light, directory) => {
     mediaContainerInLightbox.classList.add("lightbox__content__container__media");
     if (light.video) {
       mediaContainerInLightbox.innerHTML = `
-            <video class="lightbox__content__container__media__insert" data-media-id="${light.id}" controls preload tabindex="1" aria-label="${light.alt}">
+            <video class="lightbox__content__container__media__insert" data-media-id="${light.id}" poster="../public/images/Photos/${directory}/${light.video}" controls preload tabindex="1" aria-label="${light.alt}">
                 <source src="../public/images/Photos/${directory}/${light.video}" type="video/mp4">
             </video>
             <p class="lightbox__content__container__media__title" tabindex="1" lang="en" aria-label="titre du média">${light.title}</p>
