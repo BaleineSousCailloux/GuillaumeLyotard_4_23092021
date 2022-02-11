@@ -16,6 +16,8 @@ this.lightboxVue = (medias) => {
   // open Lightbox event (img click)
   openLightbox.forEach(mediaClicked => {
     mediaClicked.addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
       let mediaId = event.target.getAttribute("data-media-id");
       medias.forEach(media => {
         if (media.id == mediaId) {
@@ -28,6 +30,8 @@ this.lightboxVue = (medias) => {
     })
     mediaClicked.addEventListener("keydown", enterEvent => {
       if (enterEvent.keyCode === 13 || enterEvent.keyCode === 32) {
+        enterEvent.preventDefault();
+        enterEvent.stopPropagation();
         mediaClicked.click();
       }
     })
@@ -40,31 +44,39 @@ this.lightboxVue = (medias) => {
     rightArrow.addEventListener("click", rightAction);
     leftArrow.addEventListener("keydown", leftEvent => {
       if (leftEvent.keyCode === 13 || leftEvent.keyCode === 32) {
+        leftEvent.preventDefault();
         leftAction();
       }
     })
     rightArrow.addEventListener("keydown", rightEvent => {
       if (rightEvent.keyCode === 13 || rightEvent.keyCode === 32) {
+        rightEvent.preventDefault();
         rightAction();
       }
     })
     window.addEventListener("keydown", event => {
-      event.preventDefault();
-      event.stopPropagation();
+
       if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        event.stopPropagation();
         leftAction();
       } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        event.stopPropagation();
         rightAction()
       } else if (event.keyCode === 27 && lightbox.contains(document.activeElement)) {
+        event.preventDefault();
         closeLightbox.click();
       }
     })
     closeLightbox.addEventListener("keydown", e => {
-      e.preventDefault();
-      e.stopPropagation();
       if (e.keyCode === 9 && closeLightbox.contains(document.activeElement)) {
+        e.preventDefault();
+        e.stopPropagation();
         lightbox.focus();
       } else if (e.keyCode === 13 || e.keyCode === 32) {
+        e.preventDefault();
+        e.stopPropagation();
         closeLightbox.click();
       }
     })
@@ -111,7 +123,8 @@ this.lightboxVue = (medias) => {
   }
 
   // close lightbox event
-  closeLightbox.addEventListener("click", () => {
+  closeLightbox.addEventListener("click", (e) => {
+    e.preventDefault();
     lastMediaId = document.querySelector(".lightbox__content__container__media__insert").getAttribute("data-media-id");
     closeDelay(lastMediaId);
   })

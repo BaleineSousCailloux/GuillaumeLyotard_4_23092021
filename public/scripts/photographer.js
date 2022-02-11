@@ -100,7 +100,6 @@ const btnSelection = (btnClicked, btnClickAction) => {
             navEvent.preventDefault();
             navEvent.stopPropagation();
             btnMenuInactive.focus();
-            //document.querySelector(".portfolio__content__card__media").focus();
             btnSelectMenu.style.display = "none";
             btnMenuInactive.style.boxShadow = "3px 2px 4px v.$shadow";
             indexOfSelectedBtn = 0;

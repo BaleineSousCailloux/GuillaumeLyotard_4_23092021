@@ -5,7 +5,7 @@ this.mediaPortfolioFactory = (portfolio, directory) => {
         if (portfolio.video) {
             mediaCard.innerHTML = `
             <video class="portfolio__content__card__media" data-media-id="${portfolio.id}" poster="../public/images/Photos/${directory}/${portfolio.video}" tabindex="12" preload="metadata" aria-label="${portfolio.alt}, ouvrir en pleine page">
-                <source src="../public/images/Photos/${directory}/${portfolio.video}" type="video/mp4">
+                <source src="../public/images/Photos/${directory}/${portfolio.video}#t=0.1" type="video/mp4">
             </video>
             <span class="portfolio__content__card__media__icon fa-solid fa-video"></span>
             <div class="portfolio__content__card__legend">

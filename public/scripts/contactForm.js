@@ -23,6 +23,7 @@ this.getContactForm = (person) => {
 
         closeBtn.addEventListener("keydown", e => {
             e.preventDefault();
+            e.stopPropagation();
             if (e.keyCode === 9 && closeBtn.contains(document.activeElement)) {
                 photographerContactName.focus();
             } else if (e.keyCode === 13 || e.keyCode === 32) {
@@ -31,6 +32,8 @@ this.getContactForm = (person) => {
         });
         contactForm.addEventListener("keydown", e => {
             if (e.keyCode === 27 && formContent.contains(document.activeElement)) {
+                e.preventDefault();
+                e.stopPropagation();
                 closeBtn.click();
             }
         })
@@ -95,6 +98,7 @@ this.getContactForm = (person) => {
     formulaire.addEventListener("submit", function (event) {
 
         event.preventDefault();
+        event.stopPropagation();
 
         // ex regex : (/^[A-Z|a-z|\-]{2,}$/g.test(firstName.value))
         let firstNameIsValid = false;
