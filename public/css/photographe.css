@@ -563,12 +563,13 @@ header .container .logo-2 {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
+  justify-content: flex-start;
+  width: fit-content;
+  max-width: 90%;
   height: 100%;
   margin: 0;
-  padding: 40px 0 20px 0;
+  padding: 20px 0 40px 0;
+  position: relative;
 }
 .lightbox__content__container:focus, .lightbox__content__container:hover, .lightbox__content__container:active {
   border: none;
@@ -576,12 +577,13 @@ header .container .logo-2 {
 }
 .lightbox__content__container__media {
   width: fit-content;
+  max-width: 100%;
   box-sizing: border-box;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: left;
+  justify-content: flex-start;
+  align-items: center;
 }
 .lightbox__content__container__media:focus, .lightbox__content__container__media:hover, .lightbox__content__container__media:active {
   border: none;
@@ -595,13 +597,16 @@ header .container .logo-2 {
   max-width: 100%;
   max-height: 97%;
   object-fit: scale-down;
+  position: relative;
 }
 .lightbox__content__container__media__insert:focus {
   border: 1px solid #901c1c;
   outline: none;
 }
 .lightbox__content__container__media__title {
-  align-items: left;
+  position: absolute;
+  bottom: 20px;
+  left: 5%;
   height: 3%;
   margin: 10px 5px;
   color: #901c1c;

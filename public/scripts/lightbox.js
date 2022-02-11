@@ -44,13 +44,13 @@ this.lightboxVue = (medias) => {
     rightArrow.addEventListener("click", rightAction);
     leftArrow.addEventListener("keydown", leftEvent => {
       if (leftEvent.keyCode === 13 || leftEvent.keyCode === 32) {
-        leftEvent.preventDefault();
+        //leftEvent.preventDefault();
         leftAction();
       }
     })
     rightArrow.addEventListener("keydown", rightEvent => {
       if (rightEvent.keyCode === 13 || rightEvent.keyCode === 32) {
-        rightEvent.preventDefault();
+        //rightEvent.preventDefault();
         rightAction();
       }
     })
@@ -66,7 +66,8 @@ this.lightboxVue = (medias) => {
         rightAction()
       } else if (event.keyCode === 27 && lightbox.contains(document.activeElement)) {
         event.preventDefault();
-        closeLightbox.click();
+        lastMediaId = document.querySelector(".lightbox__content__container__media__insert").getAttribute("data-media-id");
+        closeDelay(lastMediaId);
       }
     })
     closeLightbox.addEventListener("keydown", e => {
@@ -76,8 +77,8 @@ this.lightboxVue = (medias) => {
         lightbox.focus();
       } else if (e.keyCode === 13 || e.keyCode === 32) {
         e.preventDefault();
-        e.stopPropagation();
-        closeLightbox.click();
+        lastMediaId = document.querySelector(".lightbox__content__container__media__insert").getAttribute("data-media-id");
+        closeDelay(lastMediaId);
       }
     })
   }
@@ -118,8 +119,14 @@ this.lightboxVue = (medias) => {
 
   }
   // close delay
-  function closeDelay(currentMedia) {
-    setTimeout(quitLightbox(currentMedia), 100);
+  function closeDelay(lastMedia) {
+    openLightbox.forEach(media => {
+      let mediaTarget = media.getAttribute("data-media-id");
+      if (mediaTarget == lastMedia) {
+        media.focus();
+      }
+    })
+    setTimeout(quitLightbox, 100);
   }
 
   // close lightbox event
@@ -131,18 +138,12 @@ this.lightboxVue = (medias) => {
 
 
   // close lightbox function
-  function quitLightbox(lastMedia) {
+  function quitLightbox() {
     document.getElementById("body").setAttribute("aria-hidden", false);
     document.getElementById("body").classList.remove("hidden");
 
     lightbox.style.display = "none";
 
-    openLightbox.forEach(media => {
-      let mediaTarget = media.getAttribute("data-media-id");
-      if (mediaTarget == lastMedia) {
-        media.focus();
-      }
-    })
     document.getElementById("lightbox-container").innerHTML = ``;
   }
 
