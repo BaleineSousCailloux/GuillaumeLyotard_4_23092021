@@ -63,7 +63,6 @@ const btnSelection = (btnClicked, btnClickAction) => {
                 enterEvent.stopPropagation();
                 btn.click();
                 btnMenuInactive.focus();
-                //document.querySelector(".portfolio__content__card__media").focus();
                 btnSelectMenu.style.display = "none";
                 btnMenuInactive.style.boxShadow = "3px 2px 4px v.$shadow";
                 indexOfSelectedBtn = 0;
@@ -71,13 +70,13 @@ const btnSelection = (btnClicked, btnClickAction) => {
         })
     })
 
-    btnNotExpanded.addEventListener("keydown", btnEvent => {
+    btnMenuInactive.addEventListener("keydown", btnEvent => {
         if (btnEvent.keyCode === 13 || btnEvent.keyCode === 32) {
             btnEvent.preventDefault();
             btnEvent.stopPropagation();
             btnSelectMenu.style.display = "flex";
             btnMenuInactive.style.boxShadow = "none";
-            btnSelected[indexOfSelectedBtn].focus();
+            btnSelectMenu.focus();
         }
     })
     btnNotExpanded.addEventListener("mouseover", mouseEvent => {

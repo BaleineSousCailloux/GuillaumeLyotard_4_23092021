@@ -111,6 +111,9 @@ this.lightboxVue = (medias) => {
 
   // open lightbox fonction
   function launchLightbox() {
+    lightbox.setAttribute("aria-hidden", false);
+    lightbox.classList.remove("hidden");
+
     lightbox.style.display = "flex";
     lightbox.focus();
 
@@ -141,6 +144,9 @@ this.lightboxVue = (medias) => {
   function quitLightbox() {
     document.getElementById("body").setAttribute("aria-hidden", false);
     document.getElementById("body").classList.remove("hidden");
+
+    lightbox.setAttribute("aria-hidden", true);
+    lightbox.classList.add("hidden");
 
     lightbox.style.display = "none";
 

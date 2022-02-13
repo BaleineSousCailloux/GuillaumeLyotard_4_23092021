@@ -20,9 +20,10 @@
 
 <body id="body">
     <header>
-        <a href="../index.html" class="container" tabindex="3" aria-label="logo du site et retour à l'accueil">
-            <img src="../public/images/logo2.png" class="logo-2" alt="logo" />
-            <img src="../public/images/logo.png" class="logo-1" alt="logo" />
+        <a href="../index.html" class="container" tabindex="3" aria-label="logo du site et retour à l'accueil"
+            role="button" aria-pressed="false">
+            <img src="../public/images/logo2.png" class="logo-2" alt="logo de couleur différente au focus" />
+            <img src="../public/images/logo.png" class="logo-1" alt="logo du site et retour à l'accueil" />
         </a>
     </header>
     <main id="main">
@@ -33,13 +34,13 @@
             <div class="portfolio__menu">
                 <p class="portfolio__menu__title" tabindex="10" aria-label="trier par...">Trier par</p>
                 <div class="portfolio__menu__btn">
-                    <div class="portfolio__menu__btn1" tabindex="11" id="btn-inactive" role="button"
-                        aria-haspopup="listbox" aria-expanded="false">
+                    <div class="portfolio__menu__btn1" tabindex="11" id="btn-inactive" aria-haspopup="listbox"
+                        aria-label="options de tri des médias" aria-expanded="false">
                         <span class="portfolio__menu__btn1__pop" id="btn-vue">Popularité</span>
                         <span class="portfolio__menu__btn1__icon fa-solid fa-angle-down"></span>
                     </div>
-                    <div class="portfolio__menu__btn2" id="btn-select-menu" role="listbox" tabindex="11"
-                        aria-haspopup="listbox" aria-expanded="true">
+                    <div class="portfolio__menu__btn2" id="btn-select-menu" aria-haspopup="listbox" tabindex="0"
+                        aria-expanded="true">
                         <span class="portfolio__menu__btn2__option-1">
                             <span class="portfolio__menu__btn2__option-1-vue" aria-label="option de tri des médias"
                                 tabindex="0" data-option="pop">Popularité</span>
@@ -133,7 +134,7 @@
                 </div>
                 <div class="contact__content__body__form__submit">
                     <input id="submit" class="contact__content__body__form__submit__btn" type="submit" value="Envoyer"
-                        tabindex="1" />
+                        tabindex="1" role="button" aria-pressed="false" />
                     <span class="contact__content__body__form__submit__confirm" id="confirm" tabindex="1"
                         aria-label="Message envoyé avec succès">Message envoyé,
                         merci.</span>
