@@ -76,6 +76,9 @@ header .container .logo-2 {
   font-size: 0.6em;
   margin-bottom: 5px;
 }
+#main .photographer__container {
+  align-self: flex-start;
+}
 #main .photographer__container__img {
   width: 100px;
   height: 100px;

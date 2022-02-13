@@ -28,7 +28,7 @@
         color: v.$primaire;
         outline: none;
         &:focus {
-            color: v.$secondaire;
+            color: v.$txt_0;
         }
     }
     .photographers {
@@ -59,7 +59,7 @@
                 &:focus {
                     outline: none;
                     border-radius: 5px;
-                    border: 1px solid v.$secondaire;
+                    border: 1px solid v.$txt_0;
                 }
                 &__img {
                     border-radius: 50%;
@@ -71,7 +71,7 @@
                 }
                 &__name {
                     padding: 0;
-                    color: v.$secondaire;
+                    color: v.$txt_0;
                     font-size: 2.25em;
                     margin: 10px 0 0 0;
 
@@ -90,7 +90,7 @@
                 &:focus {
                     outline: none;
                     border-radius: 5px;
-                    border: 1px solid v.$secondaire;
+                    border: 1px solid v.$txt_0;
                 }
                 &__city {
                     font-size: 0.85em;
@@ -117,7 +117,7 @@
                         width: fit-content;
                         align-self: center;
                         border-radius: 15px;
-                        border-bottom: 1px solid v.$secondaire;
+                        border-bottom: 1px solid v.$txt_0;
                     }
                     &__tag {
                         font-size: 0.75em;

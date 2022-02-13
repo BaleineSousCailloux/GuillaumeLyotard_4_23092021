@@ -5,7 +5,6 @@
 
 
 header {
-    height: 100px;
     .container {
         width: 40%;
         .logo-1 {
@@ -20,6 +19,7 @@ header {
     }
 }
 #main {
+    padding-top: 10px;
     .photographer {
         width: 100%;
         padding: 0 10%;

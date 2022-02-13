@@ -72,7 +72,7 @@ header .shortcut {
   font-weight: 700;
   padding: 3px 10px;
   margin-top: 0;
-  background-color: #d3573c;
+  background-color: #db8876;
   border-radius: 5px;
   transform: translate(-50%, -50%);
   left: 50%;
@@ -122,7 +122,7 @@ header .tags__liste .tag:hover, header .tags__liste .tag:focus {
 }
 header #tag-selected {
   color: #fff;
-  background-color: #d3573c;
+  background-color: #db8876;
 }
 
 .hidden {
@@ -134,6 +134,7 @@ header {
   position: relative;
   z-index: 0;
   box-shadow: none;
+  height: 100px;
 }
 header .container .logo-1 {
   position: absolute;
@@ -145,7 +146,7 @@ header .container .logo-2 {
 
 #main {
   width: 100%;
-  top: 20px;
+  padding-top: 20px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -207,7 +208,7 @@ header .container .logo-2 {
 }
 #main .photographer__card__contact__btn:focus, #main .photographer__card__contact__btn:hover, #main .photographer__card__contact__btn:active {
   color: #000;
-  background-color: #d3573c;
+  background-color: #db8876;
   outline: none;
   border: none;
 }
@@ -347,7 +348,7 @@ header .container .logo-2 {
 #main .portfolio__menu__btn--1:focus {
   border: none;
   outline: none;
-  background-color: #d3573c;
+  background-color: #db8876;
 }
 #main .portfolio__menu__btn--1:active #btn-select-menu {
   display: flex;
@@ -370,7 +371,7 @@ header .container .logo-2 {
   padding: 0 20px;
   border-radius: 5px;
   overflow: hidden;
-  background-color: #d3573c;
+  background-color: #db8876;
   color: #000;
   font-size: 1.125em;
   font-weight: 700;
@@ -582,7 +583,7 @@ header .container .logo-2 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 .lightbox__content__container__media:focus, .lightbox__content__container__media:hover, .lightbox__content__container__media:active {
@@ -590,7 +591,7 @@ header .container .logo-2 {
   outline: none;
 }
 .lightbox__content__container__media__insert {
-  margin: 0;
+  margin: 0 0 10px 0;
   box-sizing: border-box;
   width: fit-content;
   height: fit-content;
@@ -670,7 +671,7 @@ header .container .logo-2 {
   height: fit-content;
   padding: 10px 15px;
   margin: auto;
-  background-color: #d3573c;
+  background-color: #db8876;
 }
 .contact__content__title {
   align-content: center;
@@ -809,7 +810,7 @@ header .container .logo-2 {
 .contact__content__body__form__submit__btn:focus, .contact__content__body__form__submit__btn:hover, .contact__content__body__form__submit__btn:active {
   outline: none;
   color: #000;
-  background-color: #d3573c;
+  background-color: #db8876;
   border: 0.5px solid #c4c4c4;
   box-shadow: 3px 2px 4px #525252;
 }
@@ -862,7 +863,7 @@ header .container .logo-2 {
   height: 60px;
   line-height: 60px;
   padding: 0 25px;
-  background-color: #d3573c;
+  background-color: #db8876;
   font-size: 24px;
   font-weight: 500;
   border-radius: 10px 10px 0 0;
