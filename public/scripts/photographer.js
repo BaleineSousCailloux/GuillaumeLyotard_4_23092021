@@ -28,7 +28,7 @@ const getPhotographerCard = (photographers) => {
             const instance = self.photographerCardFactory(photographer);
             const card = instance.self.getPersonnalCard();
             document.getElementById("photographer").insertBefore(card, document.getElementById("photographer").firstChild);
-            surname = photographer.name;
+            surname = photographer.name.replace(" ", "_");
             self.getContactForm(photographer);
         }
         const personnalTags = document.querySelectorAll(".photographer__legend__tags__tag");
@@ -44,9 +44,9 @@ const btnVue = document.getElementById("btn-vue");
 const btnSelectMenu = document.getElementById("btn-select-menu");
 const btnNotExpanded = document.querySelector(".portfolio__menu__btn");
 const btnMenuInactive = document.getElementById("btn-inactive");
-let option1Btn = document.querySelector(".portfolio__menu__btn--2__option-1-vue");
-let option2Btn = document.querySelector(".portfolio__menu__btn--2__option-2");
-let option3Btn = document.querySelector(".portfolio__menu__btn--2__option-3");
+let option1Btn = document.querySelector(".portfolio__menu__btn2__option-1-vue");
+let option2Btn = document.querySelector(".portfolio__menu__btn2__option-2");
+let option3Btn = document.querySelector(".portfolio__menu__btn2__option-3");
 let btnSelected = [];
 btnSelected.push(option1Btn, option2Btn, option3Btn);
 

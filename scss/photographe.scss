@@ -93,7 +93,6 @@ header {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            align-items: left;
             box-sizing: border-box;
             height: fit-content;
             &:focus, &:active {
@@ -121,7 +120,6 @@ header {
                 display: flex;
                 flex-direction: row;
                 justify-content: left;
-                align-items: left;
                 margin: 15px 0 0 0;
                 padding-bottom: 3px;
                 &:focus {
@@ -169,7 +167,6 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: left;
         width: 100%;
         margin-top: 30px;
         &__menu {
@@ -203,7 +200,7 @@ header {
                         box-shadow: none;
                     }
                 }
-                &--1 {
+                &1 {
                     border: none;
                     display: flex;
                     flex-direction: row;
@@ -234,14 +231,13 @@ header {
                         }
                     }
                 }
-                &--2 {
+                &2 {
                     position: absolute;
                     top: 0;
                     border: none;
                     display: none;
                     flex-direction: column;
                     justify-content: flex-start;
-                    align-items: left;
                     box-sizing: border-box;
                     box-shadow: 3px 2px 4px v.$shadow;
                     width: 170px;
@@ -269,7 +265,6 @@ header {
                         &-vue {
                             @include m.police--texte;
                             display: flex;
-                            align-content: left;
                             width: 100px;
                             margin: 0;
                             font-weight: 700;
@@ -281,7 +276,6 @@ header {
                         &-icon {
                             @include m.police--texte;
                             display: flex;
-                            align-content: right;
                             font-weight: 700;
                             color: v.$txt_2;
                         }
@@ -311,7 +305,7 @@ header {
             justify-content: space-around;
             box-sizing: border-box;
             flex-wrap: wrap;
-            padding: 20px 2%;
+            padding: 40px 2%;
             width: 100%;
             &__card {
                 display: flex;
@@ -365,6 +359,7 @@ header {
                         font-size: 1.5em;
                         width: 270px;
                         margin: 0 10px 0 0;
+                        @include m.police--texte;
                         &:focus {
                             outline: none;
                             border: none;
@@ -393,8 +388,10 @@ header {
                         &__cunt {
                             font-weight: 500;
                             font-size: 1.5em;
+                            @include m.police--texte;
                         }
                         &__empty {
+                            @include m.police--texte;
                             box-sizing: border-box;
                             width: 33px;
                             font-size: 1.25em;
@@ -488,6 +485,7 @@ header {
                     margin: 10px 5px;
                     color: v.$primaire;
                     font-size: 1.625em;
+                    @include m.police--texte;
                     &:focus, &:active {
                         font-weight: 700;
                         outline: none;
@@ -542,7 +540,6 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        align-items: left;
         box-sizing: border-box;
         border-radius: 5px;
         box-shadow: 4px 5px 10px v.$tertiaire;
@@ -559,6 +556,7 @@ header {
             margin: 0;
             font-size: 3.5em;
             user-select: none;
+            @include m.police--texte;
             &:focus, &:active {
                 color: v.$txt_2;
                 outline: none;
@@ -594,6 +592,7 @@ header {
                     position: relative;
                     &__label {
                         font-size: 1.7em;
+                        @include m.police--texte;
                         &:focus, &:active {
                             color: v.$txt_1;
                             outline: none;
@@ -625,6 +624,7 @@ header {
                     }
                     &__error {
                         &__first {
+                            @include m.police--texte;
                             display: none;
                             position: absolute;
                             top: 11px;
@@ -634,6 +634,7 @@ header {
                             font-weight: 500;
                         }
                         &__last {
+                            @include m.police--texte;
                             display: none; 
                             position: absolute;
                             top: 11px;
@@ -643,6 +644,7 @@ header {
                             font-weight: 500;
                         }
                         &__email {
+                            @include m.police--texte;
                             display: none;
                             position: absolute;
                             top: 11px;
@@ -652,6 +654,7 @@ header {
                             font-weight: 500;
                         }
                         &__message {
+                            @include m.police--texte;
                             display: none;
                             position: absolute;
                             top: 11px;
@@ -690,6 +693,7 @@ header {
                         }
                     }
                     &__confirm {
+                        @include m.police--texte;
                         text-align: right;
                         display: block;
                         color: v.$txt_2;
@@ -709,18 +713,21 @@ header {
     }
 }
 #message {
+    @include m.police--texte;
     height: 110px;
     resize: none;
     position: relative;
 }
 #message-counter {
-position: absolute;
-bottom: -20px;
-right: 3.9em;
-font-size: 0.8em;
-user-select: none;
+    @include m.police--texte;
+    position: absolute;
+    bottom: -20px;
+    right: 3.9em;
+    font-size: 0.8em;
+    user-select: none;
 }
 #message-max-length {
+    @include m.police--texte;
     bottom: -20px;
     right: 10px;
     position: absolute;
@@ -728,6 +735,7 @@ user-select: none;
     user-select: none;
 }
 .footer {
+    @include m.police--texte;
     position: fixed;
     bottom: 0;
     right: 3%;

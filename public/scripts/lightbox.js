@@ -10,7 +10,7 @@ this.lightboxVue = (medias) => {
   let domInsertMediaId = 0;
   let indexOfMediaVue = -1;
   let lastMediaId = 29;
-  let photographe = document.querySelector(".photographer__card__contact__name").innerHTML;
+  let photographe = document.querySelector(".photographer__card__contact__name").innerHTML.replace(" ", "_");
 
 
   // open Lightbox event (img click)

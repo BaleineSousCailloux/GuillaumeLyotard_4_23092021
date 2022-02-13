@@ -167,10 +167,6 @@ header .container .logo-2 {
 }
 .contact__content__body__form__data__control::placeholder {
   font-size: 0.75em;
-  font-family: "DM Sans", sans-serif;
-  font-weight: 400;
-  color: #525252;
-  opacity: 0.5;
 }
 .contact__content__body__form__data__error__first {
   font-size: 0.9em;

@@ -4,7 +4,7 @@ this.headerTagFactory = (headerTag) => {
         newHeaderTag.classList.add("tag");
         newHeaderTag.classList.add(headerTag)
         newHeaderTag.setAttribute("data-tag", headerTag);
-        newHeaderTag.setAttribute("aria-label", headerTag)
+        newHeaderTag.setAttribute("aria-label", "tag")
         newHeaderTag.innerHTML = `#${headerTag}`;
         return newHeaderTag;
     }

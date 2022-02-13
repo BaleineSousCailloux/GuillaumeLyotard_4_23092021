@@ -5,7 +5,7 @@ this.indexCardFactory = (indexCard) => {
         newPhotographer.setAttribute("aria-label", `carte du photographe ${indexCard.name}`);
         newPhotographer.innerHTML = `
         <a href="./pages/photographe.html?id=${indexCard.id}" class="photographer__card" tabindex="6" aria-label="se rendre sur la page de ${indexCard.name}">
-            <img class="photographer__card__img" src="./public/images/Photos/Photographers ID Photos/${indexCard.portrait}" alt="portrait de ${indexCard.name}" aria-label="portrait de ${indexCard.name}" />
+            <img class="photographer__card__img" src="./public/images/Photos/Photographers_ID_Photos/${indexCard.portrait}" alt="portrait de ${indexCard.name}" aria-label="portrait de ${indexCard.name}" />
             <h2 class="photographer__card__name" aria-label="nom du photographe">${indexCard.name}</h2>
         </a>
         <div class="photographer__legend" tabindex="6" aria-label="informations sur ${indexCard.name}">
@@ -20,7 +20,7 @@ this.indexCardFactory = (indexCard) => {
             newTag.classList.add("photographer__legend__tags__tag");
             newTag.classList.add("tag");
             newTag.setAttribute("data-tag", tag);
-            newTag.setAttribute("aria-label", tag);
+            newTag.setAttribute("aria-label", "tag");
             newTag.innerHTML = `#${tag}`;
             newPhotographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
         })

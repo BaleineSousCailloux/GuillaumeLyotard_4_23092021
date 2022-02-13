@@ -1,5 +1,4 @@
 @use "./utils/variables" as v;
-@use "./utils/mixins" as m;
 @use "./base/body";
 @use "./base/link";
 
@@ -162,9 +161,6 @@ header {
                         font-size: 1.25em;
                         &::placeholder {
                             font-size: 0.75em;
-                            @include m.police--texte;
-                            color: v.$tertiaire;
-                            opacity: 0.5;
                         }
                     }
                     &__error {

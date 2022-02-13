@@ -216,7 +216,6 @@ header .container .logo-2 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: left;
   box-sizing: border-box;
   height: fit-content;
 }
@@ -245,7 +244,6 @@ header .container .logo-2 {
   display: flex;
   flex-direction: row;
   justify-content: left;
-  align-items: left;
   margin: 15px 0 0 0;
   padding-bottom: 3px;
 }
@@ -291,7 +289,6 @@ header .container .logo-2 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: left;
   width: 100%;
   margin-top: 30px;
 }
@@ -326,7 +323,7 @@ header .container .logo-2 {
 #main .portfolio__menu__btn:hover #btn-inactive {
   box-shadow: none;
 }
-#main .portfolio__menu__btn--1 {
+#main .portfolio__menu__btn1 {
   border: none;
   display: flex;
   flex-direction: row;
@@ -345,25 +342,24 @@ header .container .logo-2 {
   font-size: 1.125em;
   font-weight: 700;
 }
-#main .portfolio__menu__btn--1:focus {
+#main .portfolio__menu__btn1:focus {
   border: none;
   outline: none;
   background-color: #db8876;
 }
-#main .portfolio__menu__btn--1:active #btn-select-menu {
+#main .portfolio__menu__btn1:active #btn-select-menu {
   display: flex;
 }
-#main .portfolio__menu__btn--1:active #btn-inactive {
+#main .portfolio__menu__btn1:active #btn-inactive {
   box-shadow: none;
 }
-#main .portfolio__menu__btn--2 {
+#main .portfolio__menu__btn2 {
   position: absolute;
   top: 0;
   border: none;
   display: none;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: left;
   box-sizing: border-box;
   box-shadow: 3px 2px 4px #c4c4c4;
   width: 170px;
@@ -377,7 +373,7 @@ header .container .logo-2 {
   font-weight: 700;
   z-index: 1;
 }
-#main .portfolio__menu__btn--2__option-1 {
+#main .portfolio__menu__btn2__option-1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -391,28 +387,26 @@ header .container .logo-2 {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
 }
-#main .portfolio__menu__btn--2__option-1-vue {
+#main .portfolio__menu__btn2__option-1-vue {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
   display: flex;
-  align-content: left;
   width: 100px;
   margin: 0;
   font-weight: 700;
 }
-#main .portfolio__menu__btn--2__option-1-vue:hover, #main .portfolio__menu__btn--2__option-1-vue:focus {
+#main .portfolio__menu__btn2__option-1-vue:hover, #main .portfolio__menu__btn2__option-1-vue:focus {
   outline: none;
   color: #fff;
 }
-#main .portfolio__menu__btn--2__option-1-icon {
+#main .portfolio__menu__btn2__option-1-icon {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
   display: flex;
-  align-content: right;
   font-weight: 700;
   color: #fff;
 }
-#main .portfolio__menu__btn--2__option-2, #main .portfolio__menu__btn--2__option-3 {
+#main .portfolio__menu__btn2__option-2, #main .portfolio__menu__btn2__option-3 {
   font-family: "DM Sans", sans-serif;
   font-weight: 400;
   font-weight: 700;
@@ -425,7 +419,7 @@ header .container .logo-2 {
   margin: 0;
   border-top: 1.5px solid #fff;
 }
-#main .portfolio__menu__btn--2__option-2:hover, #main .portfolio__menu__btn--2__option-2:focus, #main .portfolio__menu__btn--2__option-3:hover, #main .portfolio__menu__btn--2__option-3:focus {
+#main .portfolio__menu__btn2__option-2:hover, #main .portfolio__menu__btn2__option-2:focus, #main .portfolio__menu__btn2__option-3:hover, #main .portfolio__menu__btn2__option-3:focus {
   outline: none;
   color: #fff;
 }
@@ -435,7 +429,7 @@ header .container .logo-2 {
   justify-content: space-around;
   box-sizing: border-box;
   flex-wrap: wrap;
-  padding: 20px 2%;
+  padding: 40px 2%;
   width: 100%;
 }
 #main .portfolio__content__card {
@@ -490,6 +484,8 @@ header .container .logo-2 {
   font-size: 1.5em;
   width: 270px;
   margin: 0 10px 0 0;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
 }
 #main .portfolio__content__card__legend__title:focus {
   outline: none;
@@ -519,8 +515,12 @@ header .container .logo-2 {
 #main .portfolio__content__card__legend__like__cunt {
   font-weight: 500;
   font-size: 1.5em;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
 }
 #main .portfolio__content__card__legend__like__empty {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   box-sizing: border-box;
   width: 33px;
   font-size: 1.25em;
@@ -612,6 +612,8 @@ header .container .logo-2 {
   margin: 10px 5px;
   color: #901c1c;
   font-size: 1.625em;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
 }
 .lightbox__content__container__media__title:focus, .lightbox__content__container__media__title:active {
   font-weight: 700;
@@ -662,7 +664,6 @@ header .container .logo-2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: left;
   box-sizing: border-box;
   border-radius: 5px;
   box-shadow: 4px 5px 10px #525252;
@@ -680,6 +681,8 @@ header .container .logo-2 {
   margin: 0;
   font-size: 3.5em;
   user-select: none;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
 }
 .contact__content__title:focus, .contact__content__title:active {
   color: #fff;
@@ -718,6 +721,8 @@ header .container .logo-2 {
 }
 .contact__content__body__form__data__label {
   font-size: 1.7em;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
 }
 .contact__content__body__form__data__label:focus, .contact__content__body__form__data__label:active {
   color: #000;
@@ -750,6 +755,8 @@ header .container .logo-2 {
   opacity: 0.5;
 }
 .contact__content__body__form__data__error__first {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   display: none;
   position: absolute;
   top: 11px;
@@ -759,6 +766,8 @@ header .container .logo-2 {
   font-weight: 500;
 }
 .contact__content__body__form__data__error__last {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   display: none;
   position: absolute;
   top: 11px;
@@ -768,6 +777,8 @@ header .container .logo-2 {
   font-weight: 500;
 }
 .contact__content__body__form__data__error__email {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   display: none;
   position: absolute;
   top: 11px;
@@ -777,6 +788,8 @@ header .container .logo-2 {
   font-weight: 500;
 }
 .contact__content__body__form__data__error__message {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   display: none;
   position: absolute;
   top: 11px;
@@ -815,6 +828,8 @@ header .container .logo-2 {
   box-shadow: 3px 2px 4px #525252;
 }
 .contact__content__body__form__submit__confirm {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   text-align: right;
   display: block;
   color: #fff;
@@ -829,12 +844,16 @@ header .container .logo-2 {
 }
 
 #message {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   height: 110px;
   resize: none;
   position: relative;
 }
 
 #message-counter {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   position: absolute;
   bottom: -20px;
   right: 3.9em;
@@ -843,6 +862,8 @@ header .container .logo-2 {
 }
 
 #message-max-length {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   bottom: -20px;
   right: 10px;
   position: absolute;
@@ -851,6 +872,8 @@ header .container .logo-2 {
 }
 
 .footer {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
   position: fixed;
   bottom: 0;
   right: 3%;

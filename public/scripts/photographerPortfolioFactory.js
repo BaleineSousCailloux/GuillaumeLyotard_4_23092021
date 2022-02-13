@@ -9,7 +9,7 @@ this.mediaPortfolioFactory = (portfolio, directory) => {
             </video>
             <span class="portfolio__content__card__media__icon fa-solid fa-video"></span>
             <div class="portfolio__content__card__legend">
-                <p class="portfolio__content__card__legend__title" tabindex="12" lang="en" aria-label="${portfolio.title}">${portfolio.title}</p>
+                <h3 class="portfolio__content__card__legend__title" tabindex="12" lang="en" aria-label="${portfolio.title}">${portfolio.title}</h3>
                 <div class="portfolio__content__card__legend__like" data-like-id="${portfolio.id}" tabindex="12" aria-label="mentions j'aime, zone cliquable">
                     <span class="portfolio__content__card__legend__like__cunt" aria-label="nombre de j'aime">${portfolio.likes}</span>
                     <span class="portfolio__content__card__legend__like__empty ${portfolio.liked} fa-heart" aria-label="icone coeur"></span>
@@ -21,7 +21,7 @@ this.mediaPortfolioFactory = (portfolio, directory) => {
         <img class="portfolio__content__card__media" data-media-id="${portfolio.id}" src="../public/images/Photos/${directory}/${portfolio.image}"
          tabindex="12" alt="${portfolio.alt}" aria-label="${portfolio.alt}, ouvrir en pleine page"/>
         <div class="portfolio__content__card__legend">
-            <p class="portfolio__content__card__legend__title" tabindex="12" lang="en" aria-label="${portfolio.title}">${portfolio.title}</p>
+            <h3 class="portfolio__content__card__legend__title" tabindex="12" lang="en" aria-label="${portfolio.title}">${portfolio.title}</h3>
             <div class="portfolio__content__card__legend__like" data-like-id="${portfolio.id}" tabindex="12" aria-label="mentions j'aime, zone cliquable">
                 <span class="portfolio__content__card__legend__like__cunt" aria-label="nombre de j'aime">${portfolio.likes}</span>
                 <span class="portfolio__content__card__legend__like__empty ${portfolio.liked} fa-heart" aria-label="icone coeur"></span>

@@ -18,7 +18,7 @@ this.photographerCardFactory = (photographerCard) => {
             const newTag = document.createElement("span");
             newTag.classList.add("photographer__legend__tags__tag");
             newTag.classList.add("tag");
-            newTag.setAttribute("aria-label", tag);
+            newTag.setAttribute("aria-label", "tag");
             newTag.setAttribute("data-tag", tag);
             newTag.innerHTML = `#${tag}`;
             photographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
@@ -27,7 +27,7 @@ this.photographerCardFactory = (photographerCard) => {
         const photographerImg = document.createElement("div");
         photographerImg.classList.add("photographer__container");
         photographerImg.innerHTML = `<img class="photographer__container__img"
-         src="../public/images/Photos/Photographers ID Photos/${photographerCard.portrait}" tabindex="8" alt="portrait de ${photographerCard.name}" aria-label="portrait de ${photographerCard.name}"/>`;
+         src="../public/images/Photos/Photographers_ID_Photos/${photographerCard.portrait}" tabindex="8" alt="portrait de ${photographerCard.name}" aria-label="portrait de ${photographerCard.name}"/>`;
         document.getElementById("photographer").appendChild(photographerImg);
 
         const footerPrice = document.createElement("p");
