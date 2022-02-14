@@ -1,3 +1,5 @@
+// shortcut to main section (index page)
+
 // DOM elements
 const shortcut = document.getElementById("shortcut");
 const headerDom = document.getElementById("header");
@@ -7,6 +9,8 @@ function visibilityDelay() {
     shortcut.style.top = "20px";
     setTimeout(closeShortcut, 6000);
 }
+
+// close shortcut of index page
 function closeShortcut() {
     shortcut.style.top = "-200px";
 }

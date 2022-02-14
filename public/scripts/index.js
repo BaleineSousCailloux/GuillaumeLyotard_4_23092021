@@ -1,8 +1,10 @@
+// variables
 let listTags = [];
-//let tagSelected = 0;
 let tagsZoneDom = document.getElementById("tagsList");
 let tagsPhotographerDom = document.querySelector(".photographer__legend__tags");
 
+
+// async functions json file data extract
 const fetchData = async () => {
     const res = await fetch("./public/data/FishEyeData.json");
     const data = await res.json();
@@ -13,7 +15,8 @@ const getPhotographersData = async () => {
     return data.photographers;
 }
 
-// récupère les tags au sein du JSON et des tags des différents photographes
+
+// function to create tags list with json data
 const getTagsListData = (photographers) => {
     photographers.forEach(photographer => {
         photographer.tags.forEach(tag => {
@@ -26,8 +29,7 @@ const getTagsListData = (photographers) => {
 }
 
 
-
-
+// function to create header tags list
 const getHeaderTagsList = (listTags) => {
     let self = this;
     listTags.forEach(tag => {
@@ -35,8 +37,8 @@ const getHeaderTagsList = (listTags) => {
         const newHeaderTag = instance.self.getHeaderTag();
         tagsZoneDom.appendChild(newHeaderTag);
 
+        // click event on a tag
         newHeaderTag.addEventListener("click", e => {
-            console.log(e.target);
             if (e.target.id == "tag-selected") {
                 document.location.href = "index.html";
                 document.querySelector("h1").focus();
@@ -48,20 +50,26 @@ const getHeaderTagsList = (listTags) => {
 }
 
 
+// function to create photographers cards with json data and tag selection
 const getPhotographerCards = (photographers, tagSelected) => {
     let self = this;
+
+    // variable that include only photographers tagged or all photographers if no tag selected
     const filteredPhotographers = photographers.filter(photographer => {
         return !tagSelected || photographer.tags.includes(tagSelected);
     })
     if (tagSelected !== null) {
         document.querySelector("h1").focus();
     }
+
+    // create and insert photographer card
     const container = document.getElementById("photographers");
     container.innerHTML = "";
     filteredPhotographers.forEach(photographer => {
         const instance = self.indexCardFactory(photographer);
         const newCard = instance.self.getCard();
         container.appendChild(newCard);
+        // header tags function extend to photographer card tag
         const personnalTags = newCard.querySelectorAll(".photographer__legend__tags__tag");
         Array.from(personnalTags).forEach(personnalTag => {
             personnalTag.addEventListener("click", event => {
@@ -71,14 +79,21 @@ const getPhotographerCards = (photographers, tagSelected) => {
     })
 }
 
+// await global function
 const init = async () => {
     let self = this;
     const photographers = await getPhotographersData();
     const tagsList = getTagsListData(photographers);
+
+    //url search tag
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let tagUrl = urlParams.get("tag");
+
+    // call header tags list function
     getHeaderTagsList(tagsList);
+
+    // gestion of selected tag and style css
     tagsList.forEach(tag => {
         if (tag == tagUrl) {
             let domCardTag = document.getElementsByClassName(tag)[0];
@@ -89,11 +104,12 @@ const init = async () => {
         }
     })
 
+    // call photographers cards
     getPhotographerCards(photographers, tagUrl);
 
+    // call keyboard navigation function for tags
     tagsZoneDom = document.getElementById("tagsList");
     tagsPhotographerDom = document.querySelector(".photographer__legend__tags");
-
     tagsZoneDom.addEventListener("keydown", e => {
         self.enterTagsNav(e, tagsZoneDom);
     })

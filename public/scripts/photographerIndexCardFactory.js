@@ -1,3 +1,4 @@
+// factory of a photographer card in index page
 this.indexCardFactory = (indexCard) => {
     this.getCard = () => {
         const newPhotographer = document.createElement("article");
@@ -15,12 +16,14 @@ this.indexCardFactory = (indexCard) => {
         </div>
         <div class="photographer__legend__tags" tabindex="6" aria-label="ses mots-clef, via lequels vous pouvez lancer une recherche"></div>
         `;
+
+        // add tags to photographer card
         indexCard.tags.forEach(tag => {
             const newTag = document.createElement("span");
             newTag.classList.add("photographer__legend__tags__tag");
             newTag.classList.add("tag");
             newTag.setAttribute("data-tag", tag);
-            newTag.setAttribute("aria-label", "tag");
+            newTag.setAttribute("aria-label", tag);
             newTag.innerHTML = `#${tag}`;
             newPhotographer.getElementsByClassName("photographer__legend__tags")[0].appendChild(newTag);
         })

@@ -13,7 +13,7 @@ this.lightboxVue = (medias) => {
   let photographe = document.querySelector(".photographer__card__contact__name").innerHTML.replace(" ", "_");
 
 
-  // open Lightbox event (img click)
+  // open Lightbox event (img click or keydown)
   openLightbox.forEach(mediaClicked => {
     mediaClicked.addEventListener("click", event => {
       event.preventDefault();
@@ -38,19 +38,19 @@ this.lightboxVue = (medias) => {
   })
 
 
-  // navigation in lightbox
+  // navigation in lightbox (arrows or keyboard)
   function navigate() {
     leftArrow.addEventListener("click", leftAction);
     rightArrow.addEventListener("click", rightAction);
     leftArrow.addEventListener("keydown", leftEvent => {
       if (leftEvent.keyCode === 13 || leftEvent.keyCode === 32) {
-        //leftEvent.preventDefault();
+        leftEvent.preventDefault();
         leftAction();
       }
     })
     rightArrow.addEventListener("keydown", rightEvent => {
       if (rightEvent.keyCode === 13 || rightEvent.keyCode === 32) {
-        //rightEvent.preventDefault();
+        rightEvent.preventDefault();
         rightAction();
       }
     })
@@ -113,15 +113,15 @@ this.lightboxVue = (medias) => {
   function launchLightbox() {
     lightbox.setAttribute("aria-hidden", false);
     lightbox.classList.remove("hidden");
-
     lightbox.style.display = "flex";
     lightbox.focus();
 
     document.getElementById("body").setAttribute("aria-hidden", true);
     document.getElementById("body").classList.add("hidden");
-
   }
-  // close delay
+
+
+  // close delay to keep last media in lightbox
   function closeDelay(lastMedia) {
     openLightbox.forEach(media => {
       let mediaTarget = media.getAttribute("data-media-id");
@@ -132,7 +132,7 @@ this.lightboxVue = (medias) => {
     setTimeout(quitLightbox, 100);
   }
 
-  // close lightbox event
+  // close lightbox event and focus on the same media in portfolio
   closeLightbox.addEventListener("click", (e) => {
     e.preventDefault();
     lastMediaId = document.querySelector(".lightbox__content__container__media__insert").getAttribute("data-media-id");
@@ -147,13 +147,13 @@ this.lightboxVue = (medias) => {
 
     lightbox.setAttribute("aria-hidden", true);
     lightbox.classList.add("hidden");
-
     lightbox.style.display = "none";
 
     document.getElementById("lightbox-container").innerHTML = ``;
   }
 
 
+  // ask factory to create elements
   const getLightbox = (mediaSelected, domPlace, photographerIdentity) => {
     let self = this;
     const temp = self.lightboxFactory(mediaSelected, photographerIdentity);

@@ -1,5 +1,20 @@
-let surname = "";
+// Dom elements
+const btnVue = document.getElementById("btn-vue");
+const btnSelectMenu = document.getElementById("btn-select-menu");
+const btnNotExpanded = document.querySelector(".portfolio__menu__btn");
+const btnMenuInactive = document.getElementById("btn-inactive");
+let option1Btn = document.querySelector(".portfolio__menu__btn2__option-1-vue");
+let option2Btn = document.querySelector(".portfolio__menu__btn2__option-2");
+let option3Btn = document.querySelector(".portfolio__menu__btn2__option-3");
 
+
+// variables
+let surname = "";
+let btnSelected = [];
+btnSelected.push(option1Btn, option2Btn, option3Btn);
+
+
+// async functions json file data extract
 const fetchData = async () => {
     const res = await fetch("../public/data/FishEyeData.json");
     const data = await res.json();
@@ -16,11 +31,14 @@ const getMediasData = async () => {
     return data.media;
 }
 
+
+// url search id
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const urlId = urlParams.get("id");
 
 
+// function to create photographer card with json data and url id
 const getPhotographerCard = (photographers) => {
     let self = this;
     photographers.forEach(photographer => {
@@ -28,9 +46,10 @@ const getPhotographerCard = (photographers) => {
             const instance = self.photographerCardFactory(photographer);
             const card = instance.self.getPersonnalCard();
             document.getElementById("photographer").insertBefore(card, document.getElementById("photographer").firstChild);
-            surname = photographer.name.replace(" ", "_");
+            surname = photographer.name.replace(" ", "_");  // surname for use as directory
             self.getContactForm(photographer);
         }
+        // index header tags function extend to photographer card tag
         const personnalTags = document.querySelectorAll(".photographer__legend__tags__tag");
         Array.from(personnalTags).forEach(personnalTag => {
             personnalTag.addEventListener("click", event => {
@@ -40,18 +59,9 @@ const getPhotographerCard = (photographers) => {
     })
 }
 
-const btnVue = document.getElementById("btn-vue");
-const btnSelectMenu = document.getElementById("btn-select-menu");
-const btnNotExpanded = document.querySelector(".portfolio__menu__btn");
-const btnMenuInactive = document.getElementById("btn-inactive");
-let option1Btn = document.querySelector(".portfolio__menu__btn2__option-1-vue");
-let option2Btn = document.querySelector(".portfolio__menu__btn2__option-2");
-let option3Btn = document.querySelector(".portfolio__menu__btn2__option-3");
-let btnSelected = [];
-btnSelected.push(option1Btn, option2Btn, option3Btn);
 
+// function for select btn gestion with click or keyboard
 const btnSelection = (btnClicked, btnClickAction) => {
-
 
     let indexOfSelectedBtn = 0;
 
@@ -108,49 +118,53 @@ const btnSelection = (btnClicked, btnClickAction) => {
             indexOfSelectedBtn++;
             if (indexOfSelectedBtn == btnSelected.length) {
                 indexOfSelectedBtn = 0;
-                console.log(indexOfSelectedBtn);
                 btnSelected[indexOfSelectedBtn].focus();
             } else {
                 btnSelected[indexOfSelectedBtn].focus();
-                console.log(indexOfSelectedBtn);
             }
         } else if (navEvent.shiftKey && navEvent.keyCode === 9) {
             navEvent.preventDefault();
             indexOfSelectedBtn--;
             if (indexOfSelectedBtn == -1) {
                 indexOfSelectedBtn = btnSelected.length - 1;
-                console.log(indexOfSelectedBtn);
                 btnSelected[indexOfSelectedBtn].focus();
             } else {
                 btnSelected[indexOfSelectedBtn].focus();
-                console.log(indexOfSelectedBtn);
             }
         }
     })
 }
 
 
-
+// function to create each media card with portfolio factory
 const getPhotographerPortfolio = (mediasArray, photographerName) => {
     let self = this;
     document.getElementById("portfolioContent").innerHTML = "";
     mediasArray.forEach(media => {
-        //videoName = media.video;
         const temp = self.mediaPortfolioFactory(media, photographerName);
         const newMediaCard = temp.self.getMediaCard();
         document.getElementById("portfolioContent").appendChild(newMediaCard);
 
     })
+    // call lightbox possibility
     self.lightboxVue(mediasArray);
 }
 
 
+// function for medias order and medias likes
 const getPhotographerMedias = (medias, photographerIdentity) => {
+    // dom elements and variables
+    const totalLikesFooter = document.querySelector(".footer__infos__cunt");
+    const likeZones = document.getElementsByClassName("portfolio__content__card__legend__like");
     let btnActive = "";
+
+
+    // to call medias of the url id photographer
     let photographerMedias = medias.filter(media => media.photographerId == urlId);
+    // to add parameter to each media for likes gestion
     let personnalMedias = photographerMedias.map(media => ({ ...media, liked: "far" }));
-    ////////////////////////////////////////////////////////////////////////////////////
-    /////     CTRL IF LOCAL STORAGE     ////////////////////////////////////////////////
+
+    // ctrl if local storage of media liked
     personnalMedias = personnalMedias.map(media => {
         if (localStorage.getItem(`${media.id}_heart`) !== null) {
             media.liked = localStorage.getItem(`${media.id}_heart`);
@@ -158,7 +172,8 @@ const getPhotographerMedias = (medias, photographerIdentity) => {
         }
         return media;
     });
-    /////////////////////////////////////////////////////////////////////////////////////
+
+    // default order for media (popularity)
     personnalMedias.sort((a, b) => {
         if (a.likes > b.likes) {
             return -1;
@@ -169,13 +184,14 @@ const getPhotographerMedias = (medias, photographerIdentity) => {
         }
     })
 
-
+    // call create function for this medias
     getPhotographerPortfolio(personnalMedias, photographerIdentity);
-    const totalLikesFooter = document.querySelector(".footer__infos__cunt");
+
+    // add total medias likes in footer
     totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
-    const likeZones = document.getElementsByClassName("portfolio__content__card__legend__like");
 
 
+    // likes gestion on click and with keyboard
     Array.from(likeZones).forEach(likeZone => {
         likeZone.addEventListener("click", (e) => {
             const zoneToClick = e.target.classList.contains("portfolio__content__card__legend__like") ? e.target : e.target.closest(".portfolio__content__card__legend__like");
@@ -195,13 +211,9 @@ const getPhotographerMedias = (medias, photographerIdentity) => {
                     }
                     likesVue.innerHTML = media.likes;
                     totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
-                    ////////////////////////////////////////////////////////////
-                    /////////   ADD TO LOCAL STORAGE   /////////////////////////
+                    //ADD TO LOCAL STORAGE
                     localStorage.setItem(`${media.id}_likes`, `${media.likes}`);
                     localStorage.setItem(`${media.id}_heart`, `${media.liked}`);
-                    //console.log(localStorage.getItem(`${media.id}_heart`));
-                    //console.log(localStorage.getItem(`${media.id}_likes`));
-                    ////////////////////////////////////////////////////////////
                 }
                 return media;
             })
@@ -217,7 +229,7 @@ const getPhotographerMedias = (medias, photographerIdentity) => {
     })
 
 
-
+    // change medias order and custom select button transform
     btnSelection(btnSelected, event => {
         event.preventDefault();
         btnActive = event.target.getAttribute("data-option");
@@ -295,9 +307,9 @@ const getPhotographerMedias = (medias, photographerIdentity) => {
                 option3Btn.innerText = "Titre";
                 break
         }
-
+        // call create function for this medias
         getPhotographerPortfolio(personnalMedias, photographerIdentity);
-
+        // likes gestion on click and with keyboard
         Array.from(likeZones).forEach(likeZone => {
             likeZone.addEventListener("click", (e) => {
                 const zoneToClick = e.target.classList.contains("portfolio__content__card__legend__like") ? e.target : e.target.closest(".portfolio__content__card__legend__like");
@@ -316,14 +328,11 @@ const getPhotographerMedias = (medias, photographerIdentity) => {
                             heart.setAttribute("data-prefix", "far");
                         }
                         likesVue.innerHTML = media.likes;
+                        // add total medias likes in footer
                         totalLikesFooter.innerText = personnalMedias.reduce((likes, media) => likes + media.likes, 0);
-                        ////////////////////////////////////////////////////////////
-                        /////////   ADD TO LOCAL STORAGE   /////////////////////////
+                        // ADD TO LOCAL STORAGE
                         localStorage.setItem(`${media.id}_likes`, `${media.likes}`);
                         localStorage.setItem(`${media.id}_heart`, `${media.liked}`);
-                        //console.log(localStorage.getItem(`${media.id}_heart`));
-                        //console.log(localStorage.getItem(`${media.id}_likes`));
-                        ////////////////////////////////////////////////////////////
                     }
                     return media;
                 })
@@ -339,16 +348,20 @@ const getPhotographerMedias = (medias, photographerIdentity) => {
     })
 }
 
+// await global function
 const init = async () => {
-    //localStorage.clear(); //// pour vider le stockage sur la mémoire local au besoin ////
+    //localStorage.clear(); // if needed
     let self = this;
     const photographers = await getPhotographersData();
     const medias = await getMediasData();
+    // call photographer card
     getPhotographerCard(photographers);
+    // call keyboard navigation function for tags
     let tagsPhotographerDom = document.querySelector(".photographer__legend__tags");
     tagsPhotographerDom.addEventListener("keydown", e => {
         self.enterTagsNav(e, tagsPhotographerDom);
     })
+    // call photographer's medias in popularity order and likes knowns (local storage)
     getPhotographerMedias(medias, surname);
 }
 

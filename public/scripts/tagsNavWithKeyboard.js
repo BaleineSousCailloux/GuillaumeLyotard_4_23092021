@@ -1,9 +1,10 @@
-//// Tri des photographes avec la liste de tags AU CLAVIER //////
+// navigation in tags listes with keyboard
 this.enterTagsNav = (e, tagsContainer) => {
     const tags = tagsContainer.querySelectorAll(".tag");
     const firstTag = tags[0]
     const lastTag = tags[tags.length - 1];
-    //// entrer et naviguer dans la liste de tags OK
+
+    // open tags list and tag gestion
     if (e.keyCode === 13 || e.keyCode === 32) {
         e.preventDefault();
         tags.forEach(tag => {
@@ -15,15 +16,15 @@ this.enterTagsNav = (e, tagsContainer) => {
                 }
             })
         })
-        firstTag.focus(); ///ok
-        /// revient au premier tag OK
+        firstTag.focus();
+
+        // keep focus in list tags
         lastTag.addEventListener("keydown", event => {
             if (event.keyCode === 9 && !event.shiftKey) {
                 event.preventDefault();
                 firstTag.focus();
             }
         })
-        //// en cas de back-tab, doit aller au dernier tag   OK
         firstTag.addEventListener("keydown", backEvent => {
 
             if (backEvent.keyCode === 9 && backEvent.shiftKey) {
@@ -32,9 +33,9 @@ this.enterTagsNav = (e, tagsContainer) => {
             }
         })
     }
-    //  sortie de la selection de tag avec ESC  OK
-    if (e.keyCode === 27 && tagsContainer.contains(document.activeElement)) {
 
+    //  Escape tags list
+    if (e.keyCode === 27 && tagsContainer.contains(document.activeElement)) {
         tagsContainer.focus();
     }
 }

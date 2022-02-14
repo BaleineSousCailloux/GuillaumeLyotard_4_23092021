@@ -1,3 +1,4 @@
+// factory of a photographer portfolio, with videos and/or images)
 this.mediaPortfolioFactory = (portfolio, directory) => {
     this.getMediaCard = () => {
         const mediaCard = document.createElement("article");

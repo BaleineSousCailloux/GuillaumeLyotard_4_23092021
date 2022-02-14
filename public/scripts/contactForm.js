@@ -1,18 +1,31 @@
 this.getContactForm = (person) => {
-    // open & close contact form
 
-
+    // DOM elements
     const openBtn = document.getElementById("openForm");
     const contactForm = document.getElementById("contact");
     const formContent = document.getElementById("content");
     const closeBtn = document.getElementById("closeForm");
     const photographerContactName = document.getElementById("contactForm-photographer-name");
+    const formulaire = document.getElementById("form")
+    const sendConfirm = document.getElementById("confirm")
+    const firstName = document.getElementById("first");
+    const lastName = document.getElementById("last");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+    const counter = document.getElementById("message-counter");
+
+    // variables definitions
+    let charLength = 0;
+    counter.innerText = charLength;
+
+    const maxLengthMessage = message.getAttribute("maxlength");
+
     photographerContactName.innerHTML = `Contactez ${person.name}`;
     photographerContactName.setAttribute("aria-label", `${person.name}`);
     photographerContactName.setAttribute("tabindex", 1);
 
 
-    // open contact form fonction
+    // open contact form modal
     function launchContactForm() {
         sendConfirm.style.display = "none";
         contactForm.style.display = "flex";
@@ -21,6 +34,7 @@ this.getContactForm = (person) => {
         document.getElementById("body").setAttribute("aria-hidden", true);
         document.getElementById("body").classList.add("hidden");
 
+        // keyboard events to kkep focus in modal and to close
         closeBtn.addEventListener("keydown", e => {
             e.preventDefault();
             e.stopPropagation();
@@ -37,7 +51,6 @@ this.getContactForm = (person) => {
                 closeBtn.click();
             }
         })
-        /// gestion des onfocus sur les éléments //////////////////////////////////////////////////////
     }
 
     // delay to close functions
@@ -48,42 +61,25 @@ this.getContactForm = (person) => {
         setTimeout(closeContactForm, 5000);
     }
 
-    // close contact form function
+    // close contact form
     function closeContactForm() {
         document.getElementById("body").setAttribute("aria-hidden", false);
         document.getElementById("body").classList.remove("hidden");
 
         contactForm.style.display = "none";
+
         document.getElementById("first-error").style.display = 'none';
         document.getElementById("last-error").style.display = 'none';
         document.getElementById("email-error").style.display = 'none';
         document.getElementById("message-error").style.display = 'none';
     }
 
-    // close contact form event
-    //closeBtn.addEventListener("click", manualCloseDelay);
 
-
+    // Events listener on buttons to launch or close modal
     openBtn.addEventListener("click", launchContactForm);
     closeBtn.addEventListener("click", manualCloseDelay);
 
-
-
-    // contact form validation
-
-    // DOM Elements
-    const formulaire = document.getElementById("form")
-    const sendConfirm = document.getElementById("confirm")
-
-    const firstName = document.getElementById("first");
-    const lastName = document.getElementById("last");
-    const email = document.getElementById("email");
-    const message = document.getElementById("message");
-    const counter = document.getElementById("message-counter");
-    const maxLengthMessage = message.getAttribute("maxlength");
-    let charLength = 0;
-    counter.innerText = charLength;
-
+    // Event Listener for message bos character cunt
     message.addEventListener('input', event => {
         charLength = event.target.value.length;
         if (charLength > maxLengthMessage) {
@@ -93,14 +89,12 @@ this.getContactForm = (person) => {
     })
 
 
-    // contrôle et envoi
-
+    // global form control on submit
     formulaire.addEventListener("submit", function (event) {
 
         event.preventDefault();
         event.stopPropagation();
 
-        // ex regex : (/^[A-Z|a-z|\-]{2,}$/g.test(firstName.value))
         let firstNameIsValid = false;
         if (/^[A-Z|a-z|-]{2,}$/g.test(firstName.value)) {
             firstNameIsValid = true;
@@ -109,7 +103,6 @@ this.getContactForm = (person) => {
             document.getElementById("first-error").style.display = 'block';
         }
 
-        // ex regex : (/^[A-Z|a-z|\-]{1,}$/g.test(lastName.value))
         let lastNameIsValid = false;
         if (/^[A-Z|a-z|-]{1,}$/g.test(lastName.value)) {
             lastNameIsValid = true;
@@ -118,8 +111,7 @@ this.getContactForm = (person) => {
             document.getElementById("last-error").style.display = 'block';
         }
 
-        // ex regex : (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(email.value.trim().toLowerCase()))
-        let emailIsValid = false; // regex trouvée sur internet, mais déjà géré automatiquement par le html
+        let emailIsValid = false;
         if (/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i.test(email.value.trim().toLowerCase())) {
             emailIsValid = true;
             document.getElementById("email-error").style.display = 'none';
